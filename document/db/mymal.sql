@@ -46,15 +46,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mymall`.`shoppingmall` ;
 
 CREATE TABLE IF NOT EXISTS `mymall`.`shoppingmall` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(120) NULL,
+  `name` VARCHAR(120) NOT NULL,
   `content` VARCHAR(1024) NULL,
-  `url` VARCHAR(1024) NULL,
-  `best_code` INT NULL,
+  `url` VARCHAR(1024) NOT NULL,
+  `best_code` INT NOT NULL,
   `admin_id` VARCHAR(120) NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_shoppingmall_admin_idx` (`admin_id` ASC) VISIBLE,
-  CONSTRAINT `fk_shoppingmall_admin`
+  INDEX `fk_shoppingmall_admin1_idx` (`admin_id` ASC) VISIBLE,
+  PRIMARY KEY (`name`),
+  CONSTRAINT `fk_shoppingmall_admin1`
     FOREIGN KEY (`admin_id`)
     REFERENCES `mymall`.`admin` (`id`)
     ON DELETE NO ACTION
@@ -69,16 +68,16 @@ DROP TABLE IF EXISTS `mymall`.`product` ;
 
 CREATE TABLE IF NOT EXISTS `mymall`.`product` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(120) NULL,
-  `img` VARCHAR(1024) NULL,
-  `price` INT NULL,
-  `url` VARCHAR(1024) NULL,
-  `shoppingmall_id` INT NOT NULL,
+  `name` VARCHAR(120) NOT NULL,
+  `img` VARCHAR(1024) NOT NULL,
+  `price` INT NOT NULL,
+  `url` VARCHAR(1024) NOT NULL,
+  `shoppingmall_name` VARCHAR(120) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_product_shoppingmall1_idx` (`shoppingmall_id` ASC) VISIBLE,
+  INDEX `fk_product_shoppingmall1_idx` (`shoppingmall_name` ASC) VISIBLE,
   CONSTRAINT `fk_product_shoppingmall1`
-    FOREIGN KEY (`shoppingmall_id`)
-    REFERENCES `mymall`.`shoppingmall` (`id`)
+    FOREIGN KEY (`shoppingmall_name`)
+    REFERENCES `mymall`.`shoppingmall` (`name`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -92,18 +91,18 @@ DROP TABLE IF EXISTS `mymall`.`bookmark` ;
 CREATE TABLE IF NOT EXISTS `mymall`.`bookmark` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` VARCHAR(120) NOT NULL,
-  `shoppingmall_id` INT NOT NULL,
+  `shoppingmall_name` VARCHAR(120) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_bookmark_user1_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_bookmark_shoppingmall1_idx` (`shoppingmall_id` ASC) VISIBLE,
+  INDEX `fk_bookmark_shoppingmall1_idx` (`shoppingmall_name` ASC) VISIBLE,
   CONSTRAINT `fk_bookmark_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `mymall`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_bookmark_shoppingmall1`
-    FOREIGN KEY (`shoppingmall_id`)
-    REFERENCES `mymall`.`shoppingmall` (`id`)
+    FOREIGN KEY (`shoppingmall_name`)
+    REFERENCES `mymall`.`shoppingmall` (`name`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
