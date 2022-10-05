@@ -3,6 +3,6 @@
 
 <mapper namespace="Admin">
 	<select id="login" resultType="Admin">
-		select * from where id=#{id} and pwd=#{pwd}
+		select * from mymall.admin where id=#{id} and pwd=#{pwd}
 	</select>
 </mapper>
