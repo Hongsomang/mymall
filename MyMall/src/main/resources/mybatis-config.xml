@@ -3,10 +3,12 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias type="kr.ac.kopo.Model.Admin"
-			alias="Admin" />
+		<typeAlias type="kr.ac.kopo.Model.Admin" alias="Admin" />
+		<typeAlias type="kr.ac.kopo.Model.Shoppingmall" alias="Shoppingmall" />
+		
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/admin.xml" />
+		<mapper resource="mybatis/shoppingmall.xml"/>
 	</mappers>
 </configuration>

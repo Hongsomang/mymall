@@ -2,13 +2,10 @@ package kr.ac.kopo.Dao;
 
 import java.util.List;
 
-import kr.ac.kopo.Model.Admin;
 import kr.ac.kopo.Model.Shoppingmall;
 
-public interface AdminDao {
+public interface ShoppingmallDao {
 
-	Admin login(Admin admin);
-
-	
+	List<Shoppingmall> list();
 
 }

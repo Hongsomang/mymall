@@ -23,7 +23,7 @@
 					<input type="password" name="pwd">
 				</div>
 				<div>
-					<a href="/"><button >로그인 </button></a>
+					<a href="list"><button >로그인 </button></a>
 					<a	href="/"><button type="button">취소 </button></a>
 				</div>
 			</form>
