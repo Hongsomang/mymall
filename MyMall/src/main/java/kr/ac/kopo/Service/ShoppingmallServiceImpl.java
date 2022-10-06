@@ -20,4 +20,10 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 		return dao.list();
 	}
 
+	@Override
+	public void add(Shoppingmall item) {
+		// TODO Auto-generated method stub
+		dao.add(item);
+	}
+
 }

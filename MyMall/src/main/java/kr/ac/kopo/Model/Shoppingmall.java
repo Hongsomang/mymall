@@ -6,7 +6,7 @@ public class Shoppingmall {
 	private String content;
 	private String url;
 	private int bestCode;
-	private String admin_id;
+	private String adminId;
 	
 	public String getName() {
 		return name;
@@ -32,12 +32,13 @@ public class Shoppingmall {
 	public void setBestCode(int bestCode) {
 		this.bestCode = bestCode;
 	}
-	public String getAdmin_id() {
-		return admin_id;
+	public String getAdminId() {
+		return adminId;
 	}
-	public void setAdmin_id(String admin_id) {
-		this.admin_id = admin_id;
+	public void setAdminId(String adminId) {
+		this.adminId = adminId;
 	}
+
 	
 	
 }

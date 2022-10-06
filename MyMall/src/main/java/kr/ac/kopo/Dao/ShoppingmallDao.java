@@ -8,4 +8,8 @@ public interface ShoppingmallDao {
 
 	List<Shoppingmall> list();
 
+	void add(Shoppingmall item);
+
+	
+
 }

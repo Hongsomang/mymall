@@ -20,4 +20,10 @@ public class ShoppingmallDaoImpl implements ShoppingmallDao {
 		return sql.selectList("shoppingmall.list");
 	}
 
+	@Override
+	public void add(Shoppingmall item) {
+		// TODO Auto-generated method stub
+		sql.insert("shoppingmall.add", item);
+	}
+
 }

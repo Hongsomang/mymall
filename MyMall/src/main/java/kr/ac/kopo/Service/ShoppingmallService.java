@@ -8,4 +8,6 @@ public interface ShoppingmallService {
 
 	List<Shoppingmall> list();
 
+	void add(Shoppingmall item);
+
 }

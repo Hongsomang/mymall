@@ -53,4 +53,18 @@ public class AdminController {
 		
 		return path+"list";
 	}
+	
+	@GetMapping("/add")
+	public String add() {
+		
+		return path+"add";
+	}
+	
+	@PostMapping("/add")
+	public String add(Shoppingmall item) {
+		
+		shoppingService.add(item);
+		
+		return "redirect:list";
+	}
 }

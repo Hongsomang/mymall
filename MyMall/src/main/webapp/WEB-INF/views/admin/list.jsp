@@ -11,8 +11,8 @@
 		<div>
 			<h1>관리자 페이지 </h1>
 			<a href="add"><button type="button">추가 </button></a>
-			<hr>
 		</div>
+		<hr>
 		<div>
 			<table border="1">
 				<thead>
@@ -31,7 +31,7 @@
 					<c:forEach var="item" items="${list}">
 						<tr>
 							<td>${item.name}</td>
-							<td>${item.admin}</td>
+							<td>${item.adminId == null ? '': item.adminId}</td>
 							<td>
 								<a href="/update/${item.name}">변경 </a> 
 								<a href="/delete/${item.name}">삭제 </a>
