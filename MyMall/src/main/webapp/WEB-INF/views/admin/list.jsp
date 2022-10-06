@@ -42,6 +42,9 @@
 				</tbody>
 			</table>
 		</div>
+		<div>
+			<a href="/"><button>홈으로 </button></a>
+		</div>
 	</div>
 	
 </body>

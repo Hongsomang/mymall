@@ -14,7 +14,7 @@
 		<a href="admin/login"><button>관리자 페이지  </button></a>
 	</div>
 	<div>
-		<a href=""><button>메인 페이지   </button></a>
+		<a href="mymall/main"><button>메인 페이지   </button></a>
 	</div>
 </body>
 </html>
