@@ -62,9 +62,8 @@ public class AdminController {
 	
 	@PostMapping("/add")
 	public String add(Shoppingmall item) {
-		
+		item.setAdminId("admin1"); //세션 전 
 		shoppingService.add(item);
-		
 		return "redirect:list";
 	}
 }

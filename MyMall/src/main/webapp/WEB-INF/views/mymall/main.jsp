@@ -11,7 +11,7 @@
 	<div>
 		<div>
 			<h1>MYMALL</h1>
-			<a><button>로그인</button></a>
+			<a href="login"><button>로그인</button></a>
 		</div>
 		<hr>
 		<div>
@@ -23,7 +23,7 @@
 				<c:if test="${list.size()<1 }">
 					<li>
 						<div>
-							<p>쇼핑몰일 없습니다.</p>
+							<p>쇼핑몰이 없습니다.</p>
 						</div>
 					</li>
 				</c:if>

@@ -1,13 +1,20 @@
 package kr.ac.kopo.Model;
 
 public class Shoppingmall {
-
+	private int id;
 	private String name;
 	private String content;
 	private String url;
 	private int bestCode;
 	private String adminId;
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}

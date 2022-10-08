@@ -5,7 +5,7 @@
 		select * from mymall.shoppingmall;
 	</select>
 	<insert id="add">
-		insert into mymall.shoppingmall (name,content,url,best_code)
-		 values (#{name},#{content},#{url},#{bestCode})
+		insert into mymall.shoppingmall (name,content,url,best_code,admin_id)
+		 values (#{name},#{content},#{url},#{bestCode},#{adminId})
 	</insert>
 </mapper>
