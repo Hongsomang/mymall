@@ -6,4 +6,6 @@ public interface UserDao {
 
 	void signup(User user);
 
+	User login(User user);
+
 }

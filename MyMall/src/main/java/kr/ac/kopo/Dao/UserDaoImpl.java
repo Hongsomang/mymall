@@ -20,4 +20,10 @@ public class UserDaoImpl implements UserDao {
 		sql.insert("user.signup", user);
 	}
 
+	@Override
+	public User login(User user) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("user.login", user);
+	}
+
 }

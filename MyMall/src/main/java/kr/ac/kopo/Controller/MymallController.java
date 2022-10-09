@@ -37,6 +37,18 @@ public class MymallController {
 		return path+"login";
 	}
 	
+	@PostMapping("/login")
+	public String login(User user) {
+		if(userService.login(user)) {
+			System.out.println("로그인 성공 ");
+			return "redirect:main";
+		}
+		else {
+			System.out.println("로그인 실패 ");
+			return "redirect:login";
+		}
+		
+	}
 	
 	@GetMapping("/signup")
 	public String signup() {

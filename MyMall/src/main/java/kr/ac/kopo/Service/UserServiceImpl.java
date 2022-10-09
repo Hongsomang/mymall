@@ -18,4 +18,18 @@ public class UserServiceImpl implements UserService {
 		dao.signup(user);
 	}
 
+	@Override
+	public boolean login(User user) {
+		// TODO Auto-generated method stub
+		
+		User item=dao.login(user);
+		
+		if(item!=null) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+
 }

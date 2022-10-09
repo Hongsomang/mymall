@@ -6,4 +6,6 @@ public interface UserService {
 
 	void signup(User user);
 
+	boolean login(User user);
+
 }

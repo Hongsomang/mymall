@@ -4,4 +4,7 @@
 	<insert id="signup">
 		insert into mymall.user (id,pwd,name,email) values (#{id},#{pwd},#{name},#{email})
 	</insert>
+	<select id="login" resultType="User">
+		select * from mymall.user where id=#{id} and pwd=#{pwd}
+	</select>
 </mapper>
