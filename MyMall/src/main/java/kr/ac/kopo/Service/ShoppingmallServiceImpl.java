@@ -27,4 +27,10 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 		dao.add(item);
 	}
 
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		dao.delete(id);
+	}
+
 }

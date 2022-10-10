@@ -27,4 +27,10 @@ public class ShoppingmallDaoImpl implements ShoppingmallDao {
 		sql.insert("shoppingmall.add", item);
 	}
 
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		sql.delete("shoppingmall.delete", id);
+	}
+
 }

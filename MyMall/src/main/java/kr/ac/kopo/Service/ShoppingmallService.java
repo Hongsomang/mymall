@@ -11,4 +11,6 @@ public interface ShoppingmallService {
 
 	void add(Shoppingmall item);
 
+	void delete(int id);
+
 }

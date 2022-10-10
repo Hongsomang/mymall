@@ -33,8 +33,8 @@
 							<td>${item.name}</td>
 							<td>${item.adminId == null ? '': item.adminId}</td>
 							<td>
-								<a href="/update/${item.name}">변경 </a> 
-								<a href="/delete/${item.name}">삭제 </a>
+								<a href="update/${item.id}">변경 </a> 
+								<a href="delete/${item.id}">삭제 </a>
 							</td>
 						</tr>
 					</c:forEach>

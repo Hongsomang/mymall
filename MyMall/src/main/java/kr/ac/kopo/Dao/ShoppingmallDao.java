@@ -11,6 +11,8 @@ public interface ShoppingmallDao {
 
 	void add(Shoppingmall item);
 
+	void delete(int id);
+
 	
 
 }

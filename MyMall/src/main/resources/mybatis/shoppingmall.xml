@@ -15,4 +15,7 @@
 		insert into mymall.shoppingmall (name,content,url,best_code,admin_id)
 		 values (#{name},#{content},#{url},#{bestCode},#{adminId})
 	</insert>
+	<delete id="delete">
+		delete from mymall.shoppingmall where id=#{id} 
+	</delete>
 </mapper>
