@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
 import kr.ac.kopo.Model.User;
 import kr.ac.kopo.Service.ShoppingmallService;
@@ -26,8 +27,8 @@ public class MymallController {
 	UserService userService;
 	
 	@RequestMapping("/main")
-	public String main(Model model) {
-		List<Shoppingmall> list=service.list();
+	public String main(Model model ,Pager pager) {
+		List<Shoppingmall> list=service.list(pager);
 		
 		model.addAttribute("list", list);
 		return path+"main";

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.ac.kopo.Model.Admin;
+import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
 import kr.ac.kopo.Service.AdminService;
 import kr.ac.kopo.Service.ShoppingmallService;
@@ -46,9 +47,9 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/list")
-	public String list(Model model) {
+	public String list(Model model ,Pager pager) {
 		
-		List<Shoppingmall> list =shoppingService.list();
+		List<Shoppingmall> list =shoppingService.list(pager);
 		model.addAttribute("list",list);
 		
 		return path+"list";

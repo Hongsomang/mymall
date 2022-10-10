@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="shoppingmall">
+	<sql id="search">
+		<where>
+			<if test="search !=null">
+				name LIKE CONCAT(CONCAT('%', #{search}), '%')
+			</if>
+		</where>
+	</sql>
 	<select id="list" resultType="Shoppingmall">
-		select * from mymall.shoppingmall;
+		select * from mymall.shoppingmall <include refid="search"></include>
 	</select>
 	<insert id="add">
 		insert into mymall.shoppingmall (name,content,url,best_code,admin_id)

@@ -33,7 +33,7 @@ function signup(){
 		return;
 	}
 	if(form.pwd.value != form.pwd_ck.value){
-		alter("비밀번호가 일치하지 않습니다.");
+		alert("비밀번호가 일치하지 않습니다.");
 		form.pwd.focus();
 		return;
 	}
@@ -43,12 +43,12 @@ function signup(){
 		return;
 	}
 	if(email_id==""){
-		alter("이메일을 입력해주세요.");
+		alert("이메일을 입력해주세요.");
 		$("#email_id").focus();
 		return;
 	}
 	if(email_domain==""){
-		alter("이메일 도메인을 입력하세요.");
+		alert("이메일 도메인을 입력하세요.");
 		$("email.domain").focus();
 		return;
 	}
@@ -56,7 +56,7 @@ function signup(){
 	$("#email").val(mail);
 	
 	if(!email_rule.test(mail)){
-		alter("이메일을 형식에 맞게 입력해주세요.")
+		alert("이메일을 형식에 맞게 입력해주세요.");
 		return;
 	}
 	

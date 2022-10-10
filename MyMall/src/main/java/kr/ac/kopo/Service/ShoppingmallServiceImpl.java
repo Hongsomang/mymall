@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.Dao.ShoppingmallDao;
+import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
 
 @Service
@@ -15,9 +16,9 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 	ShoppingmallDao dao;
 	
 	@Override
-	public List<Shoppingmall> list() {
+	public List<Shoppingmall> list(Pager pager) {
 		// TODO Auto-generated method stub
-		return dao.list();
+		return dao.list(pager);
 	}
 
 	@Override
