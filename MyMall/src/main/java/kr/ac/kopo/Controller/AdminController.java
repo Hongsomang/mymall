@@ -68,6 +68,20 @@ public class AdminController {
 		shoppingService.add(item);
 		return "redirect:list";
 	}
+	@GetMapping("/update/{id}")
+	public String update(@PathVariable int id , Model model) {
+		Shoppingmall item= shoppingService.item(id);
+		model.addAttribute("item", item);
+		
+		return path+"update";
+		
+	}
+	
+	@PostMapping("/update/{id}")
+	public String update( Shoppingmall item) {
+		shoppingService.update(item);
+		return "redirect:../list";
+	}
 	
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {

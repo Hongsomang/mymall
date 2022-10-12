@@ -13,6 +13,10 @@ public interface ShoppingmallDao {
 
 	void delete(int id);
 
+	Shoppingmall item(int id);
+
+	void update(Shoppingmall item);
+
 	
 
 }

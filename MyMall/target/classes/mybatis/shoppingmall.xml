@@ -18,4 +18,10 @@
 	<delete id="delete">
 		delete from mymall.shoppingmall where id=#{id} 
 	</delete>
+	<select id="item" resultType="Shoppingmall">
+		select * from mymall.shoppingmall where id=#{id}
+	</select>
+	<update id="update">
+		update mymall.shoppingmall set name=#{name}, content=#{content}, url=#{url}, best_code=#{bestCode} where id=#{id}
+	</update>
 </mapper>
