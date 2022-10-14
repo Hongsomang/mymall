@@ -14,6 +14,7 @@ import kr.ac.kopo.Model.Admin;
 import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
 import kr.ac.kopo.Service.AdminService;
+import kr.ac.kopo.Service.ProductService;
 import kr.ac.kopo.Service.ShoppingmallService;
 
 @Controller
@@ -26,6 +27,9 @@ public class AdminController {
 	
 	@Autowired
 	ShoppingmallService shoppingService;
+	
+	@Autowired
+	ProductService productService;
 	
 	@GetMapping("/login")
 	public String login() {
@@ -86,6 +90,15 @@ public class AdminController {
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {
 		shoppingService.delete(id);
+		return "redirect:../list";
+	}
+	
+	@RequestMapping("/product_update/{id}")
+	public String product_update(@PathVariable int id,Shoppingmall item) {
+		if(productService.count(id)>0) {
+			productService.delete(id);
+		}
+		productService.add(item);
 		return "redirect:../list";
 	}
 }

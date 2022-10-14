@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+	<select id="count" resultType="Integer">
+		select count(*) from mymall.product where shoippingmall_id=#{shoppingmallId}
+	</select>
+	<delete id="delete">
+		delete from mymall.product where shoippingmall_id=#{shoppingmallId}
+	</delete>
+</mapper>

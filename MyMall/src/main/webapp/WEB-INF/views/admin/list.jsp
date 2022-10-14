@@ -20,6 +20,7 @@
 						<th>쇼핑몰 </th>
 						<th>관리자 </th>
 						<th>관리 </th>
+						<th>업데이트 </th>
 					</tr>
 				</thead>
 				<tbody>
@@ -36,6 +37,7 @@
 								<a href="update/${item.id}">변경 </a> 
 								<a href="delete/${item.id}">삭제 </a>
 							</td>
+							<td><a href="product_update/${item.id}">상품 업데이트 </a></td>
 						</tr>
 					</c:forEach>
 					
