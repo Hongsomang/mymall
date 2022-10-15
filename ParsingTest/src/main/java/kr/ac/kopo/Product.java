@@ -1,18 +1,19 @@
 package kr.ac.kopo;
 
 public class Product {
-	private int id;
+	
 	private String name;
 	private String price;
 	private String img;
 	private String url;
+	
+	public Product(String name, String price,String img, String url) {
+		this.name=name;
+		this.price=price;
+		this.img=img;
+		this.url=url;
+	}
 
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getName() {
 		return name;
 	}
@@ -37,5 +38,10 @@ public class Product {
 	}
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+	@Override
+	public String toString() {
+		return "[name="+name+"] "+"[price="+price+"] "+"[img="+img+"] "+"[url="+url+"]";
 	}
 }
