@@ -1,25 +1,28 @@
 package kr.ac.kopo.Model;
 
-public class Product {
+public class Parsing {
 
-	private int id;
 	private String name;
 	private String price;
 	private String img;
 	private String url;
 	private int shoppingmallId;
-	public int getId() {
-		return id;
+	
+	public Parsing(String name, String price,String img, String url,int shoppingmallId) {
+		this.name=name;
+		this.price=price;
+		this.img=img;
+		this.url=url;
+		this.shoppingmallId=shoppingmallId;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getPrice() {
 		return price;
 	}
@@ -38,13 +41,19 @@ public class Product {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	
+	
 	public int getShoppingmallId() {
 		return shoppingmallId;
 	}
+
 	public void setShoppingmallId(int shoppingmallId) {
 		this.shoppingmallId = shoppingmallId;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "[name="+name+"] "+"[price="+price+"] "+"[img="+img+"] "+"[url="+url+"] "+"[shoppingmallId="+shoppingmallId+"]";
+	}
 	
 }

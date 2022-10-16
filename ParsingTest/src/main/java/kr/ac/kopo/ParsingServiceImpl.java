@@ -35,8 +35,9 @@ public class ParsingServiceImpl  implements ParsingService{
 				
 				Elements contents =doc.select("ul[class=prdList grid4]").select("div[class=prdImg] > a");
 				Elements Elprice =doc.select("ul[class=prdList grid4]").select("div > ul ");
-				Elements Elprice_li_1=Elprice.select("li:nth-child(2)");
-				Elements Elprice_li_2=Elprice.select("li:nth-child(1)");
+				Elements Elprice_li_1=Elprice.select("li:nth-child(1)");
+				Elements Elprice_li_2=Elprice.select("li:nth-child(2)");
+				
 				
 				int index=0;
 				String name;
@@ -46,46 +47,24 @@ public class ParsingServiceImpl  implements ParsingService{
 				
 				for(int i = 0; i < contents.size(); i++) {
 					
-					//System.out.println("url: "+contents.get(i).attr("href"));
-					//System.out.println("제목:"+contents.select("img").get(i).attr("alt")); 
-					//System.out.println("이미지:"+contents.select("img").get(i).attr("src")); 
-					
 					name=contents.select("img").get(i).attr("alt");
 					url=contents.get(i).attr("href").toString();
 					img=contents.select("img").get(i).attr("src");
 					
+					if(Elprice_li_2.get(i).text().equals(":")) {
+						index=Elprice_li_1.get(i).text().indexOf(":");
+						price=Elprice_li_1.get(i).text().substring(index+2);
 					
-					//System.out.println(i);
-					//System.out.println(Elprice.get(i).text());
-					if(Elprice_li_1.get(i).text().equals(":")) {
-						index=Elprice_li_2.get(i).text().indexOf(":");
-						//System.out.println("가격:"+Elprice_li_2.get(i).text().substring(index+2));
-						price=Elprice_li_2.get(i).text().substring(index+2);
-						//System.out.println(Elprice_li_2.get(i).text());
 						
 					}else {
-						index=Elprice_li_1.get(i).text().indexOf(":");
-						//System.out.println("가격:"+Elprice_li_1.get(i).text().substring(index+2));
-						price=Elprice_li_1.get(i).text().substring(index+2);
-						//System.out.println(Elprice_li_1.get(i).text());
+						index=Elprice_li_2.get(i).text().indexOf(":");
+						price=Elprice_li_2.get(i).text().substring(index+2);
 					}
 					list.add(new Product(name,price,img,url));
 					
 				}
 				
 			}
-			
-			
-			
-			
-			//System.out.println(Elprice_li_1.text());
-			
-			//System.out.println(contents.select(".name a span ").get(2).text());
-			
-			
-			
-			
-		
 			for(Object object :list) {
 				System.out.println("list"+object);
 			}

@@ -94,10 +94,12 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/product_update/{id}")
-	public String product_update(@PathVariable int id,Shoppingmall item) {
+	public String product_update(@PathVariable int id) {
 		if(productService.count(id)>0) {
+			System.out.println("제품삭제 ");
 			productService.delete(id);
 		}
+		Shoppingmall item=shoppingService.item(id);
 		productService.add(item);
 		return "redirect:../list";
 	}

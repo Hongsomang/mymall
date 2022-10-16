@@ -2,9 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="product">
 	<select id="count" resultType="Integer">
-		select count(*) from mymall.product where shoippingmall_id=#{shoppingmallId}
+		select count(*) from mymall.product where shoppingmall_id=#{shoppingmallId}
 	</select>
 	<delete id="delete">
-		delete from mymall.product where shoippingmall_id=#{shoppingmallId}
+		delete from mymall.product where shoppingmall_id=#{shoppingmallId}
 	</delete>
+	<insert id="add">
+		insert into mymall.product (name,img,price,url,shoppingmall_id) values ( #{name},#{img},#{price},#{url},#{shoppingmallId})
+	</insert>
+	
+	
+	
 </mapper>

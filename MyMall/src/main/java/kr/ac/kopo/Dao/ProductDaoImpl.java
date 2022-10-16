@@ -1,8 +1,13 @@
 package kr.ac.kopo.Dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import kr.ac.kopo.Model.Parsing;
+import kr.ac.kopo.Model.Product;
 
 @Repository
 public class ProductDaoImpl implements ProductDao {
@@ -20,6 +25,19 @@ public class ProductDaoImpl implements ProductDao {
 	public void delete(int shoppingmallId) {
 		sql.delete("product.delete", shoppingmallId);
 
+	}
+
+	@Override
+	public void add(List<Parsing> list) {
+		// TODO Auto-generated method stub
+		System.out.println("dfdfdfdf");
+		
+		for(int i=0;i<list.size();i++) {
+			
+			System.out.println(list.get(i).getName());
+			sql.insert("product.add", list.get(i));
+			
+		}
 	}
 
 }
