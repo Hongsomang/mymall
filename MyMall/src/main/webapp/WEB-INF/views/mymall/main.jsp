@@ -20,7 +20,7 @@
 .bi-star {
 	font-size: 30px;
 	line-height: 30px;
-	color: #f8f820;
+	color: #D5D5D5;
 }
 
 .bi-star-fill {
@@ -28,23 +28,36 @@
 	line-height: 30px;
 	color: #f8f820;
 }
+
+ul {
+	list-style: none;
+}
+
+.box>li {
+	display: inline-block;
+	
+}
+
+.container{
+	border: 1px solid #000;
+
+	
+}
+
 </style>
 
 <script>
-	var i = 0;
-
 	$(document).ready(function() {
-		$("#bookmark").on('click', function() {
+		var i = 0;
+		$("i").on('click', function() {
 			console.log(1);
 			if (i == 0) {
-				console.log("on");
-				$(this).removeClass('.bi-star');
-				$(this).addClass('.bi-star-fill');
+				console.log("on", i);
+				$(this).attr("class", "bi-star-fill")
 				i++;
 			} else if (i == 1) {
-				console.log("off");
-				$(this).removeClass('.bi-star-fill');
-				$(this).addClass('.bi-star');
+				console.log("off", i);
+				$(this).attr("class", "bi-star");
 				i--;
 			}
 
@@ -82,14 +95,17 @@
 				</c:if>
 				<c:forEach var="item" items="${list}">
 					<li>
-						<div style="border: 1px solid #000;">
-							<ul>
+						<div class="container" >
+							 </a>
+							<ul class="box">
 								<li>${item.name }</li>
 								<li>${item.content }</li>
 								<li><a href="${item.url }" target="_blank">홈페이지로 이동 </a></li>
-								<li><i id="bookmark" class="bi bi-star"></i></li>
+								<li><a class="prouctUrl" href="product/${item.id }"> 제품보기 </a></li>
+								<li><i id="${item.id}" class="bi bi-star"></i></li>
 							</ul>
 						</div>
+
 					</li>
 				</c:forEach>
 
