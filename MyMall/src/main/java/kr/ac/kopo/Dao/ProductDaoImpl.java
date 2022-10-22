@@ -40,4 +40,10 @@ public class ProductDaoImpl implements ProductDao {
 		}
 	}
 
+	@Override
+	public List<Product> list(int shoppingmallId) {
+		// TODO Auto-generated method stub
+		return sql.selectList("product.list", shoppingmallId);
+	}
+
 }

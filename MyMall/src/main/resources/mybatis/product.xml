@@ -11,6 +11,8 @@
 		insert into mymall.product (name,img,price,url,shoppingmall_id) values ( #{name},#{img},#{price},#{url},#{shoppingmallId})
 	</insert>
 	
-	
+	<select id="list" resultType="Product">
+		select * from product where shoppingmall_id=#{shoppingmallId}
+	</select>
 	
 </mapper>

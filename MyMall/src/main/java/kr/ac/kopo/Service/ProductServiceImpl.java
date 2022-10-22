@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.Dao.ProductDao;
 import kr.ac.kopo.Model.Parsing;
+import kr.ac.kopo.Model.Product;
 import kr.ac.kopo.Model.Shoppingmall;
 
 @Service
@@ -79,7 +80,7 @@ public class ProductServiceImpl implements ProductService {
 						index=Elprice_li_2.get(i).text().indexOf(":");
 						price=Elprice_li_2.get(i).text().substring(index+2);
 					}
-					list.add(new Parsing(name,price,img,url,item.getId()));
+					list.add(new Parsing(name,price,img,path+url,item.getId()));
 					
 				}
 				
@@ -94,6 +95,12 @@ public class ProductServiceImpl implements ProductService {
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public List<Product> list(int shoppingmallId) {
+		
+		return dao.list(shoppingmallId);
 	}
 
 

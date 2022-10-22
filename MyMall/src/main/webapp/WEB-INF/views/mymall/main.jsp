@@ -96,7 +96,7 @@ ul {
 				<c:forEach var="item" items="${list}">
 					<li>
 						<div class="container" >
-							 </a>
+							 
 							<ul class="box">
 								<li>${item.name }</li>
 								<li>${item.content }</li>

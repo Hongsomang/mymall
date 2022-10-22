@@ -8,6 +8,8 @@ public class Product {
 	private String img;
 	private String url;
 	private int shoppingmallId;
+
+	
 	public int getId() {
 		return id;
 	}

@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.ac.kopo.Model.Pager;
+import kr.ac.kopo.Model.Product;
 import kr.ac.kopo.Model.Shoppingmall;
 import kr.ac.kopo.Model.User;
+import kr.ac.kopo.Service.ProductService;
 import kr.ac.kopo.Service.ShoppingmallService;
 import kr.ac.kopo.Service.UserService;
 
@@ -25,6 +28,9 @@ public class MymallController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired 
+	ProductService productSerice;
 	
 	@RequestMapping("/main")
 	public String main(Model model ,Pager pager) {
@@ -62,5 +68,13 @@ public class MymallController {
 		userService.signup(user);
 		
 		return "redirect:login";
+	}
+	
+	@RequestMapping("/product/{id}")
+	public String productList(@PathVariable int id,Model model) {
+		int shoppingmallId=id;
+		List<Product> list=productSerice.list(shoppingmallId);
+		model.addAttribute("list", list);
+		return path+"product";
 	}
 }
