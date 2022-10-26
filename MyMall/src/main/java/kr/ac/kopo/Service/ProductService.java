@@ -2,6 +2,7 @@ package kr.ac.kopo.Service;
 
 import java.util.List;
 
+import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Product;
 import kr.ac.kopo.Model.Shoppingmall;
 
@@ -13,7 +14,7 @@ public interface ProductService {
 
 	void add(Shoppingmall item);
 
-	List<Product> list(int shoppingmallId);
+	List<Product> list(int shoppingmallId,Pager pager);
 
 	
 

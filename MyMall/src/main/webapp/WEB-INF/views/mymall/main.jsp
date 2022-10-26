@@ -43,6 +43,27 @@ ul {
 
 	
 }
+h1{
+	width:200px;
+	float:left;
+	text-align:center;
+	padding-top :10px;
+}
+#menu >li{
+	display: inline-block;
+	
+}
+#menu{
+	text-align:right ;
+	padding-top:15px;	
+	padding-right:10px;
+
+}
+
+hr{
+	clear:both;
+	
+}
 
 </style>
 
@@ -70,12 +91,15 @@ ul {
 
 <body>
 	<div>
-		<div>
+		<div id="header">
 			<h1>MYMALL</h1>
-			<a href="login"><button>로그인</button></a>
+			<ul id="menu">
+				<li><a href="all"><button>전체상품 </button></a></li>
+				<li><a href="login"><button>로그인</button></a></li>
+			</ul>
 		</div>
 		<hr>
-		<div>
+		<div id="content">
 			<form>
 				<div>
 					<input type="text" name="search" value="${pager.search}"

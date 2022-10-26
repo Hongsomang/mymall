@@ -12,7 +12,11 @@
 	</insert>
 	
 	<select id="list" resultType="Product">
-		select * from product where shoppingmall_id=#{shoppingmallId}
+		select * from product where shoppingmall_id=#{shoppingmallId} ORDER BY id
+		LIMIT #{offset},#{perPager} 
 	</select>
 	
+	<select id="total" resultType="Integer">
+		select count(*) from product where shoppingmall_id=#{shoppingmallId}
+	</select>
 </mapper>

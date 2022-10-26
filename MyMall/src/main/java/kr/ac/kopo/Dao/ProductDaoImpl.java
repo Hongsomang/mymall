@@ -1,11 +1,14 @@
 package kr.ac.kopo.Dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jca.cci.object.MappingCommAreaOperation;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Parsing;
 import kr.ac.kopo.Model.Product;
 
@@ -41,9 +44,25 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public List<Product> list(int shoppingmallId) {
+	public List<Product> list(int shoppingmallId,Pager pager) {
 		// TODO Auto-generated method stub
-		return sql.selectList("product.list", shoppingmallId);
+		HashMap<String, Object>map=new HashMap<>();
+		map.put("shoppingmallId", shoppingmallId);
+		map.put("offset", pager.getOffset());
+		map.put("perPager", pager.getPerPager());
+		return sql.selectList("product.list", map);
+	}
+
+	@Override
+	public int total(Pager pager, int shoppingmallId) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object>map=new HashMap<>();
+		map.put("shoppingmallId", shoppingmallId);
+		map.put("pager", pager);
+		System.out.println(pager);
+		System.out.println("dao  "+shoppingmallId);
+		
+		return sql.selectOne("product.total",map);
 	}
 
 }

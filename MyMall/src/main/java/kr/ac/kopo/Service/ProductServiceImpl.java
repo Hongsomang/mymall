@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.Dao.ProductDao;
+import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Parsing;
 import kr.ac.kopo.Model.Product;
 import kr.ac.kopo.Model.Shoppingmall;
@@ -98,9 +99,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> list(int shoppingmallId) {
-		
-		return dao.list(shoppingmallId);
+	public List<Product> list(int shoppingmallId,Pager pager) {
+		int total=dao.total(pager,shoppingmallId);
+		pager.setTotal(total);
+		System.out.println("service:"+total);
+		return dao.list(shoppingmallId,pager);
 	}
 
 
