@@ -69,17 +69,29 @@ hr{
 
 <script>
 	$(document).ready(function() {
-		var i = 0;
-		$("i").on('click', function() {
-			console.log(1);
+		//var i = 0;
+		$(".container  #bookmark").on('click', function(e) {
+			const button=$(e.target);
+			console.log(button.closest("div").data("id"));
+			const div=button.closest("div");
+			const id=div.data("id");
+			
+			
+			
+			const i=$(this).closest("i").data("id");
+			
+			
 			if (i == 0) {
 				console.log("on", i);
-				$(this).attr("class", "bi-star-fill")
-				i++;
+				$(this).attr("class", "bi-star-fill");
+				$(this).attr( "data-id","1" );
+				console.log("dfdf",$(this).closest("i").data("id"));
+				
 			} else if (i == 1) {
 				console.log("off", i);
 				$(this).attr("class", "bi-star");
-				i--;
+				$(this).attr( "data-id","0");
+				console.log("dfdf",$(this).closest("i").data("id"));
 			}
 
 		});
@@ -95,6 +107,7 @@ hr{
 			<h1>MYMALL</h1>
 			<ul id="menu">
 				<li><a href="all"><button>전체상품 </button></a></li>
+				
 				<li><a href="login"><button>로그인</button></a></li>
 			</ul>
 		</div>
@@ -119,14 +132,14 @@ hr{
 				</c:if>
 				<c:forEach var="item" items="${list}">
 					<li>
-						<div class="container" >
+						<div data-id="${item.id} " class="container" >
 							 
 							<ul class="box">
 								<li>${item.name }</li>
 								<li>${item.content }</li>
 								<li><a href="${item.url }" target="_blank">홈페이지로 이동 </a></li>
 								<li><a class="prouctUrl" href="product/${item.id }"> 제품보기 </a></li>
-								<li><i id="${item.id}" class="bi bi-star"></i></li>
+								<li><i id="bookmark"  data-id="0" class="bi bi-star"></i></li>
 							</ul>
 						</div>
 

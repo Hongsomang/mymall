@@ -2,6 +2,8 @@ package kr.ac.kopo.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,9 +47,12 @@ public class MymallController {
 	}
 	
 	@PostMapping("/login")
-	public String login(User user) {
+	public String login(User user,HttpSession session) {
 		if(userService.login(user)) {
+			session.setAttribute("user", user);
+			String targetUrl =(String) session.getAttribute("target_url");
 			System.out.println("로그인 성공 ");
+			System.out.println(targetUrl);
 			return "redirect:main";
 		}
 		else {
