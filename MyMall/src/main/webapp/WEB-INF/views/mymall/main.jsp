@@ -107,8 +107,12 @@ hr{
 			<h1>MYMALL</h1>
 			<ul id="menu">
 				<li><a href="all"><button>전체상품 </button></a></li>
-				
-				<li><a href="login"><button>로그인</button></a></li>
+				<c:if test="${sessionScope.user==null}">
+					<li><a href="login"><button>로그인</button></a></li>
+				</c:if>
+				<c:if test="${sessionScope.user !=null }">
+					<li><a href="mypage"><button>마이페이지 </button></a></li>
+				</c:if>
 			</ul>
 		</div>
 		<hr>

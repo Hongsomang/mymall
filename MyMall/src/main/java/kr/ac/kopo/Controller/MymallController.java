@@ -53,7 +53,14 @@ public class MymallController {
 			String targetUrl =(String) session.getAttribute("target_url");
 			System.out.println("로그인 성공 ");
 			System.out.println(targetUrl);
-			return "redirect:main";
+			
+			if(targetUrl == null) {
+				return "redirect:main";
+			}
+			else {
+				return "redirect:"+targetUrl;
+			}
+			//return "redirect:main";
 		}
 		else {
 			System.out.println("로그인 실패 ");

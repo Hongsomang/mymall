@@ -14,9 +14,9 @@
 		<property name="configLocation" value="classpath:mybatis-config.xml"/>
  	</bean>
 	
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
- 		<constructor-arg index="0" ref="sqlSession" ></constructor-arg>
- 	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"> 
+		<constructor-arg index="0" ref="sqlSession" />
+	</bean>
 
 
 </beans>
