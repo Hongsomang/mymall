@@ -45,4 +45,5 @@ public class ShoppingmallDaoImpl implements ShoppingmallDao {
 		sql.update("shoppingmall.update", item);
 	}
 
+
 }

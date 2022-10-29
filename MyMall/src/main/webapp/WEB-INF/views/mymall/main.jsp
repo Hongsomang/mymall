@@ -21,6 +21,7 @@
 	font-size: 30px;
 	line-height: 30px;
 	color: #D5D5D5;
+	
 }
 
 .bi-star-fill {
@@ -37,7 +38,11 @@ ul {
 	display: inline-block;
 	
 }
-
+.box button{
+	border:0;
+	outline:0;
+	all: unset;
+}
 .container{
 	border: 1px solid #000;
 
@@ -70,28 +75,40 @@ hr{
 <script>
 	$(document).ready(function() {
 		//var i = 0;
-		$(".container  #bookmark").on('click', function(e) {
+		$(".container li  button").on('click', function(e) {
 			const button=$(e.target);
-			console.log(button.closest("div").data("id"));
+			//console.log(button.closest("div").data("id"));
 			const div=button.closest("div");
-			const id=div.data("id");
+			const shoppingmall_id=div.data("id");
+			console.log(shoppingmall_id);
 			
+			const name=button.closest("span").attr("class");
 			
-			
-			const i=$(this).closest("i").data("id");
-			
-			
-			if (i == 0) {
-				console.log("on", i);
-				$(this).attr("class", "bi-star-fill");
-				$(this).attr( "data-id","1" );
-				console.log("dfdf",$(this).closest("i").data("id"));
+			console.log(name);
+			if(name=="bi-star"){
+				console.log("button[id="+shoppingmall_id+"] span");
 				
-			} else if (i == 1) {
-				console.log("off", i);
-				$(this).attr("class", "bi-star");
-				$(this).attr( "data-id","0");
-				console.log("dfdf",$(this).closest("i").data("id"));
+				
+				const item={
+					shoppingmallId:	shoppingmall_id
+				};
+				
+				$.ajax("main/bookmark",{
+					method:"POST",
+					contentType:"application/json",
+					data:JSON.stringify(item),
+					success:result =>{
+						console.log(result);
+						$("button[id="+shoppingmall_id+"] span").removeClass("bi-star");
+						$("button[id="+shoppingmall_id+"] span").addClass("bi-star-fill");
+					}
+					
+				});
+				
+			}
+			else if(name=="bi-star-fill"){
+				$("button[id="+shoppingmall_id+"] span").removeClass("bi-star-fill");
+				$("button[id="+shoppingmall_id+"] span").addClass("bi-star");
 			}
 
 		});
@@ -135,7 +152,7 @@ hr{
 					</li>
 				</c:if>
 				<c:forEach var="item" items="${list}">
-					<li>
+					<li >
 						<div data-id="${item.id} " class="container" >
 							 
 							<ul class="box">
@@ -143,13 +160,11 @@ hr{
 								<li>${item.content }</li>
 								<li><a href="${item.url }" target="_blank">홈페이지로 이동 </a></li>
 								<li><a class="prouctUrl" href="product/${item.id }"> 제품보기 </a></li>
-								<li><i id="bookmark"  data-id="0" class="bi bi-star"></i></li>
+								<li><button id="${item.id}"  ><span  class="bi-star"></span></button></li>
 							</ul>
 						</div>
-
 					</li>
 				</c:forEach>
-
 			</ul>
 		</div>
 	</div>

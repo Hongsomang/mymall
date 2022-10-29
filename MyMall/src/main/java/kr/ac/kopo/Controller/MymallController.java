@@ -10,12 +10,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Product;
 import kr.ac.kopo.Model.Shoppingmall;
 import kr.ac.kopo.Model.User;
+import kr.ac.kopo.Service.BookmarkService;
 import kr.ac.kopo.Service.ProductService;
 import kr.ac.kopo.Service.ShoppingmallService;
 import kr.ac.kopo.Service.UserService;
@@ -33,6 +37,9 @@ public class MymallController {
 	
 	@Autowired 
 	ProductService productSerice;
+	
+	@Autowired 
+	BookmarkService bookmarkSerice;
 	
 	@RequestMapping("/main")
 	public String main(Model model ,Pager pager) {
@@ -89,4 +96,17 @@ public class MymallController {
 		model.addAttribute("list", list);
 		return path+"product";
 	}
+	
+	
+	@ResponseBody
+	@PostMapping("/bookmark")
+	public Shoppingmall bookmark(@RequestBody Shoppingmall item, @SessionAttribute User user) {
+		item.setUserId(user.getId());
+		bookmarkSerice.add(item);
+		return item;
+		
+		
+	}
+	
+	
 }

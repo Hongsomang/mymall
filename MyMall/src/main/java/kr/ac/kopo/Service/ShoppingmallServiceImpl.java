@@ -45,4 +45,7 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 		dao.update(item);
 	}
 
+
+
+	
 }

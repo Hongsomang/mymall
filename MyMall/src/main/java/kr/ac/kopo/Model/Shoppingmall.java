@@ -7,7 +7,7 @@ public class Shoppingmall {
 	private String url;
 	private int bestCode;
 	private String adminId;
-	
+	private String userId;
 	
 	public int getId() {
 		return id;
@@ -44,6 +44,12 @@ public class Shoppingmall {
 	}
 	public void setAdminId(String adminId) {
 		this.adminId = adminId;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	

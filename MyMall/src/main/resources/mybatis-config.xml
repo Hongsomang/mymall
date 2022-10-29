@@ -18,5 +18,6 @@
 		<mapper resource="mybatis/shoppingmall.xml"/>
 		<mapper resource="mybatis/user.xml" />
 		<mapper resource="mybatis/product.xml" />
+		<mapper resource="mybatis/bookmark.xml" />
 	</mappers>
 </configuration>
