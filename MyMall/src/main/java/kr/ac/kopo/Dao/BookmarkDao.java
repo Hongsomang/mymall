@@ -4,6 +4,12 @@ import kr.ac.kopo.Model.Shoppingmall;
 
 public interface BookmarkDao {
 
-	void add(Shoppingmall item);
+	
+
+	
+
+	void add(int shoppingmallId, String userId);
+
+	
 
 }

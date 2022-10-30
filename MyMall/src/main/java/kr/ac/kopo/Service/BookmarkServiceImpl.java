@@ -11,12 +11,20 @@ public class BookmarkServiceImpl implements BookmarkService {
 	
 	@Autowired
 	BookmarkDao dao;
+
+
+
 	
-	
+
+
+
 	@Override
-	public void add(Shoppingmall item) {
+	public void add(int shoppingmallId, String userId) {
 		// TODO Auto-generated method stub
-		dao.add(item);
+		dao.add(shoppingmallId,userId);
 	}
+	
+	
+	
 
 }

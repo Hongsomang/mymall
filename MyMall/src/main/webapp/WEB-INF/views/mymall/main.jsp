@@ -79,36 +79,39 @@ hr{
 			const button=$(e.target);
 			//console.log(button.closest("div").data("id"));
 			const div=button.closest("div");
-			const shoppingmall_id=div.data("id");
-			console.log(shoppingmall_id);
+			const id=div.data("id");
+			console.log(id);
 			
 			const name=button.closest("span").attr("class");
 			
 			console.log(name);
 			if(name=="bi-star"){
-				console.log("button[id="+shoppingmall_id+"] span");
+				console.log("button[id="+id+"] span");
 				
 				
 				const item={
-					shoppingmallId:	shoppingmall_id
+					id:id
 				};
-				
-				$.ajax("main/bookmark",{
-					method:"POST",
-					contentType:"application/json",
+				console.log(item);
+				$.ajax("/mymall",{
+					method:'POST',
+					contentType:'application/json',
+					dataType:'json',
 					data:JSON.stringify(item),
 					success:result =>{
 						console.log(result);
-						$("button[id="+shoppingmall_id+"] span").removeClass("bi-star");
-						$("button[id="+shoppingmall_id+"] span").addClass("bi-star-fill");
+						$("button[id="+id+"] span").removeClass("bi-star");
+						$("button[id="+id+"] span").addClass("bi-star-fill");
 					}
 					
 				});
 				
+				
+				
 			}
 			else if(name=="bi-star-fill"){
-				$("button[id="+shoppingmall_id+"] span").removeClass("bi-star-fill");
-				$("button[id="+shoppingmall_id+"] span").addClass("bi-star");
+				$("button[id="+id+"] span").removeClass("bi-star-fill");
+				$("button[id="+id+"] span").addClass("bi-star");
 			}
 
 		});
@@ -160,7 +163,7 @@ hr{
 								<li>${item.content }</li>
 								<li><a href="${item.url }" target="_blank">홈페이지로 이동 </a></li>
 								<li><a class="prouctUrl" href="product/${item.id }"> 제품보기 </a></li>
-								<li><button id="${item.id}"  ><span  class="bi-star"></span></button></li>
+								<li><button type="button" id="${item.id}"><span  class="bi-star"></span></button></li>
 							</ul>
 						</div>
 					</li>
