@@ -12,15 +12,17 @@ public class BookmarkServiceImpl implements BookmarkService {
 	BookmarkDao dao;
 
 
-
-
-
-
-
 	@Override
 	public void add(int shoppingmallId, String userId) {
 		// TODO Auto-generated method stub
 		dao.add(shoppingmallId,userId);
+	}
+
+
+	@Override
+	public void delete(int shoppingmallId, String userId) {
+		// TODO Auto-generated method stub
+		dao.delete(shoppingmallId,userId);
 	}
 
 

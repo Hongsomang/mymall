@@ -28,4 +28,15 @@ public class BookmarkDaoImpl implements BookmarkDao {
 
 
 
+	@Override
+	public void delete(int shoppingmallId, String userId) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> map=new HashMap<>();
+		map.put("userId", userId);
+		map.put("shoppingmallId", shoppingmallId);
+		sql.delete("bookmark.delete",map);
+	}
+
+
+
 }

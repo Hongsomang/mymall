@@ -117,8 +117,17 @@ hr{
 				
 			}
 			else if(class_=="bi-star-fill"){
-				$("button[id="+id+"] span").removeClass("bi-star-fill");
-				$("button[id="+id+"] span").addClass("bi-star");
+				
+				$.ajax("/mymall/bookmark?id=" + id,{
+					method:'DELETE',
+					success:result =>{
+						console.log("result:",result);
+						$("button[id="+id+"] span").removeClass("bi-star-fill");
+						$("button[id="+id+"] span").addClass("bi-star");
+					}
+					
+				});
+		
 			}
 
 		});

@@ -2,9 +2,8 @@ package kr.ac.kopo.Controller;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -16,19 +15,26 @@ import kr.ac.kopo.Service.BookmarkService;
 @RequestMapping("/mymall/bookmark")
 public class RestBookmarkController {
 	@Autowired
-	BookmarkService bookmarkSerice;
+	BookmarkService service;
 
 
 	@GetMapping
-	public String bookmark(int id, @SessionAttribute User user) {
+	public String add(int id, @SessionAttribute User user) {
 		
 			
-			 System.out.println(id+user.getId());
-			 bookmarkSerice.add(id,user.getId());
+		System.out.println(id+user.getId());
+	    service.add(id,user.getId());
 
 
 		return "ok";
 
 
+	}
+	@DeleteMapping
+	public String delete(int id, @SessionAttribute User user) {
+		System.out.println(id+user.getId());
+		service.delete(id,user.getId());
+		
+		return "ok";
 	}
 }

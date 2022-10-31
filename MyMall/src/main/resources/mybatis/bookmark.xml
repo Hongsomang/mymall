@@ -4,4 +4,7 @@
 	<insert id="add">
 		insert into bookmark (user_id,shoppingmall_id) values (#{userId},#{shoppingmallId})
 	</insert>
+	<delete id="delete">
+		delete from bookmark where user_id=#{userId} and shoppingmall_id=#{shoppingmallId}
+	</delete>
 </mapper>
