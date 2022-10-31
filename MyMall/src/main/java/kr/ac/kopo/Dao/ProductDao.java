@@ -18,4 +18,8 @@ public interface ProductDao {
 
 	int total(Pager pager,int shoppingmallId);
 
+	int allTotal(Pager pager);
+
+	List<Product> allList(Pager pager);
+
 }

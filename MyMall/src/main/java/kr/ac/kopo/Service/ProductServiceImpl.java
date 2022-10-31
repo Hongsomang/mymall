@@ -106,6 +106,13 @@ public class ProductServiceImpl implements ProductService {
 		return dao.list(shoppingmallId,pager);
 	}
 
+	@Override
+	public List<Product> allList(Pager pager) {
+		int total=dao.allTotal(pager);
+		pager.setTotal(total);
+		return dao.allList(pager);
+	}
+
 
 
 }

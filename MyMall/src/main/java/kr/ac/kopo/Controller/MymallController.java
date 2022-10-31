@@ -98,20 +98,13 @@ public class MymallController {
 		return path+"product";
 	}
 	
-	
-	@ResponseBody
-	@PostMapping
-	public String bookmark(@RequestBody HashMap<String, Object> item, @SessionAttribute User user) {
-		
-		int id=(int)item.get("id");
-		
-		System.out.println(item.get("id")+user.getId());
-		bookmarkSerice.add(id,user.getId());
-		
-		return "ok";
-		
-		
+	@RequestMapping("/allProduct")
+	public String allProduct(Model model, Pager pager) {
+		List<Product> list =productSerice.allList(pager);
+		model.addAttribute("list", list);
+		return path+"product";
 	}
+
 	
 	
 }

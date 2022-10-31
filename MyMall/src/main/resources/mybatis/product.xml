@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="product">
+	<sql id="shoppingmallId">
+		<where>
+			<if test="shoppingmallId !=null">
+				shoppingmall_id=#{shoppingmallId}
+			</if>
+		</where>
+	</sql>
 	<select id="count" resultType="Integer">
 		select count(*) from mymall.product where shoppingmall_id=#{shoppingmallId}
 	</select>
@@ -12,11 +19,11 @@
 	</insert>
 	
 	<select id="list" resultType="Product">
-		select * from product where shoppingmall_id=#{shoppingmallId} ORDER BY id
+		select * from product <include refid="shoppingmallId"></include> ORDER BY id
 		LIMIT #{offset},#{perPager} 
 	</select>
 	
 	<select id="total" resultType="Integer">
-		select count(*) from product where shoppingmall_id=#{shoppingmallId}
+		select count(*) from product <include refid="shoppingmallId"></include>
 	</select>
 </mapper>

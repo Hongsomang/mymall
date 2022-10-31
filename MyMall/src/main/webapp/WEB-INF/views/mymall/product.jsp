@@ -7,7 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
 <style type="text/css">
 * {
 	box-sizing: border-box;
@@ -25,6 +29,7 @@ body {
 	padding: 0;
 	width: 740px;
 	text-align: center;
+	
 }
 
 .item {
@@ -33,13 +38,16 @@ body {
 	color: black;
 	float: left;
 	font-size: 11px;
+	border: 1px solid #BDBDBD;
+	margin-right: 15px;
+	margin-bottom: 15px;
 }
 
 .imagebox img {
 	width: 225px;
 	height: 225px;
-	margin-right: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
+	
 }
 
 div .name {
@@ -53,7 +61,57 @@ h1>a {
 #page{
 	clear:both;
 }
+.item_content{
+	height:110px;
+	position:relative;
+}
+.item_content >.name{
+	padding-left:5px;
+	padding-right:5px;
+}
+.item_content button{
+	
+	border:0;
+	outline:0;
+	all: unset;
+	position: absolute;
+    bottom: 5px;
+    right:10px;
+   
+
+}
+.bi-heart {
+	font-size: 20px;
+	line-height: 20px;
+	color: #D5D5D5;
+	
+}
+.bi-heart-fill{
+	font-size: 20px;
+	line-height: 20px;
+	color:#FF4848;
+}
 </style>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".item_content button").on('click',function(e){
+		const button=$(e.target);
+		const id=button.closest("button").attr("class");
+		console.log(id);
+		const class_=button.closest("span").attr("class");
+		
+		console.log(class_);
+		if(class_=="bi-heart"){
+			$("button[class="+id+"] span").removeClass("bi-heart");
+			$("button[class="+id+"] span").addClass("bi-heart-fill");
+		}else if(class_=="bi-heart-fill"){
+			$("button[class="+id+"] span").removeClass("bi-heart-fill");
+			$("button[class="+id+"] span").addClass("bi-heart");
+		}
+		
+	});
+});
+</script>
 </head>
 <body>
 	<div>
@@ -76,12 +134,12 @@ h1>a {
 								alt="${item.name }" src="${item.img}">
 							</a>
 						</div>
-						<div>
+						<div class="item_content">
 							<p class="name">${item.name }</p>
+							<p >${item.price }</p>
+							<button  type="button" class="${item.id}"><span class="bi-heart"></span></button>
 						</div>
-						<div>
-							<p>${item.price }</p>
-						</div>
+						
 					</div>
 				</c:forEach>
 			</div>

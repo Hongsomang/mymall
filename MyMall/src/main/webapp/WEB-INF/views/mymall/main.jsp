@@ -82,10 +82,10 @@ hr{
 			const id=div.data("id");
 			console.log(id);
 			
-			const name=button.closest("span").attr("class");
+			const class_=button.closest("span").attr("class");
 			
-			console.log(name);
-			if(name=="bi-star"){
+			console.log(class_);
+			if(class_=="bi-star"){
 				console.log("button[id="+id+"] span");
 				
 				
@@ -109,7 +109,7 @@ hr{
 				
 				
 			}
-			else if(name=="bi-star-fill"){
+			else if(class_=="bi-star-fill"){
 				$("button[id="+id+"] span").removeClass("bi-star-fill");
 				$("button[id="+id+"] span").addClass("bi-star");
 			}
@@ -126,7 +126,7 @@ hr{
 		<div id="header">
 			<h1>MYMALL</h1>
 			<ul id="menu">
-				<li><a href="all"><button>전체상품 </button></a></li>
+				<li><a href="allProduct"><button>전체상품 </button></a></li>
 				<c:if test="${sessionScope.user==null}">
 					<li><a href="login"><button>로그인</button></a></li>
 				</c:if>

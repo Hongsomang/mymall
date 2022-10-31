@@ -16,6 +16,8 @@ public interface ProductService {
 
 	List<Product> list(int shoppingmallId,Pager pager);
 
+	List<Product> allList(Pager pager);
+
 	
 
 }
