@@ -10,9 +10,9 @@ public class Pager {
 	private int perPager=33;
 	private float total;
 	final int perGroup=5;
-	
 
-	
+
+
 	public String getSearch() {
 		return search;
 	}
@@ -49,7 +49,7 @@ public class Pager {
 	public int getPerGroup() {
 		return perGroup;
 	}
-	
+
 	public int getPrev() {
 		return page<=perGroup ?1:((page-1)/perGroup)*perGroup;// 9/5=1, 1*5=5
 	}
@@ -61,10 +61,10 @@ public class Pager {
 	public int getLast() {
 		return (int)Math.ceil(total/perPager); //Math.ceil ->올림
 	}
-	
+
 	public List<Integer> getList(){
-		List<Integer> list =new ArrayList<Integer>();
-		int startPage=((page-1)/perGroup)*perGroup+1; //page=1일떄 ((1-1)/5)*5+1=1  
+		List<Integer> list =new ArrayList<>();
+		int startPage=((page-1)/perGroup)*perGroup+1; //page=1일떄 ((1-1)/5)*5+1=1
 		for(int count=startPage;count<(startPage+perGroup)&&count<=getLast();count++) {//1~5 6~10으로 버튼이 생김
 			list.add(count);
 		}
@@ -73,7 +73,7 @@ public class Pager {
 		}
 		return list;
 	}
-	
+
 	public int getOffset() {
 		return (page-1)*perPager; //LIMIT함수가 정한 수의 다음 수 부터 나옴
 	}

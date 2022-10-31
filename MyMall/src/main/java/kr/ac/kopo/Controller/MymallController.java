@@ -1,6 +1,5 @@
 package kr.ac.kopo.Controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,10 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Product;
@@ -29,23 +25,23 @@ import kr.ac.kopo.Service.UserService;
 @RequestMapping("/mymall")
 public class MymallController {
 	final String path="mymall/";
-	
+
 	@Autowired
 	ShoppingmallService service;
-	
+
 	@Autowired
 	UserService userService;
-	
-	@Autowired 
+
+	@Autowired
 	ProductService productSerice;
-	
-	@Autowired 
+
+	@Autowired
 	BookmarkService bookmarkSerice;
-	
+
 	@RequestMapping("/main")
 	public String main(Model model ,Pager pager) {
 		List<Shoppingmall> list=service.list(pager);
-		
+
 		model.addAttribute("list", list);
 		return path+"main";
 	}
@@ -53,7 +49,7 @@ public class MymallController {
 	public String login() {
 		return path+"login";
 	}
-	
+
 	@PostMapping("/login")
 	public String login(User user,HttpSession session) {
 		if(userService.login(user)) {
@@ -61,7 +57,7 @@ public class MymallController {
 			String targetUrl =(String) session.getAttribute("target_url");
 			System.out.println("로그인 성공 ");
 			System.out.println(targetUrl);
-			
+
 			if(targetUrl == null) {
 				return "redirect:main";
 			}
@@ -74,22 +70,22 @@ public class MymallController {
 			System.out.println("로그인 실패 ");
 			return "redirect:login";
 		}
-		
+
 	}
-	
+
 	@GetMapping("/signup")
 	public String signup() {
 		return path+"signup";
 	}
-	
+
 	@PostMapping("/signup")
 	public String signup(User user) {
 		System.out.println(user.getEmail());
 		userService.signup(user);
-		
+
 		return "redirect:login";
 	}
-	
+
 	@RequestMapping("/product/{id}")
 	public String productList(@PathVariable int id,Model model, Pager pager) {
 		int shoppingmallId=id;
@@ -97,14 +93,14 @@ public class MymallController {
 		model.addAttribute("list", list);
 		return path+"product";
 	}
-	
-	@RequestMapping("/allProduct")
+
+	@RequestMapping("/main/allProduct")
 	public String allProduct(Model model, Pager pager) {
 		List<Product> list =productSerice.allList(pager);
 		model.addAttribute("list", list);
 		return path+"product";
 	}
 
-	
-	
+
+
 }

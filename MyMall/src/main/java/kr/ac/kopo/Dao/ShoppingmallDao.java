@@ -17,8 +17,8 @@ public interface ShoppingmallDao {
 
 	void update(Shoppingmall item);
 
-	
 
-	
+
+
 
 }

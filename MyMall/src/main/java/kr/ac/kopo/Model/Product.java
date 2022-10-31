@@ -9,7 +9,7 @@ public class Product {
 	private String url;
 	private int shoppingmallId;
 
-	
+
 	public int getId() {
 		return id;
 	}
@@ -46,7 +46,7 @@ public class Product {
 	public void setShoppingmallId(int shoppingmallId) {
 		this.shoppingmallId = shoppingmallId;
 	}
-	
-	
-	
+
+
+
 }

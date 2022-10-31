@@ -14,7 +14,7 @@ public class ShoppingmallDaoImpl implements ShoppingmallDao {
 
 	@Autowired
 	SqlSession sql;
-	
+
 	@Override
 	public List<Shoppingmall> list(Pager pager) {
 		// TODO Auto-generated method stub

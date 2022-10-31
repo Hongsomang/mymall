@@ -15,5 +15,5 @@ public class Admin {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	
+
 }

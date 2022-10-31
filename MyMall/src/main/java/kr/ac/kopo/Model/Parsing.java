@@ -7,7 +7,7 @@ public class Parsing {
 	private String img;
 	private String url;
 	private int shoppingmallId;
-	
+
 	public Parsing(String name, String price,String img, String url,int shoppingmallId) {
 		this.name=name;
 		this.price=price;
@@ -41,8 +41,8 @@ public class Parsing {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
-	
+
+
 	public int getShoppingmallId() {
 		return shoppingmallId;
 	}
@@ -55,5 +55,5 @@ public class Parsing {
 	public String toString() {
 		return "[name="+name+"] "+"[price="+price+"] "+"[img="+img+"] "+"[url="+url+"] "+"[shoppingmallId="+shoppingmallId+"]";
 	}
-	
+
 }

@@ -21,22 +21,22 @@ import kr.ac.kopo.Service.ShoppingmallService;
 @RequestMapping("/admin")
 public class AdminController {
 	final String path="admin/";
-	
+
 	@Autowired
 	AdminService service;
-	
+
 	@Autowired
 	ShoppingmallService shoppingService;
-	
+
 	@Autowired
 	ProductService productService;
-	
+
 	@GetMapping("/login")
 	public String login() {
-		
+
 		return path+"login";
 	}
-	
+
 	@PostMapping("/login")
 	public String login(Admin admin) {
 		if(service.login(admin)) {
@@ -47,28 +47,28 @@ public class AdminController {
 			System.out.println("로그인 실패 ");
 			return "redirect:login";
 		}
-		
-		
+
+
 	}
-	
+
 	@RequestMapping("/list")
 	public String list(Model model ,Pager pager) {
-		
+
 		List<Shoppingmall> list =shoppingService.list(pager);
 		model.addAttribute("list",list);
-		
+
 		return path+"list";
 	}
-	
+
 	@GetMapping("/add")
 	public String add() {
-		
+
 		return path+"add";
 	}
-	
+
 	@PostMapping("/add")
 	public String add(Shoppingmall item) {
-		item.setAdminId("admin1"); //세션 전 
+		item.setAdminId("admin1"); //세션 전
 		shoppingService.add(item);
 		return "redirect:list";
 	}
@@ -76,23 +76,23 @@ public class AdminController {
 	public String update(@PathVariable int id , Model model) {
 		Shoppingmall item= shoppingService.item(id);
 		model.addAttribute("item", item);
-		
+
 		return path+"update";
-		
+
 	}
-	
+
 	@PostMapping("/update/{id}")
 	public String update( Shoppingmall item) {
 		shoppingService.update(item);
 		return "redirect:../list";
 	}
-	
+
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {
 		shoppingService.delete(id);
 		return "redirect:../list";
 	}
-	
+
 	@RequestMapping("/product_update/{id}")
 	public String product_update(@PathVariable int id) {
 		if(productService.count(id)>0) {

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jca.cci.object.MappingCommAreaOperation;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.Model.Pager;
@@ -17,7 +16,7 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Autowired
 	SqlSession sql;
-	
+
 	@Override
 	public int count(int shoppingmallId) {
 		// TODO Auto-generated method stub
@@ -34,12 +33,12 @@ public class ProductDaoImpl implements ProductDao {
 	public void add(List<Parsing> list) {
 		// TODO Auto-generated method stub
 		System.out.println("dfdfdfdf");
-		
-		for(int i=0;i<list.size();i++) {
-			
-			System.out.println(list.get(i).getName());
-			sql.insert("product.add", list.get(i));
-			
+
+		for (Parsing element : list) {
+
+			System.out.println(element.getName());
+			sql.insert("product.add", element);
+
 		}
 	}
 
@@ -61,13 +60,13 @@ public class ProductDaoImpl implements ProductDao {
 		map.put("pager", pager);
 		System.out.println(pager);
 		System.out.println("dao  "+shoppingmallId);
-		
+
 		return sql.selectOne("product.total",map);
 	}
 
 	@Override
 	public int allTotal(Pager pager) {
-		
+
 		HashMap<String, Object>map=new HashMap<>();
 		map.put("shoppingmallId", null);
 		map.put("pager", pager);

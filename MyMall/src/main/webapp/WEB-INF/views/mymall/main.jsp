@@ -70,6 +70,20 @@ hr{
 	
 }
 
+.search_box {
+	width:100%;
+	height: 400px;
+	position: relative;
+	
+
+}
+.search_box >.inner{
+	height:30px;
+
+	 position: absolute;
+	 top:40%;
+	 left:40%;
+}
 </style>
 
 <script>
@@ -89,17 +103,10 @@ hr{
 				console.log("button[id="+id+"] span");
 				
 				
-				const item={
-					id:id
-				};
-				console.log(item);
-				$.ajax("/mymall",{
-					method:'POST',
-					contentType:'application/json',
-					dataType:'json',
-					data:JSON.stringify(item),
+				$.ajax("/mymall/bookmark?id=" + id,{
+					method:'GET',
 					success:result =>{
-						console.log(result);
+						console.log("result:",result);
 						$("button[id="+id+"] span").removeClass("bi-star");
 						$("button[id="+id+"] span").addClass("bi-star-fill");
 					}
@@ -126,7 +133,7 @@ hr{
 		<div id="header">
 			<h1>MYMALL</h1>
 			<ul id="menu">
-				<li><a href="allProduct"><button>전체상품 </button></a></li>
+				<li><a href="main/allProduct"><button>전체상품 </button></a></li>
 				<c:if test="${sessionScope.user==null}">
 					<li><a href="login"><button>로그인</button></a></li>
 				</c:if>
@@ -138,10 +145,12 @@ hr{
 		<hr>
 		<div id="content">
 			<form>
-				<div>
-					<input type="text" name="search" value="${pager.search}"
-						placeholder="쇼핑몰 이름을 입력하세요.">
-					<button>검색</button>
+				<div class="search_box">
+					<div class="inner">
+						<input type="text" name="search" value="${pager.search}"
+							placeholder="쇼핑몰 이름을 입력하세요.">
+						<button>검색</button>
+					</div>
 				</div>
 			</form>
 		</div>

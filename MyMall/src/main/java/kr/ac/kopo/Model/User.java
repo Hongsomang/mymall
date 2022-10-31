@@ -5,8 +5,8 @@ public class User {
 	private String pwd;
 	private String name;
 	private String email;
-	
-	
+
+
 	public String getId() {
 		return id;
 	}
@@ -31,6 +31,6 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
+
 }

@@ -17,9 +17,9 @@ public interface ShoppingmallService {
 
 	void update(Shoppingmall item);
 
-	
 
-	
+
+
 
 
 

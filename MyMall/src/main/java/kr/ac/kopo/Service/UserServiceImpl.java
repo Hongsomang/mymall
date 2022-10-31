@@ -11,7 +11,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserDao dao;
-	
+
 	@Override
 	public void signup(User user) {
 		// TODO Auto-generated method stub
@@ -21,15 +21,15 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean login(User user) {
 		// TODO Auto-generated method stub
-		
+
 		User item=dao.login(user);
-		
+
 		if(item!=null) {
 			return true;
 		}else {
 			return false;
 		}
-		
+
 	}
 
 }

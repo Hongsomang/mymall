@@ -4,17 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.Dao.BookmarkDao;
-import kr.ac.kopo.Model.Shoppingmall;
 
 @Service
 public class BookmarkServiceImpl implements BookmarkService {
-	
+
 	@Autowired
 	BookmarkDao dao;
 
 
 
-	
+
 
 
 
@@ -23,8 +22,8 @@ public class BookmarkServiceImpl implements BookmarkService {
 		// TODO Auto-generated method stub
 		dao.add(shoppingmallId,userId);
 	}
-	
-	
-	
+
+
+
 
 }

@@ -8,8 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.ac.kopo.Model.Shoppingmall;
-
 @Repository
 public class BookmarkDaoImpl implements BookmarkDao {
 
@@ -27,7 +25,7 @@ public class BookmarkDaoImpl implements BookmarkDao {
 		System.out.println("dao"+ userId+" "+shoppingmallId);
 		sql.insert("bookmark.add", map);
 	}
-	
-	
+
+
 
 }

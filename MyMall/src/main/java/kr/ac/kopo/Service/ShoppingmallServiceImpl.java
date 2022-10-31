@@ -14,7 +14,7 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 
 	@Autowired
 	ShoppingmallDao dao;
-	
+
 	@Override
 	public List<Shoppingmall> list(Pager pager) {
 		// TODO Auto-generated method stub
@@ -47,5 +47,5 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 
 
 
-	
+
 }

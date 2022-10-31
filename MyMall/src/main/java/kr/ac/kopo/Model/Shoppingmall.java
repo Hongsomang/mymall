@@ -8,7 +8,7 @@ public class Shoppingmall {
 	private int bestCode;
 	private String adminId;
 	private String userId;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -52,6 +52,6 @@ public class Shoppingmall {
 		this.userId = userId;
 	}
 
-	
-	
+
+
 }
