@@ -4,10 +4,11 @@ import java.util.List;
 
 import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
+import kr.ac.kopo.Model.User;
 
 public interface ShoppingmallService {
 
-	List<Shoppingmall> list(Pager pager);
+	//List<Shoppingmall> list(Pager pager);
 
 	void add(Shoppingmall item);
 
@@ -16,6 +17,8 @@ public interface ShoppingmallService {
 	Shoppingmall item(int id);
 
 	void update(Shoppingmall item);
+
+	List<Shoppingmall> list(Pager pager, String userId);
 
 
 

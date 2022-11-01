@@ -181,7 +181,7 @@ hr{
 								<li>${item.content }</li>
 								<li><a href="${item.url }" target="_blank">홈페이지로 이동 </a></li>
 								<li><a class="prouctUrl" href="product/${item.id }"> 제품보기 </a></li>
-								<li><button type="button" id="${item.id}"><span  class="bi-star"></span></button></li>
+								<li><button type="button" id="${item.id}"><span  class="bi-star${item.userId !=null ? '-fill':'' }"></span></button></li>
 							</ul>
 						</div>
 					</li>

@@ -8,8 +8,13 @@
 			</if>
 		</where>
 	</sql>
+	<sql id="bookmark">
+		<if test="user !=null">
+			
+		</if>
+	</sql>
 	<select id="list" resultType="Shoppingmall">
-		select * from mymall.shoppingmall <include refid="search"></include>
+		select s.* ,(select user_id from bookmark b where b.user_id=#{userId} and b.shoppingmall_id= s.id) as user_id from mymall.shoppingmall s <include refid="search"></include>
 	</select>
 	<insert id="add">
 		insert into mymall.shoppingmall (name,content,url,best_code,admin_id)

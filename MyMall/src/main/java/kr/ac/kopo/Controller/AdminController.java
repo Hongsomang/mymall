@@ -54,8 +54,8 @@ public class AdminController {
 	@RequestMapping("/list")
 	public String list(Model model ,Pager pager) {
 
-		List<Shoppingmall> list =shoppingService.list(pager);
-		model.addAttribute("list",list);
+		//List<Shoppingmall> list =shoppingService.list(pager);
+		//model.addAttribute("list",list);
 
 		return path+"list";
 	}

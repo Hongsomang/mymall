@@ -1,5 +1,6 @@
 package kr.ac.kopo.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Product;
@@ -39,9 +41,10 @@ public class MymallController {
 	BookmarkService bookmarkSerice;
 
 	@RequestMapping("/main")
-	public String main(Model model ,Pager pager) {
-		List<Shoppingmall> list=service.list(pager);
-
+	public String main(Model model ,Pager pager ,@SessionAttribute User user) {
+		
+		List<Shoppingmall> list=new ArrayList<Shoppingmall>();
+		list=service.list(pager,user.getId());
 		model.addAttribute("list", list);
 		return path+"main";
 	}
@@ -86,6 +89,13 @@ public class MymallController {
 		return "redirect:login";
 	}
 
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		
+		return "redirect:main";
+	}
+	
 	@RequestMapping("/product/{id}")
 	public String productList(@PathVariable int id,Model model, Pager pager) {
 		int shoppingmallId=id;
@@ -100,7 +110,10 @@ public class MymallController {
 		model.addAttribute("list", list);
 		return path+"product";
 	}
-
+	@RequestMapping("/mypage")
+	public String mypage() {
+		return path+"mypage";
+	}
 
 
 }

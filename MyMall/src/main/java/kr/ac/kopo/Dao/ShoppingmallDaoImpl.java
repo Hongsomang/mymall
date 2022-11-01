@@ -1,5 +1,6 @@
 package kr.ac.kopo.Dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
+import kr.ac.kopo.Model.User;
 
 @Repository
 public class ShoppingmallDaoImpl implements ShoppingmallDao {
@@ -16,10 +18,21 @@ public class ShoppingmallDaoImpl implements ShoppingmallDao {
 	SqlSession sql;
 
 	@Override
+	public List<Shoppingmall> list(Pager pager, String userId) {
+		HashMap<String, Object> map =new HashMap<>();
+		map.put("offset", pager.getOffset());
+		map.put("perPager", pager.getPerPager());
+		map.put("search", pager.getSearch());
+		map.put("userId", userId);
+		
+		
+		return sql.selectList("shoppingmall.list",map);
+	}
+	/*@Override
 	public List<Shoppingmall> list(Pager pager) {
 		// TODO Auto-generated method stub
 		return sql.selectList("shoppingmall.list",pager);
-	}
+	}*/
 
 	@Override
 	public void add(Shoppingmall item) {
@@ -44,6 +57,8 @@ public class ShoppingmallDaoImpl implements ShoppingmallDao {
 		// TODO Auto-generated method stub
 		sql.update("shoppingmall.update", item);
 	}
+
+
 
 
 }

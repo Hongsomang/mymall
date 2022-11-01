@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.ac.kopo.Dao.ShoppingmallDao;
 import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
+import kr.ac.kopo.Model.User;
 
 @Service
 public class ShoppingmallServiceImpl implements ShoppingmallService {
@@ -15,11 +16,17 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 	@Autowired
 	ShoppingmallDao dao;
 
+	
 	@Override
+	public List<Shoppingmall> list(Pager pager, String userId) {
+		// TODO Auto-generated method stub
+		return dao.list(pager,userId);
+	}
+	/*@Override
 	public List<Shoppingmall> list(Pager pager) {
 		// TODO Auto-generated method stub
 		return dao.list(pager);
-	}
+	}*/
 
 	@Override
 	public void add(Shoppingmall item) {
@@ -44,6 +51,8 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 		// TODO Auto-generated method stub
 		dao.update(item);
 	}
+
+
 
 
 

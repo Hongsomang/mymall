@@ -23,6 +23,13 @@
 	
 	<context:component-scan base-package="kr.ac.kopo" />
 	
-	
+	<interceptors>
+		<interceptor>
+			<mapping path="/mymall/**"/> 
+			<exclude-mapping path="/mymall/login"/>
+			<exclude-mapping path="/mymall/signup"/>
+			<beans:bean class="kr.ac.kopo.interceptor.UserInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

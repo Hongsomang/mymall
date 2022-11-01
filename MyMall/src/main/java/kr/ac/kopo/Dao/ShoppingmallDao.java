@@ -4,10 +4,11 @@ import java.util.List;
 
 import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
+import kr.ac.kopo.Model.User;
 
 public interface ShoppingmallDao {
 
-	List<Shoppingmall> list(Pager pager);
+	List<Shoppingmall> list(Pager pager, String userId);
 
 	void add(Shoppingmall item);
 
