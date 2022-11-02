@@ -19,5 +19,6 @@
 		<mapper resource="mybatis/user.xml" />
 		<mapper resource="mybatis/product.xml" />
 		<mapper resource="mybatis/bookmark.xml" />
+		<mapper resource="mybatis/likes.xml" />
 	</mappers>
 </configuration>

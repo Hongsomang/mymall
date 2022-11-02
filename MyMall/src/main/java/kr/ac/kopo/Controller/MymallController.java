@@ -1,5 +1,6 @@
 package kr.ac.kopo.Controller;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +9,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.ac.kopo.Model.Pager;
@@ -19,6 +23,7 @@ import kr.ac.kopo.Model.Product;
 import kr.ac.kopo.Model.Shoppingmall;
 import kr.ac.kopo.Model.User;
 import kr.ac.kopo.Service.BookmarkService;
+import kr.ac.kopo.Service.LikeService;
 import kr.ac.kopo.Service.ProductService;
 import kr.ac.kopo.Service.ShoppingmallService;
 import kr.ac.kopo.Service.UserService;
@@ -37,8 +42,11 @@ public class MymallController {
 	@Autowired
 	ProductService productSerice;
 
-	@Autowired
-	BookmarkService bookmarkSerice;
+	//@Autowired
+	//BookmarkService bookmarkSerice;
+	
+	@Autowired 
+	LikeService likeService;
 
 	@RequestMapping("/main")
 	public String main(Model model ,Pager pager ,@SessionAttribute User user) {
@@ -114,6 +122,24 @@ public class MymallController {
 	public String mypage() {
 		return path+"mypage";
 	}
-
+	
+	@ResponseBody
+	@GetMapping("/like")
+	public String addLike(int id, @SessionAttribute User user) {
+		if(likeService.add(id,user.getId()))
+			return "ok";
+		return "fail";
+	}
+	
+	
+	
+	@ResponseBody
+	@DeleteMapping("/like")
+	public String deleteLike(int id, @SessionAttribute User user) {
+		System.out.println("dfdf:"+id);
+		if(likeService.delete(id,user.getId()))
+			return "ok";
+		return "fail";
+	}
 
 }

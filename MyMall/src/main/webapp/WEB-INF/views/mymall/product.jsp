@@ -104,9 +104,46 @@ $(document).ready(function() {
 		if(class_=="bi-heart"){
 			$("button[class="+id+"] span").removeClass("bi-heart");
 			$("button[class="+id+"] span").addClass("bi-heart-fill");
+			$.ajax("../like?id="+id,{
+				method:"GET",
+				success:result =>{
+					console.log("like",result);
+					if(result=="ok"){
+						
+						$("button[class="+id+"] span").removeClass("bi-heart");
+						$("button[class="+id+"] span").addClass("bi-heart-fill");
+					}
+					else{
+						alert("좋아요 등록에 실패하셨습니다.");
+					}
+					
+				},
+				error: result =>{
+					alert("좋아요 등록은 로그인 이후에 가능합니다.");
+				}
+			});
+			
+			
 		}else if(class_=="bi-heart-fill"){
-			$("button[class="+id+"] span").removeClass("bi-heart-fill");
-			$("button[class="+id+"] span").addClass("bi-heart");
+			$.ajax("../like?id="+id,{
+				method:"DELETE",
+				success:result =>{
+					console.log("like",result);
+					if(result=="ok"){
+						$("button[class="+id+"] span").removeClass("bi-heart-fill");
+						$("button[class="+id+"] span").addClass("bi-heart");
+					}
+					else{
+						alert("좋아요 삭제에 실패 하셨습니다.");
+					}
+					
+				},
+				error: result =>{
+					alert("좋아요 삭제는 로그인 이후에 가능합니다.");
+				}
+				
+			});
+			
 		}
 		
 	});
