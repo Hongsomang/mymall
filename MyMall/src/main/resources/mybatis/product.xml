@@ -19,7 +19,9 @@
 	</insert>
 	
 	<select id="list" resultType="Product">
-		select * from product <include refid="shoppingmallId"></include> ORDER BY id
+		select p.*,(select user_id from likes l where p.id=l.product_id and l.user_id=#{userId}) as user_id
+		from product p
+		<include refid="shoppingmallId"></include> ORDER BY id
 		LIMIT #{offset},#{perPager} 
 	</select>
 	

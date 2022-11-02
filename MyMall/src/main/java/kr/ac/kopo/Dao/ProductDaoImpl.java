@@ -42,7 +42,7 @@ public class ProductDaoImpl implements ProductDao {
 		}
 	}
 
-	@Override
+	/*@Override
 	public List<Product> list(int shoppingmallId,Pager pager) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object>map=new HashMap<>();
@@ -50,7 +50,7 @@ public class ProductDaoImpl implements ProductDao {
 		map.put("offset", pager.getOffset());
 		map.put("perPager", pager.getPerPager());
 		return sql.selectList("product.list", map);
-	}
+	}*/
 
 	@Override
 	public int total(Pager pager, int shoppingmallId) {
@@ -73,12 +73,32 @@ public class ProductDaoImpl implements ProductDao {
 		return sql.selectOne("product.total", map);
 	}
 
-	@Override
+	/*@Override
 	public List<Product> allList(Pager pager) {
 		HashMap<String, Object>map=new HashMap<>();
 		map.put("shoppingmallId", null);
 		map.put("offset", pager.getOffset());
 		map.put("perPager", pager.getPerPager());
+		return sql.selectList("product.list", map);
+	}*/
+
+	@Override
+	public List<Product> list(int shoppingmallId, Pager pager, String userId) {
+		HashMap<String, Object>map=new HashMap<>();
+		map.put("shoppingmallId", shoppingmallId);
+		map.put("offset", pager.getOffset());
+		map.put("perPager", pager.getPerPager());
+		map.put("userId",userId);
+		return sql.selectList("product.list", map);
+	}
+
+	@Override
+	public List<Product> allList(Pager pager, String userId) {
+		HashMap<String, Object>map=new HashMap<>();
+		map.put("shoppingmallId", null);
+		map.put("offset", pager.getOffset());
+		map.put("perPager", pager.getPerPager());
+		map.put("userId", userId);
 		return sql.selectList("product.list", map);
 	}
 

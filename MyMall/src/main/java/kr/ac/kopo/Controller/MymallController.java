@@ -105,16 +105,16 @@ public class MymallController {
 	}
 	
 	@RequestMapping("/product/{id}")
-	public String productList(@PathVariable int id,Model model, Pager pager) {
+	public String productList(@PathVariable int id,Model model, Pager pager, @SessionAttribute User user) {
 		int shoppingmallId=id;
-		List<Product> list=productSerice.list(shoppingmallId,pager);
+		List<Product> list=productSerice.list(shoppingmallId,pager,user.getId());
 		model.addAttribute("list", list);
 		return path+"product";
 	}
 
 	@RequestMapping("/main/allProduct")
-	public String allProduct(Model model, Pager pager) {
-		List<Product> list =productSerice.allList(pager);
+	public String allProduct(Model model, Pager pager ,@SessionAttribute User user) {
+		List<Product> list =productSerice.allList(pager,user.getId());
 		model.addAttribute("list", list);
 		return path+"product";
 	}

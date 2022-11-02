@@ -98,7 +98,7 @@ public class ProductServiceImpl implements ProductService {
 
 	}
 
-	@Override
+/*	@Override
 	public List<Product> list(int shoppingmallId,Pager pager) {
 		int total=dao.total(pager,shoppingmallId);
 		pager.setTotal(total);
@@ -111,6 +111,21 @@ public class ProductServiceImpl implements ProductService {
 		int total=dao.allTotal(pager);
 		pager.setTotal(total);
 		return dao.allList(pager);
+	}*/
+
+	@Override
+	public List<Product> list(int shoppingmallId, Pager pager, String userId) {
+		int total=dao.total(pager,shoppingmallId);
+		pager.setTotal(total);
+		System.out.println("service:"+total);
+		return dao.list(shoppingmallId,pager,userId);
+	}
+
+	@Override
+	public List<Product> allList(Pager pager, String userId) {
+		int total=dao.allTotal(pager);
+		pager.setTotal(total);
+		return dao.allList(pager,userId);
 	}
 
 

@@ -8,7 +8,7 @@ public class Product {
 	private String img;
 	private String url;
 	private int shoppingmallId;
-
+	private String userId;
 
 	public int getId() {
 		return id;
@@ -45,6 +45,12 @@ public class Product {
 	}
 	public void setShoppingmallId(int shoppingmallId) {
 		this.shoppingmallId = shoppingmallId;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 

@@ -14,12 +14,12 @@ public interface ProductDao {
 
 	void add(List<Parsing> list);
 
-	List<Product> list(int shoppingmallId,Pager pager);
+	List<Product> list(int shoppingmallId,Pager pager, String userId);
 
 	int total(Pager pager,int shoppingmallId);
 
 	int allTotal(Pager pager);
 
-	List<Product> allList(Pager pager);
+	List<Product> allList(Pager pager, String userId);
 
 }

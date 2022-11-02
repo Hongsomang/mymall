@@ -174,7 +174,7 @@ $(document).ready(function() {
 						<div class="item_content">
 							<p class="name">${item.name }</p>
 							<p >${item.price }</p>
-							<button  type="button" class="${item.id}"><span class="bi-heart"></span></button>
+							<button  type="button" class="${item.id}"><span class="bi-heart${item.userId !=null ? '-fill' : ''}"></span></button>
 						</div>
 						
 					</div>

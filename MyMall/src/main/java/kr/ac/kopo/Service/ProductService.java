@@ -14,9 +14,9 @@ public interface ProductService {
 
 	void add(Shoppingmall item);
 
-	List<Product> list(int shoppingmallId,Pager pager);
+	List<Product> list(int shoppingmallId,Pager pager, String userId);
 
-	List<Product> allList(Pager pager);
+	List<Product> allList(Pager pager, String userId);
 
 
 
