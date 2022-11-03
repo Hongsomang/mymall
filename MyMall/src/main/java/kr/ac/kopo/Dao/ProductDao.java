@@ -22,4 +22,8 @@ public interface ProductDao {
 
 	List<Product> allList(Pager pager, String userId);
 
+	List<Product> likeProduct(Pager pager, String userId);
+
+	int likeTotal(Pager pager);
+
 }

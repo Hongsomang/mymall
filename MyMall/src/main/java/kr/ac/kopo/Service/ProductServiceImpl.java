@@ -128,6 +128,13 @@ public class ProductServiceImpl implements ProductService {
 		return dao.allList(pager,userId);
 	}
 
+	@Override
+	public List<Product> likeProduct(Pager pager, String userId) {
+		int total=dao.likeTotal(pager);
+		pager.setTotal(total);
+		return dao.likeProduct(pager,userId);
+	}
+
 
 
 }

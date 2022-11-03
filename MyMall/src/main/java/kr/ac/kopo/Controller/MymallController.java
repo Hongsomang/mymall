@@ -1,6 +1,6 @@
 package kr.ac.kopo.Controller;
 
-import java.io.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -116,8 +116,9 @@ public class MymallController {
 	public String allProduct(Model model, Pager pager ,@SessionAttribute User user) {
 		List<Product> list =productSerice.allList(pager,user.getId());
 		model.addAttribute("list", list);
-		return path+"product";
+		return path+"all_product";
 	}
+	
 	@RequestMapping("/mypage")
 	public String mypage() {
 		return path+"mypage";
@@ -131,8 +132,6 @@ public class MymallController {
 		return "fail";
 	}
 	
-	
-	
 	@ResponseBody
 	@DeleteMapping("/like")
 	public String deleteLike(int id, @SessionAttribute User user) {
@@ -141,5 +140,12 @@ public class MymallController {
 			return "ok";
 		return "fail";
 	}
+	@RequestMapping("/main/likesProduct")
+	public String likesProduct(Model model, Pager pager ,@SessionAttribute User user) {
+		List<Product> list =productSerice.likeProduct(pager,user.getId());
+		model.addAttribute("list", list);
+		return path+"like_product";
+	}
+	
 
 }

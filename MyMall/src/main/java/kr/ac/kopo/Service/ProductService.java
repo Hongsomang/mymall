@@ -18,6 +18,8 @@ public interface ProductService {
 
 	List<Product> allList(Pager pager, String userId);
 
+	List<Product> likeProduct(Pager pager, String userId);
+
 
 
 }

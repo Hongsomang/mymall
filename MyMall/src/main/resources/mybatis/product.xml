@@ -28,4 +28,10 @@
 	<select id="total" resultType="Integer">
 		select count(*) from product <include refid="shoppingmallId"></include>
 	</select>
+	<select id="likeTotal" resultType="Integer">
+		select count(*) from product p join likes l on(p.id=l.product_id) and l.user_id=#{userId}
+	</select>
+	<select id="likeProduct" resultType="Product">
+		select * from product p join likes l on(p.id=l.product_id) and l.user_id=#{userId}
+	</select>
 </mapper>
