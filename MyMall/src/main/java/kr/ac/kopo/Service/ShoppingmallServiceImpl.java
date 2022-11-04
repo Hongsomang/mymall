@@ -4,7 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import kr.ac.kopo.Dao.BookmarkDao;
+import kr.ac.kopo.Dao.LikeDao;
+import kr.ac.kopo.Dao.ProductDao;
 import kr.ac.kopo.Dao.ShoppingmallDao;
 import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
@@ -16,17 +20,20 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 	@Autowired
 	ShoppingmallDao dao;
 
+	@Autowired
+	ProductDao productDao;
+	
+	@Autowired
+	BookmarkDao bookmarkDao;
+	
+	@Autowired
+	LikeDao likeDao;
 	
 	@Override
 	public List<Shoppingmall> list(Pager pager, String userId) {
 		// TODO Auto-generated method stub
 		return dao.list(pager,userId);
 	}
-	/*@Override
-	public List<Shoppingmall> list(Pager pager) {
-		// TODO Auto-generated method stub
-		return dao.list(pager);
-	}*/
 
 	@Override
 	public void add(Shoppingmall item) {
@@ -34,9 +41,13 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 		dao.add(item);
 	}
 
+	@Transactional
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
+		bookmarkDao.delete(id, null);
+		likeDao.delete_shoppingmall(id);
+		productDao.delete(id);
 		dao.delete(id);
 	}
 
@@ -50,6 +61,12 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 	public void update(Shoppingmall item) {
 		// TODO Auto-generated method stub
 		dao.update(item);
+	}
+
+	@Override
+	public List<Shoppingmall> admin_list(Pager pager) {
+		
+		return dao.admin_list(pager);
 	}
 
 

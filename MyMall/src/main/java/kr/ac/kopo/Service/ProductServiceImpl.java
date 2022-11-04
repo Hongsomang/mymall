@@ -52,37 +52,52 @@ public class ProductServiceImpl implements ProductService {
 			for(int j=1;j<=page.size();j++) {
 				System.out.println(j+page.get(j-1).toString());
 
+				
 				Document doc=Jsoup.connect(path+"/product/list.html?cate_no="+bestCode+"&page="+j).get();
-
-				Elements contents =doc.select("ul[class=prdList grid4]").select("div[class=prdImg] > a");
-				Elements Elprice =doc.select("ul[class=prdList grid4]").select("div > ul ");
-				Elements Elprice_li_1=Elprice.select("li:nth-child(1)");
-				Elements Elprice_li_2=Elprice.select("li:nth-child(2)");
-
+				Elements Elprice;
+				Elements contents;
+				System.out.println(item.getName());
+				if(item.getName().equals("메리어라운드")) {
+					 contents =doc.select("ul[class=prdList grid3] ").select("div[class=prdImg] > a");
+					 Elprice =doc.select("ul[class=prdList grid3]  >li").select("div > ul ");
+				}else {
+					contents =doc.select("ul[class=prdList grid4] ").select("div[class=prdImg] > a");
+					Elprice =doc.select("ul[class=prdList grid4]  >li").select("div > ul ");
+				}
+				
+				Elements Elprice_li_1=Elprice.select("li[rel=판매가]");
+				
 
 				int index=0;
 				String name;
 				String url;
 				String img;
-				String price;
-
+				String price="";
+				
+				System.out.println("1:"+Elprice_li_1);
+				
 				for(int i = 0; i < contents.size(); i++) {
 
 					name=contents.select("img").get(i).attr("alt");
 					url=contents.get(i).attr("href").toString();
 					img=contents.select("img").get(i).attr("src");
 
-					if(Elprice_li_2.get(i).text().equals(":")) {
-						index=Elprice_li_1.get(i).text().indexOf(":");
-						price=Elprice_li_1.get(i).text().substring(index+2);
-
-
-					}else {
-						index=Elprice_li_2.get(i).text().indexOf(":");
-						price=Elprice_li_2.get(i).text().substring(index+2);
+					if(item.getName().equals("원로그")) {
+						index=Elprice_li_1.get(i).text().indexOf(" ");
+						System.out.println("price:"+Elprice_li_1.get(i).text().substring(index+1));
+						price=Elprice_li_1.get(i).text().substring(index+1);
 					}
-					list.add(new Parsing(name,price,img,path+url,item.getId()));
+					else {
+						index=Elprice_li_1.get(i).text().indexOf(":");
+						System.out.println("price:"+Elprice_li_1.get(i).text().substring(index+2));
+						price=Elprice_li_1.get(i).text().substring(index+2);
+					}
+					
 
+					
+					//System.out.println("크롤링:"+ name+price+img+path+url);
+					list.add(new Parsing(name,price,img,path+url,item.getId()));
+					
 				}
 
 			}

@@ -6,4 +6,6 @@ public interface LikeDao {
 
 	int delete(int productId, String userId);
 
+	void delete_shoppingmall(int shoppingmallId);
+
 }

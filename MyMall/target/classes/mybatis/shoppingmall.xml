@@ -14,7 +14,9 @@
 		</if>
 	</sql>
 	<select id="list" resultType="Shoppingmall">
-		select s.* ,(select user_id from bookmark b where b.user_id=#{userId} and b.shoppingmall_id= s.id) as user_id from mymall.shoppingmall s <include refid="search"></include>
+		select s.* ,
+		(select user_id from bookmark b where b.user_id=#{userId} and b.shoppingmall_id= s.id) as user_id 
+		from mymall.shoppingmall s <include refid="search"></include>
 	</select>
 	<insert id="add">
 		insert into mymall.shoppingmall (name,content,url,best_code,admin_id)
@@ -29,4 +31,7 @@
 	<update id="update">
 		update mymall.shoppingmall set name=#{name}, content=#{content}, url=#{url}, best_code=#{bestCode} where id=#{id}
 	</update>
+	<select id="admin_list" resultType="Shoppingmall">
+		select *from shoppingmall;
+	</select>
 </mapper>

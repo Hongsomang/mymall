@@ -58,6 +58,12 @@ public class ShoppingmallDaoImpl implements ShoppingmallDao {
 		sql.update("shoppingmall.update", item);
 	}
 
+	@Override
+	public List<Shoppingmall> admin_list(Pager pager) {
+		// TODO Auto-generated method stub
+		return sql.selectList("shoppingmall.admin_list", pager);
+	}
+
 
 
 

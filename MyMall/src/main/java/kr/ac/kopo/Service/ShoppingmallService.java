@@ -20,6 +20,8 @@ public interface ShoppingmallService {
 
 	List<Shoppingmall> list(Pager pager, String userId);
 
+	List<Shoppingmall> admin_list(Pager pager);
+
 
 
 

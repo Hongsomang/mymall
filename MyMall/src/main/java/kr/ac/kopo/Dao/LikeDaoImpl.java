@@ -28,9 +28,18 @@ public class LikeDaoImpl  implements LikeDao{
 		HashMap<String, Object> map=new HashMap<>();
 		map.put("productId", productId);
 		map.put("userId", userId);
+		map.put("shoppingmallId", null);
 		
-		
-		return sql.insert("likes.delete",map);
+		return sql.delete("likes.delete",map);
+	}
+
+	@Override
+	public void delete_shoppingmall(int shoppingmallId) {
+		HashMap<String, Object> map=new HashMap<>();
+		map.put("productId", null);
+		map.put("userId", null);
+		map.put("shoppingmallId", shoppingmallId);
+		sql.delete("likes.delete",map);
 	}
 
 }

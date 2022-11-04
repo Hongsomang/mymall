@@ -18,6 +18,8 @@ public interface ShoppingmallDao {
 
 	void update(Shoppingmall item);
 
+	List<Shoppingmall> admin_list(Pager pager);
+
 
 
 

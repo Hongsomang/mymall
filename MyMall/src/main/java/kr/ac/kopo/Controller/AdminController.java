@@ -2,6 +2,8 @@ package kr.ac.kopo.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.ac.kopo.Model.Admin;
 import kr.ac.kopo.Model.Pager;
@@ -38,9 +41,12 @@ public class AdminController {
 	}
 
 	@PostMapping("/login")
-	public String login(Admin admin) {
+	public String login(Admin admin ,HttpSession session) {
 		if(service.login(admin)) {
+			session.setAttribute("admin", admin);
+			String targetUrl =(String) session.getAttribute("target_url");
 			System.out.println("로그인성공 ");
+			System.out.println(targetUrl);
 			return "redirect:list";
 		}
 		else {
@@ -54,8 +60,8 @@ public class AdminController {
 	@RequestMapping("/list")
 	public String list(Model model ,Pager pager) {
 
-		//List<Shoppingmall> list =shoppingService.list(pager);
-		//model.addAttribute("list",list);
+		List<Shoppingmall> list =shoppingService.admin_list(pager);
+		model.addAttribute("list",list);
 
 		return path+"list";
 	}
@@ -67,8 +73,8 @@ public class AdminController {
 	}
 
 	@PostMapping("/add")
-	public String add(Shoppingmall item) {
-		item.setAdminId("admin1"); //세션 전
+	public String add(Shoppingmall item, @SessionAttribute Admin admin) {
+		item.setAdminId(admin.getId()); //세션 전
 		shoppingService.add(item);
 		return "redirect:list";
 	}
@@ -86,7 +92,7 @@ public class AdminController {
 		shoppingService.update(item);
 		return "redirect:../list";
 	}
-
+	
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {
 		shoppingService.delete(id);

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bookmark">
+	<sql id="userId">
+		<if test="userId !=null ">
+			user_id=#{userId} and
+		</if>
+	</sql>
 	<insert id="add">
 		insert into bookmark (user_id,shoppingmall_id) values (#{userId},#{shoppingmallId})
 	</insert>
 	<delete id="delete">
-		delete from bookmark where user_id=#{userId} and shoppingmall_id=#{shoppingmallId}
+		delete from bookmark where <include refid="userId"></include> shoppingmall_id=#{shoppingmallId}
 	</delete>
 </mapper>
