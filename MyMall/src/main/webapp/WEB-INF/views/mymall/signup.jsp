@@ -7,7 +7,38 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
+let idCheck;
 
+function checkId(){
+	if(document.signup_form.id.value == "") {
+		alert("중복검사 전에 아이디를 입력 해 주세요");			
+		return;
+	}
+	const form = document.signup_form;
+	
+	const xhr = new XMLHttpRequest();
+	
+	xhr.onreadystatechange = function() {
+		console.log(xhr.readyState);
+		
+		if(xhr.readyState == XMLHttpRequest.DONE) {
+			if(xhr.status == 200) {
+				const result = xhr.responseText;
+				console.log("응답: " + result);
+				
+				if(result == "OK") {
+					isCheck = form.id.value;
+					alert("사용 가능한 아이디 입니다");
+				} else
+					alert(" 이미 사용중인 아이디 입니다");
+			}
+		}
+	};
+	
+	xhr.open("GET", "checkId/" + form.id.value, true);
+	
+	xhr.send();
+}
 
 function signup(){
 	var email_rule =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; //이메일 정규식 
@@ -16,6 +47,11 @@ function signup(){
 	var mail ="";
 	
 	const form = document.signup_form;
+	
+	if(isCheck != form.id.value) {
+		alert("아이디 중복 검사를 하셔야 합니다");
+		return;
+	}
 	
 	if(form.id.value==""){
 		alert("아이디를 입력하세요.");
@@ -96,7 +132,7 @@ $(document).ready(function(){
 				<div>
 					<label>아이디 </label>
 					<input type="text" name="id" />
-					<button>중복 확인</button>
+					<button type="button" onclick="checkId()">중복 확인</button>
 				</div>
 				<div>
 					<label>비밀 번호</label>

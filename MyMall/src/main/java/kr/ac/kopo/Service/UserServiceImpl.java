@@ -32,4 +32,15 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	@Override
+	public boolean checkId(String id) {
+		if(dao.checkId(id)==0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+
 }

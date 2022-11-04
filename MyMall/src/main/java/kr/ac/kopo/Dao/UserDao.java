@@ -8,4 +8,6 @@ public interface UserDao {
 
 	User login(User user);
 
+	int checkId(String id);
+
 }

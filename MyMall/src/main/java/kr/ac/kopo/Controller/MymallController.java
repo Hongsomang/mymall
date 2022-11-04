@@ -146,6 +146,13 @@ public class MymallController {
 		model.addAttribute("list", list);
 		return path+"like_product";
 	}
-	
+	@ResponseBody
+	@GetMapping("/checkId/{id}")
+	public String checkId(@PathVariable String id) {	
+		if(userService.checkId(id))
+			return "OK";
+		else
+			return "FAIL";
+	}
 
 }

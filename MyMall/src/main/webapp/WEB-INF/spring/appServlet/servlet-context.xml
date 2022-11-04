@@ -28,6 +28,7 @@
 			<mapping path="/mymall/**"/> 
 			<exclude-mapping path="/mymall/login"/>
 			<exclude-mapping path="/mymall/signup"/>
+			<exclude-mapping path="/mymall/checkId/**"/>
 			<beans:bean class="kr.ac.kopo.interceptor.UserInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>

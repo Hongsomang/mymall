@@ -24,4 +24,10 @@ public class UserDaoImpl implements UserDao {
 		return sql.selectOne("user.login", user);
 	}
 
+	@Override
+	public int checkId(String id) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("user.ckeckId", id);
+	}
+
 }
