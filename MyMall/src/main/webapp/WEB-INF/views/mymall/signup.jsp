@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
-let idCheck;
+let isCheck;
 
 function checkId(){
 	if(document.signup_form.id.value == "") {

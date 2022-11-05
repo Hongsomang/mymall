@@ -121,6 +121,7 @@ public class MymallController {
 	
 	@RequestMapping("/mypage")
 	public String mypage() {
+		
 		return path+"mypage";
 	}
 	
