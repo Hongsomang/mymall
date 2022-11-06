@@ -190,6 +190,11 @@ $(document).ready(function() {
 			</ul>
 		</div>
 		<hr>
+		<div class="banner">
+					<div class="inner">
+						<div> </div>
+					</div>
+				</div>
 		<div class="products">
 			<div >
 				<c:if test="${list.size()<1}">
