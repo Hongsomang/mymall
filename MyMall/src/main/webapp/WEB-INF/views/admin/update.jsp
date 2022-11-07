@@ -15,7 +15,7 @@
 		<hr>
 		<div>
 			<div>
-				<form method="post">
+				<form method="post" enctype="multipart/form-data">
 					<div>
 						<div>
 							<label>쇼핑몰이름: </label>
@@ -32,6 +32,11 @@
 						<div>
 							<label>best code</label>
 							<input type="text" name="bestCode" placeholder="베스트 상품 홈페이지 주소 중 cate_no 다음에 나오는 숫자를 입력하세요 " value="${item.bestCode}">
+						</div>
+						<div>
+							<label>로고 이미지 </label>
+							<input type="file" name="imageFile" placeholder="이미지를 업로드해세요." >
+							
 						</div>
 						<div>
 							<button >변경 </button>

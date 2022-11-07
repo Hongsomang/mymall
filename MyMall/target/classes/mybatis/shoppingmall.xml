@@ -8,6 +8,11 @@
 			</if>
 		</where>
 	</sql>
+	<sql id="image">
+		<if test="imageName !=null">
+			,image_name=#{imageName}
+		</if>
+	</sql>
 	<sql id="bookmark">
 		<if test="user !=null">
 			
@@ -19,8 +24,8 @@
 		from mymall.shoppingmall s <include refid="search"></include>
 	</select>
 	<insert id="add">
-		insert into mymall.shoppingmall (name,content,url,best_code,admin_id)
-		 values (#{name},#{content},#{url},#{bestCode},#{adminId})
+		insert into mymall.shoppingmall (name,content,url,best_code ,image_name,admin_id)
+		 values (#{name},#{content},#{url},#{bestCode},#{imageName},#{adminId})
 	</insert>
 	<delete id="delete">
 		delete from mymall.shoppingmall where id=#{id} 
@@ -29,7 +34,7 @@
 		select * from mymall.shoppingmall where id=#{id}
 	</select>
 	<update id="update">
-		update mymall.shoppingmall set name=#{name}, content=#{content}, url=#{url}, best_code=#{bestCode} where id=#{id}
+		update mymall.shoppingmall set name=#{name}, content=#{content}, url=#{url}, best_code=#{bestCode} <include refid="image"></include> where id=#{id}
 	</update>
 	<select id="admin_list" resultType="Shoppingmall">
 		select *from shoppingmall;

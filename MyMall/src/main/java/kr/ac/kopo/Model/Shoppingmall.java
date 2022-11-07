@@ -1,5 +1,7 @@
 package kr.ac.kopo.Model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Shoppingmall {
 	private int id;
 	private String name;
@@ -8,7 +10,22 @@ public class Shoppingmall {
 	private int bestCode;
 	private String adminId;
 	private String userId;
+	private MultipartFile imageFile;
+	private String imageName;
+	
 
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
+	}
+	public String getImageName() {
+		return imageName;
+	}
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
 	public int getId() {
 		return id;
 	}

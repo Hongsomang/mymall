@@ -112,6 +112,20 @@ h1>a {
 	line-height: 20px;
 	color:#FF4848;
 }
+.banner {
+	width:100%;
+	height: 600px;
+	position: relative;
+	
+
+}
+.banner >.inner{
+	height:30px;
+
+	 position: absolute;
+	 top:40%;
+	 left:40%;
+}
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -191,6 +205,11 @@ $(document).ready(function() {
 			</ul>
 		</div>
 		<hr>
+		<div class="banner">
+			<div class="inner">
+				<div> 베스트상품 </div>
+			</div>
+		</div>
 		<div class="products">
 			<div >
 				<c:if test="${list.size()<1}">

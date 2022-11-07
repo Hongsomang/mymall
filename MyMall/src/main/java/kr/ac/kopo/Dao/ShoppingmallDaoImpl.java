@@ -55,6 +55,8 @@ public class ShoppingmallDaoImpl implements ShoppingmallDao {
 	@Override
 	public void update(Shoppingmall item) {
 		// TODO Auto-generated method stub
+		System.out.println("dao :"+item.getName());
+		System.out.println("dao: "+item.getImageFile());
 		sql.update("shoppingmall.update", item);
 	}
 

@@ -1,5 +1,6 @@
 package kr.ac.kopo.Controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.ac.kopo.Model.Admin;
 import kr.ac.kopo.Model.Pager;
@@ -24,7 +26,7 @@ import kr.ac.kopo.Service.ShoppingmallService;
 @RequestMapping("/admin")
 public class AdminController {
 	final String path="admin/";
-
+	final String uploadPath = "/Users/hongsomang/Desktop/upload/";
 	@Autowired
 	AdminService service;
 
@@ -74,7 +76,23 @@ public class AdminController {
 
 	@PostMapping("/add")
 	public String add(Shoppingmall item, @SessionAttribute Admin admin) {
-		item.setAdminId(admin.getId()); //세션 전
+		item.setAdminId(admin.getId()); 
+		try {
+			MultipartFile file = item.getImageFile();
+			System.out.println("controller: "+item.getImageFile());
+			if(file !=null && !file.isEmpty()) {
+				String imageName=file.getOriginalFilename();
+				file.transferTo(new File(uploadPath+imageName));
+				
+				item.setImageName(imageName);
+				System.out.println("file:"+file);
+				System.out.println("controller :"+item.getName());
+			
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		shoppingService.add(item);
 		return "redirect:list";
 	}
@@ -89,6 +107,21 @@ public class AdminController {
 
 	@PostMapping("/update/{id}")
 	public String update( Shoppingmall item) {
+		try {
+			MultipartFile file = item.getImageFile();
+			System.out.println("controller: "+item.getImageFile());
+			if(file !=null && !file.isEmpty()) {
+				String imageName=file.getOriginalFilename();
+				file.transferTo(new File(uploadPath+imageName));
+				
+				item.setImageName(imageName);
+				System.out.println("file:"+file);
+				System.out.println("controller :"+item.getName());
+			
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		shoppingService.update(item);
 		return "redirect:../list";
 	}
