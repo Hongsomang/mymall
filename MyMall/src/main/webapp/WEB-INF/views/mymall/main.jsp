@@ -21,7 +21,6 @@
 	font-size: 30px;
 	line-height: 30px;
 	color: #D5D5D5;
-	
 }
 
 .bi-star-fill {
@@ -36,53 +35,75 @@ ul {
 
 .box>li {
 	display: inline-block;
-	
 }
-.box button{
-	border:0;
-	outline:0;
+
+.box button {
+	border: 0;
+	outline: 0;
 	all: unset;
 }
-.container{
+
+.container {
 	border: 1px solid #000;
+}
 
-	
+h1 {
+	width: 200px;
+	float: left;
+	text-align: center;
+	padding-top: 10px;
 }
-h1{
-	width:200px;
-	float:left;
-	text-align:center;
-	padding-top :10px;
-}
-#menu >li{
+
+#menu>li {
 	display: inline-block;
-	
-}
-#menu{
-	text-align:right ;
-	padding-top:15px;	
-	padding-right:10px;
-
 }
 
-hr{
-	clear:both;
-	
+#menu {
+	text-align: right;
+	padding-top: 15px;
+	padding-right: 10px;
+}
+
+hr {
+	clear: both;
 }
 
 .search_box {
-	width:100%;
+	width: 100%;
 	height: 600px;
 	position: relative;
-	
-
 }
-.search_box >.inner{
-	height:30px;
 
-	 position: absolute;
-	 top:45%;
-	 left:44%;
+.search_box>.inner {
+	height: 30px;
+	position: absolute;
+	top: 45%;
+	left: 44%;
+}
+
+.card-img-top {
+	width: 250px;
+	height: 100px;
+	object-fit: contain;
+}
+.card{
+	width: 400px;
+	
+}
+
+.mall> li{
+	display: inline-block;
+	
+}
+
+.mall{
+	
+}
+.main{
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0;
+	width: 1300px;
 }
 </style>
 
@@ -142,12 +163,12 @@ hr{
 		<div id="header">
 			<h1>MYMALL</h1>
 			<ul id="menu">
-				<li><a href="main/allProduct"><button>전체상품 </button></a></li>
+				<li><a href="main/allProduct"><button>전체상품</button></a></li>
 				<c:if test="${sessionScope.user==null}">
 					<li><a href="login"><button>로그인</button></a></li>
 				</c:if>
 				<c:if test="${sessionScope.user !=null }">
-					<li><a href="mypage"><button>마이페이지 </button></a></li>
+					<li><a href="mypage"><button>마이페이지</button></a></li>
 				</c:if>
 			</ul>
 		</div>
@@ -163,8 +184,8 @@ hr{
 				</div>
 			</form>
 		</div>
-		<div>
-			<ul>
+		<div class="main">
+			<ul class="mall" >
 				<c:if test="${list.size()<1 }">
 					<li>
 						<div>
@@ -173,16 +194,24 @@ hr{
 					</li>
 				</c:if>
 				<c:forEach var="item" items="${list}">
-					<li >
-						<div data-id="${item.id} " class="container" >
-							 
-							<ul class="box">
-								<li><button type="button" id="${item.id}"><span  class="bi-star${item.userId !=null ? '-fill':'' }"></span></button></li>
-								<li>${item.name }</li>
-								<li>${item.content }</li>
-								<li><a href="${item.url }" target="_blank">홈페이지로 이동 </a></li>
-								<li><a class="prouctUrl" href="product/${item.id }"> 제품보기 </a></li>
-							</ul>
+					<li>
+						<div data-id="${item.id} " class="card text-center mb-3">
+							<a href="${item.url }" target="_blank"> <c:if
+									test="${ item.imageName !=null}">
+									<img src="/upload/${item.imageName}" class="card-img-top"
+										alt="...">
+								</c:if> <c:if test="${ item.imageName ==null}">
+									<img src="/resources/image/noImage.png" class="card-img-top"
+										alt="...">
+								</c:if>
+
+							</a>
+							<div class="card-body">
+								<h5 class="card-title">${item.name }</h5>
+								<p class="card-text">${item.content }</p>
+								<a href="product/${item.id }" class="btn btn-primary">베스트
+									상품보기</a>
+							</div>
 						</div>
 					</li>
 				</c:forEach>
