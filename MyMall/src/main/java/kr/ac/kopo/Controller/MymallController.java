@@ -67,6 +67,7 @@ public class MymallController {
 			session.setAttribute("user", user);
 			String targetUrl =(String) session.getAttribute("target_url");
 			System.out.println("로그인 성공 ");
+			
 			System.out.println(targetUrl);
 
 			if(targetUrl == null) {
@@ -108,6 +109,7 @@ public class MymallController {
 	public String productList(@PathVariable int id,Model model, Pager pager, @SessionAttribute User user) {
 		int shoppingmallId=id;
 		List<Product> list=productSerice.list(shoppingmallId,pager,user.getId());
+		System.out.println("controller"+list.get(1).getShopName());
 		model.addAttribute("list", list);
 		return path+"product";
 	}
@@ -120,8 +122,8 @@ public class MymallController {
 	}
 	
 	@RequestMapping("/mypage")
-	public String mypage() {
-		
+	public String mypage(@SessionAttribute User user) {
+		System.out.println("mypage"+user.getName());
 		return path+"mypage";
 	}
 	

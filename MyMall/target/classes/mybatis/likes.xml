@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="likes">
 	<sql id="delete_type">
-		<if test="userId !=null and productId_id !=null">
+		<if test="userId != null and productId != null">
 			user_id=#{userId} and product_id=#{productId}
 		</if>
 		<if test="shoppingmallId !=null">

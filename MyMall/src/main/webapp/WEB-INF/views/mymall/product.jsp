@@ -18,16 +18,17 @@
 }
 
 body {
-	margin: 0;
+	
 	min-width: 992px;
-	font-family: "Helvetica";
+	
+	margin-top: 75px;
 }
 
 h1{
 	width:200px;
 	float:left;
 	text-align:center;
-	padding-top :10px;
+	
 }
 #menu >li{
 	display: inline-block;
@@ -35,48 +36,48 @@ h1{
 }
 #menu{
 	text-align:right ;
-	padding-top:15px;	
+	padding-top:8px;	
 	padding-right:10px;
 
 }
 
-hr{
-	clear:both;
-	
-}
+
 .products {
 	margin-left: auto;
 	margin-right: auto;
 	padding: 0;
-	width: 740px;
+	width: 1300px;
 	text-align: center;
-	
+	margin-top: 20px;
 }
 
 .item {
 	text-decoration: none;
-	height: 350px;
+	height: 450px;
 	color: black;
 	float: left;
-	font-size: 11px;
+	font-size: 15px;
 	border: 1px solid #BDBDBD;
-	margin-right: 15px;
+	margin-right: 10px;
+	margin-left:10px;
 	margin-bottom: 15px;
 }
 
 .imagebox img {
-	width: 225px;
-	height: 225px;
+	width: 300px;
+	height: 320px;
 	margin-bottom: 15px;
 	
 }
 
-div .name {
-	width: 225px;
-}
+
 
 h1>a {
 	text-decoration-line: none;
+	color: gray;
+}
+
+h1>a:hover{
 	color: black;
 }
 #page{
@@ -87,6 +88,7 @@ h1>a {
 	position:relative;
 }
 .item_content >.name{
+	width:300px;
 	padding-left:5px;
 	padding-right:5px;
 }
@@ -116,15 +118,70 @@ h1>a {
 	width:100%;
 	height: 600px;
 	position: relative;
-	
+	clear:both;
 
 }
 .banner >.inner{
-	height:30px;
+	width:100%;
 
 	 position: absolute;
-	 top:40%;
-	 left:40%;
+	 top:30%;
+	 
+}
+.banner >.inner div{
+	clear:both;
+	text-align: center;
+	width:100%;
+	height: 200px;
+
+}
+.banner >.inner div h1{
+	text-align: center;
+	color:white;
+	width:100%;
+	font-size: 90px;
+}
+.banner >.inner div >div{
+	font-size: 25px;
+}
+.banner img{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	object-fit:cover;
+}
+.banner .background{
+	width: 100%;
+	height: 100%;
+	background: gray;
+	position: absolute;
+	opacity:0.5;
+}
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  
+  height: 75px;
+  padding: 1rem;
+  color: gray;
+  font-weight: bold;
+ 
+  background:rgba(225,225,225,0.5); 
+}
+#menu li a button{
+	background: none;
+	width: 100px;
+	margin-left:10px; 
+	border:2px solid gray;
+	color:gray;
+	font-weight: bold;
+}
+#menu li a button:hover{
+	color: white;
+    background: black;
+    border:2px solid black;
 }
 </style>
 <script type="text/javascript">
@@ -187,14 +244,23 @@ $(document).ready(function() {
 </head>
 <body>
 	<div>
-		<div>
+		
+		<div class="banner">
+			<img alt="" src="/resources/image/background_product.jpeg">
+			<div class="background"></div>
+			<div class="inner">
+				<div>
+					<h1>Best Products</h1> 
+					<div><b>${list.get(1).getShopName()}</b>의 베스트 아이템을 확인해 보세요!</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="header">
 			<h1>
 				<a href="../main">MYMALL</a>
 			</h1>
 			<ul id="menu">
-				
-				
-				
 				<c:if test="${sessionScope.user==null}">
 					<li><a href="../login"><button>로그인</button></a></li>
 				</c:if>
@@ -203,12 +269,6 @@ $(document).ready(function() {
 				</c:if>
 			</ul>
 		</div>
-		<hr>
-		<div class="banner">
-					<div class="inner">
-						<div> 베스트상품 </div>
-					</div>
-				</div>
 		<div class="products">
 			<div >
 				<c:if test="${list.size()<1}">

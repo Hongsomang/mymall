@@ -17,6 +17,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+body{
+	margin-top: 75px;
+}
 .bi-star {
 	font-size: 30px;
 	line-height: 30px;
@@ -33,14 +36,15 @@ ul {
 	list-style: none;
 }
 
-.box>li {
-	display: inline-block;
-}
 
-.box button {
+
+.card button {
 	border: 0;
 	outline: 0;
 	all: unset;
+	position: absolute;
+	bottom: 5px;
+    right:10px;
 }
 
 .container {
@@ -51,7 +55,7 @@ h1 {
 	width: 200px;
 	float: left;
 	text-align: center;
-	padding-top: 10px;
+	
 }
 
 #menu>li {
@@ -60,12 +64,21 @@ h1 {
 
 #menu {
 	text-align: right;
-	padding-top: 15px;
+	padding-top:8px;
 	padding-right: 10px;
 }
-
-hr {
-	clear: both;
+#menu li a button{
+	background: none;
+	width: 100px;
+	margin-left:10px; 
+	border:2px solid gray;
+	color:gray;
+	font-weight: bold;
+}
+#menu li a button:hover{
+	color: white;
+    background: black;
+    border:2px solid black;
 }
 
 .search_box {
@@ -88,7 +101,7 @@ hr {
 }
 .card{
 	width: 400px;
-	
+	position: relative;
 }
 
 .mall> li{
@@ -96,21 +109,76 @@ hr {
 	
 }
 
-.mall{
+.content{
+	
 	
 }
 .main{
 	margin-left: auto;
 	margin-right: auto;
+	margin-top:15px;
 	padding: 0;
 	width: 1300px;
 }
-</style>
+.search_box >img{
+	width: 100%;
+	height: 100%;
+	object-fit:cover;
+}
 
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  
+  height: 75px;
+  padding: 1rem;
+  color: gray;
+  font-weight: bold;
+ 
+  background:rgba(225,225,225,0.5); 
+}
+.inner input{
+	
+    border-top: none;
+    border-left:none;
+    border-right: none;
+    border-bottom: 3px white solid;
+    background-color:transparent; 
+    text-align: center;
+    color: aliceblue;
+   	width: 200px;
+   	 
+}
+.inner input:focus{
+    outline:none ;   /* 아웃라인 지우기 */
+    
+}
+.inner input::placeholder {
+color:rgb(255, 255, 255);
+font-size: 15px;
+text-align: center;
+}
+.innner input::-webkit-input-placeholder {color:rgb(255, 255, 255);}
+
+.inner button{
+	background: none;
+	width: 50px;
+	margin-left:10px; 
+	border:2px solid white;
+	color:white;
+	font-weight: bold;
+}
+.inner button:hover{
+	color: black;
+    background: white;
+}
+</style>
 <script>
 	$(document).ready(function() {
 		//var i = 0;
-		$(".container li  button").on('click', function(e) {
+		$(".card  button").on('click', function(e) {
 			const button=$(e.target);
 			//console.log(button.closest("div").data("id"));
 			const div=button.closest("div");
@@ -160,22 +228,12 @@ hr {
 
 <body>
 	<div>
-		<div id="header">
-			<h1>MYMALL</h1>
-			<ul id="menu">
-				<li><a href="main/allProduct"><button>전체상품</button></a></li>
-				<c:if test="${sessionScope.user==null}">
-					<li><a href="login"><button>로그인</button></a></li>
-				</c:if>
-				<c:if test="${sessionScope.user !=null }">
-					<li><a href="mypage"><button>마이페이지</button></a></li>
-				</c:if>
-			</ul>
-		</div>
-		<hr>
+		
+		
 		<div id="content">
 			<form>
 				<div class="search_box">
+					<img alt="" src="/resources/image/background_main.jpeg">
 					<div class="inner">
 						<input type="text" name="search" value="${pager.search}"
 							placeholder="쇼핑몰 이름을 입력하세요.">
@@ -206,6 +264,9 @@ hr {
 								</c:if>
 
 							</a>
+							<button type="button" id="${item.id}">
+								<span class="bi-star${item.userId !=null ? '-fill':'' }"></span>
+							</button>
 							<div class="card-body">
 								<h5 class="card-title">${item.name }</h5>
 								<p class="card-text">${item.content }</p>
@@ -215,6 +276,19 @@ hr {
 						</div>
 					</li>
 				</c:forEach>
+			</ul>
+		</div>
+		<div class="header">
+			
+			<h1>MYMALL</h1>
+			<ul id="menu">
+				<li><a href="main/allProduct"><button>전체상품</button></a></li>
+				<c:if test="${sessionScope.user==null}">
+					<li><a href="login"><button>로그인</button></a></li>
+				</c:if>
+				<c:if test="${sessionScope.user !=null }">
+					<li><a href="mypage"><button>마이페이지</button></a></li>
+				</c:if>
 			</ul>
 		</div>
 	</div>

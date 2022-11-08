@@ -7,7 +7,7 @@ public class Pager {
 
 	private String search;
 	private int page=1;
-	private int perPager=33;
+	private int perPager=32;
 	private float total;
 	final int perGroup=5;
 

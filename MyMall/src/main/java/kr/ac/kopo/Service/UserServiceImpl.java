@@ -25,6 +25,7 @@ public class UserServiceImpl implements UserService {
 		User item=dao.login(user);
 
 		if(item!=null) {
+			user.setName(item.getName());
 			return true;
 		}else {
 			return false;

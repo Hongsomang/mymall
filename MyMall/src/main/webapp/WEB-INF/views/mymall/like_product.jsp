@@ -40,33 +40,32 @@ h1{
 
 }
 
-hr{
-	clear:both;
-	
-}
+
 .products {
+	margin-top:20px;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 0;
-	width: 740px;
+	width: 1300px;
 	text-align: center;
 	
 }
 
 .item {
 	text-decoration: none;
-	height: 350px;
+	height: 450px;
 	color: black;
 	float: left;
-	font-size: 11px;
+	font-size: 15px;
 	border: 1px solid #BDBDBD;
-	margin-right: 15px;
+	margin-right: 10px;
+	margin-left:10px;
 	margin-bottom: 15px;
 }
 
 .imagebox img {
-	width: 225px;
-	height: 225px;
+	width: 300px;
+	height: 320px;
 	margin-bottom: 15px;
 	
 }
@@ -87,6 +86,7 @@ h1>a {
 	position:relative;
 }
 .item_content >.name{
+	width:300px;
 	padding-left:5px;
 	padding-right:5px;
 }
@@ -116,7 +116,7 @@ h1>a {
 	width:100%;
 	height: 600px;
 	position: relative;
-	
+	clear: both;
 
 }
 .banner >.inner{
@@ -125,6 +125,18 @@ h1>a {
 	 position: absolute;
 	 top:40%;
 	 left:40%;
+}
+.banner img{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	object-fit:cover;
+}
+.banner >.inner div h1{
+	text-align: center;
+	color:white;
+	width:100%;
+	font-size: 90px;
 }
 </style>
 <script type="text/javascript">
@@ -204,10 +216,14 @@ $(document).ready(function() {
 				</c:if>
 			</ul>
 		</div>
-		<hr>
+		
 		<div class="banner">
+			<img alt="" src="/resources/image/background_likes.JPG">
+			
 			<div class="inner">
-				<div> 베스트상품 </div>
+				<div>
+				 <h1>Likes</h1>
+				 </div>
 			</div>
 		</div>
 		<div class="products">

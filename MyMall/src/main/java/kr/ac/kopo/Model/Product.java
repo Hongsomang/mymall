@@ -9,7 +9,14 @@ public class Product {
 	private String url;
 	private int shoppingmallId;
 	private String userId;
-
+	private String shopName;
+	
+	public String getShopName() {
+		return shopName;
+	}
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
+	}
 	public int getId() {
 		return id;
 	}

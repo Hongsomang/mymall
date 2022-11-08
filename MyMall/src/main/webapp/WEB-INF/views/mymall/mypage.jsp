@@ -9,12 +9,12 @@
 </head>
 <body>
 	<c:if test="${sessionScope.user != null}">
-		<p>  세션 있음 </p>
+		
 		 
 		<p> ${sessionScope.user.name} 님의 마이페이지입니다.</p>
 	</c:if>
 	<c:if test="${sessionScope.user == null}">
-		<p>  세션 없</p>
+		<p>  세션 없음 </p>
 	</c:if>
 	
 	<a href="logout"> 로그아웃 </a>
