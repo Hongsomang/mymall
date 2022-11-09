@@ -18,16 +18,16 @@
 }
 
 body {
-	margin: 0;
+	margin-top: 75px;
 	min-width: 992px;
-	font-family: "Helvetica";
+	
 }
 
 h1{
 	width:200px;
 	float:left;
 	text-align:center;
-	padding-top :10px;
+	
 }
 #menu >li{
 	display: inline-block;
@@ -35,7 +35,7 @@ h1{
 }
 #menu{
 	text-align:right ;
-	padding-top:15px;	
+	padding-top:8px;	
 	padding-right:10px;
 
 }
@@ -76,6 +76,9 @@ div .name {
 
 h1>a {
 	text-decoration-line: none;
+	color: gray;
+}
+h1>a:hover{
 	color: black;
 }
 #page{
@@ -120,11 +123,11 @@ h1>a {
 
 }
 .banner >.inner{
-	height:30px;
-
-	 position: absolute;
-	 top:40%;
-	 left:40%;
+	height:300px;
+	position: absolute;
+	width:100%;
+	top:40%;
+	
 }
 .banner img{
 	width: 100%;
@@ -137,6 +140,32 @@ h1>a {
 	color:white;
 	width:100%;
 	font-size: 90px;
+}
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  
+  height: 75px;
+  padding: 1rem;
+  color: gray;
+  font-weight: bold;
+ 
+  background:rgba(225,225,225,0.5); 
+}
+#menu li a button{
+	background: none;
+	width: 100px;
+	margin-left:10px; 
+	border:2px solid gray;
+	color:gray;
+	font-weight: bold;
+}
+#menu li a button:hover{
+	color: white;
+    background: black;
+    border:2px solid black;
 }
 </style>
 <script type="text/javascript">
@@ -198,25 +227,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	<div>
-		<div>
-			<h1>
-				<a href="../main">MYMALL</a>
-			</h1>
-			<ul id="menu">
-				
-				<li><a href="allProduct"><button >전체 상품</button></a></li>
-			
-				
-				<c:if test="${sessionScope.user==null}">
-					<li><a href="../login"><button>로그인</button></a></li>
-				</c:if>
-				<c:if test="${sessionScope.user !=null }">
-					<li><a href="../mypage"><button>마이페이지 </button></a></li>
-				</c:if>
-			</ul>
-		</div>
-		
+	<div>	
 		<div class="banner">
 			<img alt="" src="/resources/image/background_likes.JPG">
 			
@@ -225,6 +236,20 @@ $(document).ready(function() {
 				 <h1>Likes</h1>
 				 </div>
 			</div>
+		</div>
+		<div class="header">
+			<h1>
+				<a href="../main">MYMALL</a>
+			</h1>
+			<ul id="menu">
+				<li><a href="allProduct"><button >전체 상품</button></a></li>
+				<c:if test="${sessionScope.user==null}">
+					<li><a href="../login"><button>로그인</button></a></li>
+				</c:if>
+				<c:if test="${sessionScope.user !=null }">
+					<li><a href="../mypage"><button>마이페이지 </button></a></li>
+				</c:if>
+			</ul>
 		</div>
 		<div class="products">
 			<div >

@@ -54,18 +54,19 @@ public class ProductServiceImpl implements ProductService {
 
 				
 				Document doc=Jsoup.connect(path+"/product/list.html?cate_no="+bestCode+"&page="+j).get();
-				Elements Elprice;
+				Elements El;
 				Elements contents;
 				System.out.println(item.getName());
 				if(item.getName().equals("메리어라운드")) {
 					 contents =doc.select("ul[class=prdList grid3] ").select("div[class=prdImg] > a");
-					 Elprice =doc.select("ul[class=prdList grid3]  >li").select("div > ul ");
+					 El =doc.select("ul[class=prdList grid3]  >li").select("div > ul ");
 				}else {
 					contents =doc.select("ul[class=prdList grid4] ").select("div[class=prdImg] > a");
-					Elprice =doc.select("ul[class=prdList grid4]  >li").select("div > ul ");
+					El =doc.select("ul[class=prdList grid4]  >li").select("div");
 				}
 				
-				Elements Elprice_li_1=Elprice.select("li[rel=판매가]");
+				Elements Elprice_li_1=El.select("ul >li[rel=판매가]");
+				Elements Elname=El.select("p[class=name] >a ");
 				
 
 				int index=0;
@@ -78,7 +79,8 @@ public class ProductServiceImpl implements ProductService {
 				
 				for(int i = 0; i < contents.size(); i++) {
 
-					name=contents.select("img").get(i).attr("alt");
+					name=Elname.select("span:nth-child(2)").get(i).text();
+					System.out.println("name:"+name);
 					url=contents.get(i).attr("href").toString();
 					img=contents.select("img").get(i).attr("src");
 

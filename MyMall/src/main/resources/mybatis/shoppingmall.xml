@@ -21,7 +21,8 @@
 	<select id="list" resultType="Shoppingmall">
 		select s.* ,
 		(select user_id from bookmark b where b.user_id=#{userId} and b.shoppingmall_id= s.id) as user_id 
-		from mymall.shoppingmall s <include refid="search"></include>
+		from mymall.shoppingmall s <include refid="search"></include> 
+		order by user_id desc
 	</select>
 	<insert id="add">
 		insert into mymall.shoppingmall (name,content,url,best_code ,image_name,admin_id)
