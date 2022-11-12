@@ -11,15 +11,18 @@
 	height:650px;
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: 200px;
+	padding-top: 150px;
 	text-align: center;
 	
 }
 
 .content input {
-	width: 392px;
+	width: 384px;
 	height: 48px;
 	margin-bottom: 10px;
+	padding-left:10px;
+	font-size: 15px;
+	
 }
 
 .content h1 {
@@ -27,11 +30,22 @@
 }
 .content .inner{
 	width: 400px;
-	border-top: 2px solid black;
+	border-top: 5px solid black;
 	padding-top: 30px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
+	
+}
+.inner form div button{
+	width: 400px;
+	height: 56px;
+	margin-top: 20px;
+	margin-bottom:10px;
+	background: black;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
 }
 </style>
 </head>
