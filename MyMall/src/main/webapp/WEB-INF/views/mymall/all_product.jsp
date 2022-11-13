@@ -54,7 +54,7 @@ h1{
 
 .item {
 	text-decoration: none;
-	height: 450px;
+	height: 500px;
 	color: black;
 	float: left;
 	font-size: 15px;
@@ -66,7 +66,7 @@ h1{
 
 .imagebox img {
 	width: 300px;
-	height: 320px;
+	height: 370px;
 	margin-bottom: 15px;
 	
 }
