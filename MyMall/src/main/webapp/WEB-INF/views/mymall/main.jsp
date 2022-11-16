@@ -124,6 +124,7 @@ h1 {
 	width: 100%;
 	height: 100%;
 	object-fit:cover;
+	position: absolute;
 }
 
 .header{
@@ -173,6 +174,13 @@ text-align: center;
 .inner button:hover{
 	color: black;
     background: white;
+}
+.search_box .background{
+	width: 100%;
+	height: 100%;
+	background: black;
+	position: absolute;
+	opacity:0.3;
 }
 </style>
 <script>
@@ -233,7 +241,8 @@ text-align: center;
 		<div id="content">
 			<form>
 				<div class="search_box">
-					<img alt="" src="/resources/image/background_main.jpeg">
+					<img alt="" src="/resources/image/background_main2.jpeg">
+					<div class="background"></div>
 					<div class="inner">
 						<input type="text" name="search" value="${pager.search}"
 							placeholder="쇼핑몰 이름을 입력하세요.">

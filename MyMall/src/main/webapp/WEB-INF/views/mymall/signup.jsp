@@ -120,6 +120,85 @@ $(document).ready(function(){
 });
 
 </script>
+<style type="text/css">
+.content{
+	width: 500px;
+	height: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 16px;
+	margin-top: 150px;
+	
+}
+.content h1{
+	font-size: 44px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+form{
+	border-top: 5px solid black;
+	padding-top: 30px;
+}
+form div{
+	height:40px;
+	margin-bottom: 10px;
+	
+}
+form >div >label{
+	height: 40px;
+	
+	
+}
+form div input{
+	height: 30px;
+	padding-left:10px;
+	
+}
+form >div:nth-child(n+2):nth-child(-n+4) >input{
+	
+	width: 382px;
+	float: right;
+}
+form div:nth-child(1) div{
+	
+	float: right;
+}
+form div:nth-child(1) div input{
+	width: 298px;
+	
+	
+}
+form div:nth-child(1) div button{
+	height: 36px;
+	width: 80px;
+	background: black;
+	color: white;
+	
+}
+
+form div:nth-child(5) div select{
+	height: 36px;
+	width: 80px;
+	
+}
+form div:nth-child(5) div input{
+	width: 130px;
+}
+form div:nth-child(5) div{
+	float: right;
+}
+form div:nth-child(6){
+	text-align: right;
+	
+}
+form div:nth-child(6) button{
+	width: 401px;
+	height: 36px;
+	background: black;
+	color: white;
+	font-weight: bold;
+}
+</style>
 </head>
 <body>
 	<div>
@@ -127,12 +206,15 @@ $(document).ready(function(){
 			<h1>MYMALL</h1>
 		</div>
 		<hr>
-		<div>
+		<div class="content" >
+			<h1>회원 가입</h1>
 			<form name="signup_form" method="post">
 				<div>
 					<label>아이디 </label>
-					<input type="text" name="id" />
-					<button type="button" onclick="checkId()">중복 확인</button>
+					<div>
+						<input type="text" name="id" />
+						<button type="button" onclick="checkId()">중복 확인</button>
+					</div>
 				</div>
 				<div>
 					<label>비밀 번호</label>
@@ -148,19 +230,21 @@ $(document).ready(function(){
 				</div>
 				<div>
 					<label>이메일 </label>
-					<input type="text" id="email_id" >
-					@
-					<input type="text" id="email_domain"/>
-					<select id="select_email">
-						<option value="1" selected>-직접입력-</option>
-						<option value="naver.com">naver.com</option>
-						<option value="daum.net">daum.net</option>
-						<option value="gmail.com">gmail.com</option>
-					</select>
-					<input type="hidden" id="email" name="email" >
+					<div>
+						<input type="text" id="email_id" >
+						@
+						<input type="text" id="email_domain"/>
+						<select id="select_email">
+							<option value="1" selected>-직접입력-</option>
+							<option value="naver.com">naver.com</option>
+							<option value="daum.net">daum.net</option>
+							<option value="gmail.com">gmail.com</option>
+						</select>
+						<input type="hidden" id="email" name="email" >
+					</div>
 				</div>
 				<div>
-					<button  type="button" onclick="signup()">회원가입 </button>
+					<button  type="button" onclick="signup()">회원 가입 </button>
 				</div>
 			</form>
 		</div>
