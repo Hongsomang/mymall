@@ -182,6 +182,26 @@ text-align: center;
 	position: absolute;
 	opacity:0.3;
 }
+.footer a{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	
+	
+}
+.footer a img{
+	width: 50px;
+	height: 50px;
+	transition: 1s;
+	margin-bottom: 10px;
+	margin-right: 10px;
+   
+}
+.footer a img:hover{
+	animation: ease-out;
+      transition: 1s;
+      transform: rotate(360deg);
+}
 </style>
 <script>
 	$(document).ready(function() {
@@ -301,5 +321,8 @@ text-align: center;
 			</ul>
 		</div>
 	</div>
+	<div class="footer">
+			<a href="/"><img alt="" src="/resources/image/logo.png"></a>
+		</div>
 </body>
 </html>

@@ -31,10 +31,7 @@ hr{
 	margin-right: 20px;
 	padding-top: 25px;
 }
-.header a button{
-	width: 60px;
-	height: 30px;
-}
+
 .header{
 	height: 70px;
 	
@@ -43,13 +40,55 @@ div .content{
 	margin-left: 20px;
 	margin-right: 40px;
 }
+.footer a{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	
+	
+}
+.footer a img{
+	width: 50px;
+	height: 50px;
+	transition: 1s;
+	margin-bottom: 10px;
+	margin-right: 10px;
+   
+}
+.footer a img:hover{
+	animation: ease-out;
+      transition: 1s;
+      transform: rotate(360deg);
+}
+.add{
+	width:80px;
+	height:40px;
+	position: relative;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size:14px;
+    font-weight:600;
+    transition: 0.25s;
+    border: 3px solid #a3a1a1;
+    color: #6e6e6e;
+}
+.add:hover{
+	letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+    background-color: #a3a1a1;
+    color: #e3dede;
+}
+.add:active{
+	  transform: scale(1.5);
+}
 </style>
 </head>
 <body>
 	<div>
 		<div class="header">
 			<h1>관리자 페이지 </h1>
-			<a href="add"><button type="button">추가 </button></a>
+			<a href="add"><button class="add" type="button">추가 </button></a>
 		</div>
 		<hr>
 		<div class="content">
@@ -85,8 +124,8 @@ div .content{
 				</tbody>
 			</table>
 		</div>
-		<div>
-			<a href="/"><button>홈으로 </button></a>
+		<div class="footer">
+			<a href="/"><img alt="" src="/resources/image/logo.png"></a>
 		</div>
 	</div>
 	
