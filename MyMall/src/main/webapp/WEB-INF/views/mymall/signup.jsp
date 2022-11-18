@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
 let isCheck;
@@ -198,14 +205,63 @@ form div:nth-child(6) button{
 	color: white;
 	font-weight: bold;
 }
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 75px;
+  padding: 1rem;
+  color: gray;
+  font-weight: bold;
+ 
+  background:rgba(225,225,225,0.5); 
+}
+.header> h1 {
+	width: 200px;
+	float: left;
+	text-align: center;
+	
+}
+
+#menu>li {
+	display: inline-block;
+}
+
+#menu {
+	text-align: right;
+	padding-top:8px;
+	padding-right: 10px;
+}
+#menu li a button{
+	background: none;
+	width: 100px;
+	margin-left:10px; 
+	border:2px solid gray;
+	color:gray;
+	font-weight: bold;
+}
+#menu li a button:hover{
+	color: white;
+    background: black;
+    border:2px solid black;
+}
 </style>
 </head>
 <body>
 	<div>
-		<div>
+		<div class="header">
+			
 			<h1>MYMALL</h1>
+			<ul id="menu">
+				<c:if test="${sessionScope.user==null}">
+					<li><a href="login"><button>로그인</button></a></li>
+				</c:if>
+				<c:if test="${sessionScope.user !=null }">
+					<li><a href="mypage"><button>마이페이지</button></a></li>
+				</c:if>
+			</ul>
 		</div>
-		<hr>
 		<div class="content" >
 			<h1>회원 가입</h1>
 			<form name="signup_form" method="post">
