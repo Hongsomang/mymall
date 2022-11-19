@@ -106,6 +106,8 @@ body{
 			
 			<h1>MYMALL</h1>
 			<ul id="menu">
+				<li><a href="allProduct"><button >전체 상품</button></a></li>
+				<li><a href="likesProduct"><button >좋아요 상품 </button></a></li>
 				<c:if test="${sessionScope.user==null}">
 					<li><a href="login"><button>로그인</button></a></li>
 				</c:if>

@@ -157,7 +157,7 @@ form >div >label{
 	
 }
 form div input{
-	height: 30px;
+	height: 36px;
 	padding-left:10px;
 	
 }
@@ -185,7 +185,7 @@ form div:nth-child(1) div button{
 
 form div:nth-child(5) div select{
 	height: 36px;
-	width: 80px;
+	width: 96px;
 	
 }
 form div:nth-child(5) div input{
@@ -199,7 +199,7 @@ form div:nth-child(6){
 	
 }
 form div:nth-child(6) button{
-	width: 401px;
+	width: 384px;
 	height: 36px;
 	background: black;
 	color: white;
@@ -254,6 +254,8 @@ form div:nth-child(6) button{
 			
 			<h1>MYMALL</h1>
 			<ul id="menu">
+				<li><a href="allProduct"><button >전체 상품</button></a></li>
+				<li><a href="likesProduct"><button >좋아요 상품 </button></a></li>
 				<c:if test="${sessionScope.user==null}">
 					<li><a href="login"><button>로그인</button></a></li>
 				</c:if>

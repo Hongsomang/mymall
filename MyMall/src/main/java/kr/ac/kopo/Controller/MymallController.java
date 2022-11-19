@@ -114,7 +114,7 @@ public class MymallController {
 		return path+"product";
 	}
 
-	@RequestMapping("/main/allProduct")
+	@RequestMapping("/allProduct")
 	public String allProduct(Model model, Pager pager ,@SessionAttribute User user) {
 		List<Product> list =productSerice.allList(pager,user.getId());
 		model.addAttribute("list", list);
@@ -143,7 +143,7 @@ public class MymallController {
 			return "ok";
 		return "fail";
 	}
-	@RequestMapping("/main/likesProduct")
+	@RequestMapping("/likesProduct")
 	public String likesProduct(Model model, Pager pager ,@SessionAttribute User user) {
 		List<Product> list =productSerice.likeProduct(pager,user.getId());
 		model.addAttribute("list", list);
