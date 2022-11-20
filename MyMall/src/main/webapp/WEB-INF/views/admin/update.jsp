@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <style type="text/css">
 
 .content{
@@ -34,7 +37,7 @@
 .infoBox> div> input{
 	float: right;
 	height: 40px;
-	width: 574px;
+	width: 600px;
 	padding: 0 10px;
 }
 .fileBox {
@@ -77,6 +80,10 @@
 	background: black;
 	cursor: pointer;
 }
+.header{
+	height: 70px;
+	
+}
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -91,8 +98,8 @@ $(document).ready(function(){
 </head>
 <body>
 	<div>
-		<div>
-			<h1>관리자페이지 </h1>
+		<div class="header">
+			<h1>관리자 페이지 </h1>
 			
 		</div>
 		<hr>
