@@ -21,6 +21,7 @@
 }
 .infoBox{
 	height: 800px;
+	margin-top: 20px;
 }
 .infoBox div{
 	height: 46px;
@@ -49,7 +50,7 @@
    	display:inline-block;
     padding: 0 10px;
     vertical-align: middle;
-    width: 450px;
+    width: 486px;
     height: 40px;
 }
 .fileBox label[for="file"] {
@@ -83,6 +84,10 @@
 .header{
 	height: 70px;
 	
+}
+.header h1{
+	padding-top:17px;
+	margin-left:20px;
 }
 </style>
 <script type="text/javascript">

@@ -10,6 +10,10 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+}
 
 .content{
 	margin:auto;
@@ -21,6 +25,7 @@
 }
 .infoBox{
 	height: 800px;
+	margin-top: 20px;
 }
 .infoBox div{
 	height: 46px;
@@ -80,10 +85,15 @@
 	background: black;
 	cursor: pointer;
 }
-.header{
+
+.header h1{
 	height: 70px;
-	
+	padding-top:17px;
+	margin-left:20px;
+    
+ 
 }
+.header 
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
