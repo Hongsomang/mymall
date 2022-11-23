@@ -9,12 +9,6 @@
 			
 		</where>
 	</sql>
-	<sql id="shopName">
-		<if test="shoppingmallId !=null">
-		(select name from shoppingmall s 
-		where p.shoppingmall_id=s.id and p.shoppingmall_id=#{shoppingmallId}) as shopName,
-		</if>
-	</sql>
 	<select id="count" resultType="Integer">
 		select count(*) from mymall.product where shoppingmall_id=#{shoppingmallId}
 	</select>
@@ -26,11 +20,18 @@
 	</insert>
 	
 	<select id="list" resultType="Product">
-		select p.*,<include refid="shopName"></include>
+		select p.*,
+		<if test="shoppingmallId !=null">
+			s.name as shopName,
+		</if>
 		(select user_id from likes l where p.id=l.product_id and l.user_id=#{userId}) as user_id,
 		(select count(*) from likes l where p.id=l.product_id) count
 		from product p
-		<include refid="shoppingmallId"></include> ORDER BY count desc
+		<if test="shoppingmallId !=null">
+			join shoppingmall s on(p.shoppingmall_id=s.id)
+			where shoppingmall_id=#{shoppingmallId}
+		</if>
+		 ORDER BY count desc
 		LIMIT #{offset},#{perPager} 
 	</select>
 	

@@ -41,7 +41,7 @@ public class MymallController {
 	UserService userService;
 
 	@Autowired
-	ProductService productSerice;
+	ProductService productService;
 
 	//@Autowired
 	//BookmarkService bookmarkSerice;
@@ -109,7 +109,7 @@ public class MymallController {
 	@RequestMapping("/product/{id}")
 	public String productList(@PathVariable int id,Model model, Pager pager, @SessionAttribute User user) {
 		int shoppingmallId=id;
-		List<Product> list=productSerice.list(shoppingmallId,pager,user.getId());
+		List<Product> list=productService.list(shoppingmallId,pager,user.getId());
 		System.out.println("controller"+list.get(1).getShopName());
 		model.addAttribute("list", list);
 		return path+"product";
@@ -117,7 +117,7 @@ public class MymallController {
 
 	@RequestMapping("/allProduct")
 	public String allProduct(Model model, Pager pager ,@SessionAttribute User user) {
-		List<Product> list =productSerice.allList(pager,user.getId());
+		List<Product> list =productService.allList(pager,user.getId());
 		model.addAttribute("list", list);
 		return path+"all_product";
 	}
@@ -146,7 +146,7 @@ public class MymallController {
 	}
 	@RequestMapping("/likesProduct")
 	public String likesProduct(Model model, Pager pager ,@SessionAttribute User user) {
-		List<Product> list =productSerice.likeProduct(pager,user.getId());
+		List<Product> list =productService.likeProduct(pager,user.getId());
 		model.addAttribute("list", list);
 		return path+"like_product";
 	}

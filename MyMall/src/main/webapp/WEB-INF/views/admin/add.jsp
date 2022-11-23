@@ -118,7 +118,7 @@ $(document).ready(function(){
 				<h1>쇼핑몰 추가 </h1>
 			</div>
 			<div >
-				<form method="post" enctype="multipart/form-data">
+				<form  name="add_form" method="post" enctype="multipart/form-data">
 					<div class="infoBox">
 						<div>
 							<label>쇼핑몰이름: </label>
@@ -134,7 +134,7 @@ $(document).ready(function(){
 						</div>
 						<div>
 							<label>best code: </label>
-							<input type="text" name="bestCode" placeholder="베스트 상품 홈페이지 주소 중 cate_no 다음에 나오는 숫자를 입력하세요 ">
+							<input type="number" name="bestCode" placeholder="베스트 상품 홈페이지 주소 중 cate_no 다음에 나오는 숫자를 입력하세요 ">
 						</div>
 						<div >
 							<label>로고 이미지: </label>

@@ -9,8 +9,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import kr.ac.kopo.Dao.LikeDao;
 import kr.ac.kopo.Dao.ProductDao;
+import kr.ac.kopo.Model.Likes;
 import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Parsing;
 import kr.ac.kopo.Model.Product;
@@ -21,16 +24,21 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	ProductDao dao;
-
+	LikeDao likeDao;
 	@Override
 	public int count(int shoppingmallId) {
 		// TODO Auto-generated method stub
 		return dao.count(shoppingmallId);
 	}
-
+	
+	@Transactional
 	@Override
 	public void delete(int shoppingmallId) {
 		// TODO Auto-generated method stub
+		System.out.println("shoppingmallid"+shoppingmallId);
+		Likes item=new Likes();
+		item.setShoppingmallId(shoppingmallId);
+		likeDao.delete_product(item);
 		dao.delete(shoppingmallId);
 	}
 

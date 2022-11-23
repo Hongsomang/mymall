@@ -6,9 +6,14 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.Model.Likes;
+import kr.ac.kopo.Model.Product;
+
 @Repository
 public class LikeDaoImpl  implements LikeDao{
-
+	
+	
+	
 	@Autowired 
 	SqlSession sql;
 	
@@ -39,7 +44,17 @@ public class LikeDaoImpl  implements LikeDao{
 		map.put("productId", null);
 		map.put("userId", null);
 		map.put("shoppingmallId", shoppingmallId);
+		System.out.println("dfdf"+shoppingmallId);
 		sql.delete("likes.delete",map);
 	}
+
+	@Override
+	public void delete_product(Likes item) {
+		// TODO Auto-generated method stub
+		
+		sql.delete("likes.delete",item);
+	}
+
+	
 
 }

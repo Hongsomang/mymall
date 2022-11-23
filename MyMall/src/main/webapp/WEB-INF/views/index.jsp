@@ -27,7 +27,10 @@
 			}else{
 				clearInterval(replay);
 				$('.title').fadeOut();
-				$('.content').fadeIn(1000);
+				setTimeout(function () {
+					$('.content').fadeIn(2000);
+					}, 500);
+				
 			}
 		}
 	});
@@ -45,10 +48,11 @@
   	font-family: 'Allura', cursive;
 }
  .titleBox{
- 	height: 500px;
+ 	height: 400px;
  	
  }
  .titleBox h1{
+ 	margin-top:100px;
  	text-align: center;
  	font-size: 100px;
  }
