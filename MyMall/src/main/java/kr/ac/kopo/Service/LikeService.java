@@ -1,11 +1,15 @@
 package kr.ac.kopo.Service;
 
-
+import kr.ac.kopo.Model.Likes;
 
 public interface LikeService {
 
-	boolean add(int shoppingmallId, String userId);
+	
 
-	boolean delete(int productId, String userId);
+	
+
+	boolean add(Likes item);
+
+	boolean delete(Likes item);
 
 }

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import kr.ac.kopo.Model.Likes;
 import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Product;
 import kr.ac.kopo.Model.Shoppingmall;
@@ -131,7 +132,11 @@ public class MymallController {
 	@ResponseBody
 	@GetMapping("/like")
 	public String addLike(int id, @SessionAttribute User user) {
-		if(likeService.add(id,user.getId()))
+		Likes item =new Likes();
+		item.setProductId(id);
+		item.setUserId(user.getId());
+		
+		if(likeService.add(item))
 			return "ok";
 		return "fail";
 	}
@@ -140,8 +145,13 @@ public class MymallController {
 	@DeleteMapping("/like")
 	public String deleteLike(int id, @SessionAttribute User user) {
 		System.out.println("dfdf:"+id);
-		if(likeService.delete(id,user.getId()))
+		Likes item =new Likes();
+		item.setProductId(id);
+		item.setUserId(user.getId());
+		
+		if(likeService.delete(item))
 			return "ok";
+		
 		return "fail";
 	}
 	@RequestMapping("/likesProduct")

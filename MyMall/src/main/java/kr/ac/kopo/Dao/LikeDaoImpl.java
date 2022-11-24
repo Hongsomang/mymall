@@ -16,36 +16,25 @@ public class LikeDaoImpl  implements LikeDao{
 	
 	@Autowired 
 	SqlSession sql;
-	
+
 	@Override
-	public int add(int productId, String userId) {
-		HashMap<String, Object> map=new HashMap<>();
-		map.put("productId", productId);
-		map.put("userId", userId);
-		
-		
-		return sql.insert("likes.add",map);
+	public int add(Likes item) {
+		// TODO Auto-generated method stub
+		return sql.insert("likes.add",item);
 	}
 
 	@Override
-	public int delete(int productId, String userId) {
+	public int delete(Likes item) {
 		// TODO Auto-generated method stub
-		HashMap<String, Object> map=new HashMap<>();
-		map.put("productId", productId);
-		map.put("userId", userId);
-		map.put("shoppingmallId", null);
-		
-		return sql.delete("likes.delete",map);
+		return sql.delete("likes.delete",item);
 	}
 
 	@Override
 	public void delete_shoppingmall(int shoppingmallId) {
-		HashMap<String, Object> map=new HashMap<>();
-		map.put("productId", null);
-		map.put("userId", null);
-		map.put("shoppingmallId", shoppingmallId);
-		System.out.println("dfdf"+shoppingmallId);
-		sql.delete("likes.delete",map);
+		Likes item=new Likes();
+		item.setShoppingmallId(shoppingmallId);
+		System.out.println("dfdf"+item.getShoppingmallId());
+		sql.delete("likes.delete",item);
 	}
 
 	@Override
@@ -54,6 +43,9 @@ public class LikeDaoImpl  implements LikeDao{
 		
 		sql.delete("likes.delete",item);
 	}
+
+
+
 
 	
 

@@ -35,9 +35,9 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void delete(int shoppingmallId) {
 		// TODO Auto-generated method stub
-		System.out.println("shoppingmallid"+shoppingmallId);
 		Likes item=new Likes();
 		item.setShoppingmallId(shoppingmallId);
+		System.out.println("shoppingmallid"+item.getShoppingmallId());
 		likeDao.delete_product(item);
 		dao.delete(shoppingmallId);
 	}
