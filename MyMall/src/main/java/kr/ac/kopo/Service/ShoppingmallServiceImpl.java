@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.ac.kopo.Dao.BookmarkDao;
-import kr.ac.kopo.Dao.LikeDao;
+import kr.ac.kopo.Dao.LikesDao;
 import kr.ac.kopo.Dao.ProductDao;
 import kr.ac.kopo.Dao.ShoppingmallDao;
 import kr.ac.kopo.Model.Pager;
@@ -27,7 +27,7 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 	BookmarkDao bookmarkDao;
 	
 	@Autowired
-	LikeDao likeDao;
+	LikesDao likeDao;
 	
 	@Override
 	public List<Shoppingmall> list(Pager pager, String userId) {

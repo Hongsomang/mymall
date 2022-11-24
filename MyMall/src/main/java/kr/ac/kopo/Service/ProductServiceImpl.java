@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.ac.kopo.Dao.LikeDao;
+import kr.ac.kopo.Dao.LikesDao;
 import kr.ac.kopo.Dao.ProductDao;
 import kr.ac.kopo.Model.Likes;
 import kr.ac.kopo.Model.Pager;
@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	ProductDao dao;
-	LikeDao likeDao;
+	LikesDao likeDao;
 	@Override
 	public int count(int shoppingmallId) {
 		// TODO Auto-generated method stub
@@ -37,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		Likes item=new Likes();
 		item.setShoppingmallId(shoppingmallId);
-		System.out.println("shoppingmallid"+item.getShoppingmallId());
+		System.out.println("shoppingmallid "+item.getShoppingmallId()+" userId"+item.getUserId()+" prodcutId"+item.getProductId());
 		likeDao.delete_product(item);
 		dao.delete(shoppingmallId);
 	}
@@ -67,7 +67,7 @@ public class ProductServiceImpl implements ProductService {
 				System.out.println(item.getName());
 				if(item.getName().equals("메리어라운드")) {
 					 contents =doc.select("ul[class=prdList grid3] ").select("div[class=prdImg] > a");
-					 El =doc.select("ul[class=prdList grid3]  >li").select("div > ul ");
+					 El =doc.select("ul[class=prdList grid3]  >li").select("div");
 				}else {
 					contents =doc.select("ul[class=prdList grid4] ").select("div[class=prdImg] > a");
 					El =doc.select("ul[class=prdList grid4]  >li").select("div");
@@ -84,7 +84,7 @@ public class ProductServiceImpl implements ProductService {
 				String price="";
 				
 				System.out.println("1:"+Elprice_li_1);
-				
+				System.out.println("1:"+Elname);
 				for(int i = 0; i < contents.size(); i++) {
 
 					name=Elname.select("span:nth-child(2)").get(i).text();

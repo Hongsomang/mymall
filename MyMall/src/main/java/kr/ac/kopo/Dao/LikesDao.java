@@ -2,7 +2,7 @@ package kr.ac.kopo.Dao;
 
 import kr.ac.kopo.Model.Likes;
 
-public interface LikeDao {
+public interface LikesDao {
 
 	
 	

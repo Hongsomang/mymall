@@ -25,7 +25,7 @@ import kr.ac.kopo.Model.Product;
 import kr.ac.kopo.Model.Shoppingmall;
 import kr.ac.kopo.Model.User;
 import kr.ac.kopo.Service.BookmarkService;
-import kr.ac.kopo.Service.LikeService;
+import kr.ac.kopo.Service.LikesService;
 import kr.ac.kopo.Service.ProductService;
 import kr.ac.kopo.Service.ShoppingmallService;
 import kr.ac.kopo.Service.UserService;
@@ -43,12 +43,8 @@ public class MymallController {
 
 	@Autowired
 	ProductService productService;
-
-	//@Autowired
-	//BookmarkService bookmarkSerice;
 	
-	@Autowired 
-	LikeService likeService;
+	
 
 	@RequestMapping("/main")
 	public String main(Model model ,Pager pager ,@SessionAttribute User user) {
@@ -129,37 +125,14 @@ public class MymallController {
 		return path+"mypage";
 	}
 	
-	@ResponseBody
-	@GetMapping("/like")
-	public String addLike(int id, @SessionAttribute User user) {
-		Likes item =new Likes();
-		item.setProductId(id);
-		item.setUserId(user.getId());
-		
-		if(likeService.add(item))
-			return "ok";
-		return "fail";
-	}
 	
-	@ResponseBody
-	@DeleteMapping("/like")
-	public String deleteLike(int id, @SessionAttribute User user) {
-		System.out.println("dfdf:"+id);
-		Likes item =new Likes();
-		item.setProductId(id);
-		item.setUserId(user.getId());
-		
-		if(likeService.delete(item))
-			return "ok";
-		
-		return "fail";
-	}
 	@RequestMapping("/likesProduct")
 	public String likesProduct(Model model, Pager pager ,@SessionAttribute User user) {
 		List<Product> list =productService.likeProduct(pager,user.getId());
 		model.addAttribute("list", list);
 		return path+"like_product";
 	}
+	
 	@ResponseBody
 	@GetMapping("/checkId/{id}")
 	public String checkId(@PathVariable String id) {	
@@ -168,5 +141,7 @@ public class MymallController {
 		else
 			return "FAIL";
 	}
+
+
 
 }

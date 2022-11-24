@@ -197,7 +197,7 @@ $(document).ready(function() {
 		if(class_=="bi-heart"){
 			$("button[class="+id+"] span").removeClass("bi-heart");
 			$("button[class="+id+"] span").addClass("bi-heart-fill");
-			$.ajax("../like?id="+id,{
+			$.ajax("likes?id="+id,{
 				method:"GET",
 				success:result =>{
 					console.log("like",result);
@@ -218,7 +218,7 @@ $(document).ready(function() {
 			
 			
 		}else if(class_=="bi-heart-fill"){
-			$.ajax("../like?id="+id,{
+			$.ajax("likes?id="+id,{
 				method:"DELETE",
 				success:result =>{
 					console.log("like",result);
