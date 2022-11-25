@@ -24,21 +24,21 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	ProductDao dao;
-	LikesDao likeDao;
+	LikesDao likesDao;
 	@Override
 	public int count(int shoppingmallId) {
 		// TODO Auto-generated method stub
 		return dao.count(shoppingmallId);
 	}
 	
-	@Transactional
+	
 	@Override
+	@Transactional
 	public void delete(int shoppingmallId) {
 		// TODO Auto-generated method stub
-		Likes item=new Likes();
-		item.setShoppingmallId(shoppingmallId);
-		System.out.println("shoppingmallid "+item.getShoppingmallId()+" userId"+item.getUserId()+" prodcutId"+item.getProductId());
-		likeDao.delete_product(item);
+		//Likes item=new Likes();
+		//item.setShoppingmallId(shoppingmallId);
+		likesDao.delete_product(shoppingmallId);
 		dao.delete(shoppingmallId);
 	}
 

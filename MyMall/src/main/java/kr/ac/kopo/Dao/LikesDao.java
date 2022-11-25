@@ -10,7 +10,7 @@ public interface LikesDao {
 	void delete_shoppingmall(int shoppingmallId);
 
 	
-	void delete_product(Likes item);
+	void delete_product(int shoppingmallId);
 
 	int add(Likes item);
 

@@ -20,10 +20,10 @@
 		<if test="shoppingmallId > 0">
 			s
 		</if>
-		from likes s  <include refid="delete_type"></include>
+		from likes s <include refid="delete_type"></include>
 	</delete>
 	
-	<delete id="productUpdate_delete">
+	<delete id="product_delete">
 		delete s from likes s join  product p on s.product_id =p.id where p.shoppingmall_id=#{shoppingmallId};
 	</delete>
 </mapper>

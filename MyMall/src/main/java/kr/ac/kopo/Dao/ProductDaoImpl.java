@@ -25,6 +25,7 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public void delete(int shoppingmallId) {
+		System.out.println("product"+shoppingmallId);
 		sql.delete("product.delete", shoppingmallId);
 
 	}
