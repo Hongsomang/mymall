@@ -1,14 +1,13 @@
 package kr.ac.kopo.Dao;
 
+import kr.ac.kopo.Model.Bookmark;
+
 public interface BookmarkDao {
 
 
+	void add(Bookmark item);
 
-
-
-	void add(int shoppingmallId, String userId);
-
-	void delete(int shoppingmallId, String userId);
+	void delete(Bookmark item);
 
 
 

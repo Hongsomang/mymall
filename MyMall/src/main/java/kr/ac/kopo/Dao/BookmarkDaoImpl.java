@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.Model.Bookmark;
+
 @Repository
 public class BookmarkDaoImpl implements BookmarkDao {
 
@@ -17,24 +19,17 @@ public class BookmarkDaoImpl implements BookmarkDao {
 
 
 	@Override
-	public void add(int shoppingmallId, String userId) {
+	public void add(Bookmark item) {
 		// TODO Auto-generated method stub
-		HashMap<String, Object> map=new HashMap<>();
-		map.put("userId", userId);
-		map.put("shoppingmallId", shoppingmallId);
-		System.out.println("dao"+ userId+" "+shoppingmallId);
-		sql.insert("bookmark.add", map);
+		sql.insert("bookmark.add", item);
 	}
 
 
 
 	@Override
-	public void delete(int shoppingmallId, String userId) {
+	public void delete(Bookmark item) {
 		// TODO Auto-generated method stub
-		HashMap<String, Object> map=new HashMap<>();
-		map.put("userId", userId);
-		map.put("shoppingmallId", shoppingmallId);
-		sql.delete("bookmark.delete",map);
+		sql.delete("bookmark.delete", item);
 	}
 
 

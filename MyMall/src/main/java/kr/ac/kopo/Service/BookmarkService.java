@@ -1,13 +1,17 @@
 package kr.ac.kopo.Service;
 
+import kr.ac.kopo.Model.Bookmark;
+
 public interface BookmarkService {
 
 
+	
 
+	
 
-	void add(int shoppingmallId, String userId);
+	void add(Bookmark item);
 
-	void delete(int shoppingmallId, String userId);
+	void delete(Bookmark item);
 
 
 
