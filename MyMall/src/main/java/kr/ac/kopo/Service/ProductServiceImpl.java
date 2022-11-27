@@ -32,15 +32,6 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	
-	@Override
-	@Transactional
-	public void delete(int shoppingmallId) {
-		// TODO Auto-generated method stub
-		//Likes item=new Likes();
-		//item.setShoppingmallId(shoppingmallId);
-		likesDao.delete_product(shoppingmallId);
-		dao.delete(shoppingmallId);
-	}
 
 	@Override
 	public void add(Shoppingmall item) {
@@ -158,6 +149,16 @@ public class ProductServiceImpl implements ProductService {
 		int total=dao.likeTotal(pager);
 		pager.setTotal(total);
 		return dao.likeProduct(pager,userId);
+	}
+
+
+
+	@Override
+	@Transactional
+	public void delete(int shoppingmallId) {
+		// TODO Auto-generated method stub
+		dao.delete(shoppingmallId);
+		likesDao.delete_product(shoppingmallId);
 	}
 
 

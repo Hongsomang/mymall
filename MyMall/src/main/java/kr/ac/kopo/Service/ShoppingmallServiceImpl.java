@@ -10,6 +10,7 @@ import kr.ac.kopo.Dao.BookmarkDao;
 import kr.ac.kopo.Dao.LikesDao;
 import kr.ac.kopo.Dao.ProductDao;
 import kr.ac.kopo.Dao.ShoppingmallDao;
+import kr.ac.kopo.Model.Bookmark;
 import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
 import kr.ac.kopo.Model.User;
@@ -45,7 +46,10 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
-		bookmarkDao.delete(id, null);
+		Bookmark item=new Bookmark();
+		item.setShoppingmallId(id);
+		bookmarkDao.delete(item);
+		
 		likeDao.delete_shoppingmall(id);
 		productDao.delete(id);
 		dao.delete(id);

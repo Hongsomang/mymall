@@ -24,6 +24,6 @@
 	</delete>
 	
 	<delete id="product_delete">
-		delete s from likes s join  product p on s.product_id =p.id where p.shoppingmall_id=#{shoppingmallId};
+		delete s from likes s join  product p on s.product_id =p.id where p.shoppingmall_id=#{shoppingmallId}
 	</delete>
 </mapper>

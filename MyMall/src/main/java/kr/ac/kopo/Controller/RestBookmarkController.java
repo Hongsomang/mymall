@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import kr.ac.kopo.Model.Bookmark;
 import kr.ac.kopo.Model.User;
 import kr.ac.kopo.Service.BookmarkService;
 
@@ -21,9 +22,11 @@ public class RestBookmarkController {
 	@GetMapping
 	public String add(int id, @SessionAttribute User user) {
 		
-			
+		Bookmark item=new Bookmark();
+		item.setUserId(user.getId());
+		item.setShoppingmallId(id);
 		System.out.println(id+user.getId());
-	    service.add(id,user.getId());
+	    service.add(item);
 
 
 		return "ok";
@@ -32,8 +35,11 @@ public class RestBookmarkController {
 	}
 	@DeleteMapping
 	public String delete(int id, @SessionAttribute User user) {
+		Bookmark item=new Bookmark();
+		item.setUserId(user.getId());
+		item.setShoppingmallId(id);
 		System.out.println(id+user.getId());
-		service.delete(id,user.getId());
+		service.delete(item);
 		
 		return "ok";
 	}
