@@ -21,21 +21,21 @@
 	<select id="list" resultType="Shoppingmall">
 		select s.* ,
 		(select user_id from bookmark b where b.user_id=#{userId} and b.shoppingmall_id= s.id) as user_id 
-		from mymall.shoppingmall s <include refid="search"></include> 
+		from shoppingmall s <include refid="search"></include> 
 		order by user_id desc
 	</select>
 	<insert id="add">
-		insert into mymall.shoppingmall (name,content,url,best_code ,image_name,admin_id)
+		insert into shoppingmall (name,content,url,best_code ,image_name,admin_id)
 		 values (#{name},#{content},#{url},#{bestCode},#{imageName},#{adminId})
 	</insert>
 	<delete id="delete">
-		delete from mymall.shoppingmall where id=#{id} 
+		delete from shoppingmall where id=#{id} 
 	</delete>
 	<select id="item" resultType="Shoppingmall">
-		select * from mymall.shoppingmall where id=#{id}
+		select * from shoppingmall where id=#{id}
 	</select>
 	<update id="update">
-		update mymall.shoppingmall set name=#{name}, content=#{content}, url=#{url}, best_code=#{bestCode} <include refid="image"></include> where id=#{id}
+		update shoppingmall set name=#{name}, content=#{content}, url=#{url}, best_code=#{bestCode} <include refid="image"></include> where id=#{id}
 	</update>
 	<select id="admin_list" resultType="Shoppingmall">
 		select *from shoppingmall;

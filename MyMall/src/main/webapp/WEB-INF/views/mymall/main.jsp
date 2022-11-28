@@ -17,8 +17,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-body{
-	margin-top: 75px;
+html,body,.all {
+    width: 100%;
+    height: 100%;
+}
+.all{
+	position: relative;
+}
+.all> div{
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
 .bi-star {
 	font-size: 30px;
@@ -63,36 +72,25 @@ h1 {
 }
 
 #menu {
-	text-align: right;
-	padding-top:8px;
-	padding-right: 10px;
-}
+	float: right;
+	margin:0;
+	}
 #menu li a button{
 	background: none;
 	width: 100px;
 	margin-left:10px; 
-	border:2px solid gray;
-	color:gray;
+	border:0;
+	outline:0;
+	color:black;
 	font-weight: bold;
 }
 #menu li a button:hover{
-	color: white;
-    background: black;
-    border:2px solid black;
+
+  
+    border-bottom:4px solid black;
 }
 
-.search_box {
-	width: 100%;
-	height: 600px;
-	position: relative;
-}
 
-.search_box>.inner {
-	height: 30px;
-	position: absolute;
-	top: 45%;
-	left: 44%;
-}
 
 .card-img-top {
 	width: 250px;
@@ -103,31 +101,26 @@ h1 {
 	width: 400px;
 	position: relative;
 }
-
+.mall{
+	height: auto;
+}
 .mall> li{
 	display: inline-block;
 	
 }
 
-.content{
-	
-	
-}
+
 .main{
 	margin-left: auto;
 	margin-right: auto;
 	margin-top:15px;
 	padding: 0;
 	width: 1300px;
-}
-.search_box >img{
-	width: 100%;
-	height: 100%;
-	object-fit:cover;
-	position: absolute;
+	height: auto;
 }
 
-.header{
+
+.header_scroll{
   position: fixed;
   top: 0;
   left: 0;
@@ -135,53 +128,14 @@ h1 {
   
   height: 75px;
   padding: 1rem;
-  color: gray;
+  color:black;
   font-weight: bold;
  
   background:rgba(225,225,225,0.5); 
 }
-.inner input{
-	
-    border-top: none;
-    border-left:none;
-    border-right: none;
-    border-bottom: 3px white solid;
-    background-color:transparent; 
-    text-align: center;
-    color: aliceblue;
-   	width: 200px;
-   	 
-}
-.inner input:focus{
-    outline:none ;   /* 아웃라인 지우기 */
-    
-}
-.inner input::placeholder {
-color:rgb(255, 255, 255);
-font-size: 15px;
-text-align: center;
-}
-.innner input::-webkit-input-placeholder {color:rgb(255, 255, 255);}
 
-.inner button{
-	background: none;
-	width: 50px;
-	margin-left:10px; 
-	border:2px solid white;
-	color:white;
-	font-weight: bold;
-}
-.inner button:hover{
-	color: black;
-    background: white;
-}
-.search_box .background{
-	width: 100%;
-	height: 100%;
-	background: black;
-	position: absolute;
-	opacity:0.3;
-}
+
+
 .footer a{
 	position: fixed;
 	right: 0;
@@ -201,6 +155,73 @@ text-align: center;
 	animation: ease-out;
       transition: 1s;
       transform: rotate(360deg);
+}
+.search{
+	width: 25px;
+	height: 25px;
+}
+.close{
+	display:none;
+}
+.preserve{
+	magin-top:75px;
+}
+hr{
+	clear: both;
+}
+.header{
+	width:100%;
+	height: 75px;
+	border-bottom: 1px solid gray;
+	
+}
+.search_box{
+	
+	top:0px;
+ 	bottom:0px;
+ 	right:0px;
+ 	left:0px;
+	background: white;
+	opacity: 0.98;
+ z-index: 3000;
+}
+.bi-x-lg{
+	 font-size: 40px;
+	 margin-right: 10px;
+	 
+}
+.search_box> div:nth-child(1) {
+	text-align: right;
+}
+.fix{
+	overflow: hidden;
+}
+.search_btn{
+	
+	border:0;
+	outline:0;
+	all: unset;
+	
+}
+.search_btn img{
+	width: 50px;
+	height: 50px;
+	padding:1px 2px;
+	margin-bottom: 10px;
+}
+.search_box> div:nth-child(2){
+	width: 900px;
+	margin: auto;
+	text-align: center;
+	border-bottom: 5px solid black;
+}
+.search_box> div:nth-child(2) input{
+		width: 800px;
+		height: 50px;
+		border:none;
+		font-size: 36px;
+    	font-weight: 600;
+    	outline: none;
 }
 </style>
 <script>
@@ -248,6 +269,29 @@ text-align: center;
 			}
 
 		});
+		$(".search").on('click',function(){
+			console.log("on");
+			$(".search_box").removeClass("close");
+			//$("body").addClass("fix");
+		});
+		
+		$(".bi-x-lg").on('click',function(){
+			console.log("off");
+			$(".search_box").addClass("close");
+			//$("body").removeClass("fix");
+		});
+		
+		$(window).on("scroll",function(){
+			if($(window).scrollTop()>1){
+				$(".header_scroll").removeClass("close");
+				$(".header").addClass("close");
+				$("body").addClass("preserve");
+			}else{
+				$(".header_scroll").addClass("close");
+				$(".header").removeClass("close");
+				$("body").removeClass("preserve");
+			}
+		});
 	});
 </script>
 </body>
@@ -255,21 +299,22 @@ text-align: center;
 </head>
 
 <body>
-	<div>
-		
-		
-		<div id="content">
-			<form>
-				<div class="search_box">
-					<img alt="" src="/resources/image/background_main2.jpeg">
-					<div class="background"></div>
-					<div class="inner">
-						<input type="text" name="search" value="${pager.search}"
-							placeholder="쇼핑몰 이름을 입력하세요.">
-						<button>검색</button>
-					</div>
-				</div>
-			</form>
+	<div class="all">
+		<div>
+			<div class="header">
+			<h1>MYMALL</h1>
+			<ul id="menu">
+				<li><a href="allProduct"><button >전체 상품</button></a></li>
+				<li><a href="likesProduct"><button >좋아요 상품 </button></a></li>
+				<c:if test="${sessionScope.user==null}">
+					<li><a href="login"><button>로그인</button></a></li>
+				</c:if>
+				<c:if test="${sessionScope.user !=null }">
+					<li><a href="mypage"><button>마이페이지</button></a></li>
+				</c:if>
+				<li><img src="/resources/image/search_sm.png" class="search"></img></li>
+			</ul>
+			
 		</div>
 		<div class="main">
 			<ul class="mall" >
@@ -307,7 +352,7 @@ text-align: center;
 				</c:forEach>
 			</ul>
 		</div>
-		<div class="header">
+		<div class="close header_scroll">
 			
 			<h1>MYMALL</h1>
 			<ul id="menu">
@@ -319,11 +364,29 @@ text-align: center;
 				<c:if test="${sessionScope.user !=null }">
 					<li><a href="mypage"><button>마이페이지</button></a></li>
 				</c:if>
+				<li><img src="/resources/image/search_sm.png" class="search"></img></li>
 			</ul>
 		</div>
-	</div>
-	<div class="footer">
+		<div class="footer">
 			<a href="/"><img alt="" src="/resources/image/logo.png"></a>
 		</div>
+		
+		</div>
+		<div class="search_box ">
+			<div>
+				<i class="bi-x-lg"></i>
+			</div>
+			<div>
+				<form action="">
+				<div>
+					<input type="text" name="search" placeholder="Search">
+					<button class="search_btn"><img src="/resources/image/search_sm.png"></img> </button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
 </body>
 </html>

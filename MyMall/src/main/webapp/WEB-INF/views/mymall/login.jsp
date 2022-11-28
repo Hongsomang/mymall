@@ -12,6 +12,7 @@
 <!-- JavaScript Bundle with Popper -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <style type="text/css">
 body{
 	margin-top: 75px;
@@ -99,6 +100,23 @@ body{
     border:2px solid black;
 }
 </style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#login").on('click',function(){
+			const form=document.login_form;
+			if(form.id.value==""){
+				alert("아이디를 입력하세요.");
+				form.id.focus();
+				return;
+			}
+			if(form.pwd.value==""){
+				alert("비밀번호를 입력하세요.");
+				form.pwd.focus();
+				return;
+			}
+		});
+	});
+</script>
 </head>
 <body>
 	<div>
@@ -121,7 +139,7 @@ body{
 				<h1>로그인</h1>
 			</div>
 			<div class="inner">
-				<form method="post">
+				<form name="login_form" method="post">
 					<div>
 						<input type="text" name="id" placeholder="아이디를 입력하세요. ">
 
@@ -130,7 +148,7 @@ body{
 						<input type="password" name="pwd" placeholder="비밀번호를 입력하세요.">
 					</div>
 					<div>
-						<button>로그인</button>
+						<button id="login">로그인</button>
 					</div>
 				</form>
 			</div>
