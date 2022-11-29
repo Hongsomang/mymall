@@ -138,10 +138,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> allList(Pager pager, String userId) {
+	public List<Product> allList(Pager pager) {
 		int total=dao.allTotal(pager);
+		System.out.println("product_total"+total);
 		pager.setTotal(total);
-		return dao.allList(pager,userId);
+		return dao.allList(pager);
 	}
 
 	@Override
@@ -159,6 +160,18 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		dao.delete(shoppingmallId);
 		likesDao.delete_product(shoppingmallId);
+	}
+
+
+
+	@Override
+	public Product total(Pager pager) {
+		// TODO Auto-generated method stub
+		int total=dao.allTotal(pager);
+		
+		Product item=new Product();
+		item.setTotal(total);
+		return item;
 	}
 
 

@@ -40,4 +40,7 @@
 	<select id="admin_list" resultType="Shoppingmall">
 		select *from shoppingmall;
 	</select>
+	<select id="total" resultType="Shoppingmall">
+	     select count(*) as total from shoppingmall <include refid="search"></include>
+	</select>
 </mapper>

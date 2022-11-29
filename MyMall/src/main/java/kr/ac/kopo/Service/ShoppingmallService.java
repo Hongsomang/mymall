@@ -18,9 +18,11 @@ public interface ShoppingmallService {
 
 	void update(Shoppingmall item);
 
-	List<Shoppingmall> list(Pager pager, String userId);
+	List<Shoppingmall> list(Pager pager);
 
 	List<Shoppingmall> admin_list(Pager pager);
+
+	Shoppingmall total(Pager pager);
 
 
 

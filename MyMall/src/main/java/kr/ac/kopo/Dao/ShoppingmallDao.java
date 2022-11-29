@@ -8,7 +8,7 @@ import kr.ac.kopo.Model.User;
 
 public interface ShoppingmallDao {
 
-	List<Shoppingmall> list(Pager pager, String userId);
+	List<Shoppingmall> list(Pager pager);
 
 	void add(Shoppingmall item);
 
@@ -19,6 +19,8 @@ public interface ShoppingmallDao {
 	void update(Shoppingmall item);
 
 	List<Shoppingmall> admin_list(Pager pager);
+
+	Shoppingmall total(Pager pager);
 
 
 

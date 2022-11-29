@@ -10,7 +10,9 @@ public class Pager {
 	private int perPager=32;
 	private float total;
 	final int perGroup=5;
-
+	private int shoppingmallId;
+	private String userId;
+	private String type;
 
 
 	public String getSearch() {
@@ -78,6 +80,30 @@ public class Pager {
 		return (page-1)*perPager; //LIMIT함수가 정한 수의 다음 수 부터 나옴
 	}
 
+	public int getShoppingmallId() {
+		return shoppingmallId;
+	}
 
+	public void setShoppingmallId(int shoppingmallId) {
+		this.shoppingmallId = shoppingmallId;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	
 
 }

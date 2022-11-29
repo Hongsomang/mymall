@@ -18,15 +18,10 @@ public class ShoppingmallDaoImpl implements ShoppingmallDao {
 	SqlSession sql;
 
 	@Override
-	public List<Shoppingmall> list(Pager pager, String userId) {
-		HashMap<String, Object> map =new HashMap<>();
-		map.put("offset", pager.getOffset());
-		map.put("perPager", pager.getPerPager());
-		map.put("search", pager.getSearch());
-		map.put("userId", userId);
+	public List<Shoppingmall> list(Pager pager) {
 		
 		
-		return sql.selectList("shoppingmall.list",map);
+		return sql.selectList("shoppingmall.list",pager);
 	}
 	/*@Override
 	public List<Shoppingmall> list(Pager pager) {
@@ -64,6 +59,12 @@ public class ShoppingmallDaoImpl implements ShoppingmallDao {
 	public List<Shoppingmall> admin_list(Pager pager) {
 		// TODO Auto-generated method stub
 		return sql.selectList("shoppingmall.admin_list", pager);
+	}
+
+	@Override
+	public Shoppingmall total(Pager pager) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("shoppingmall.total", pager);
 	}
 
 

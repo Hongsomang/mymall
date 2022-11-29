@@ -48,9 +48,9 @@ public class MymallController {
 
 	@RequestMapping("/main")
 	public String main(Model model ,Pager pager ,@SessionAttribute User user) {
-		
+		pager.setUserId(user.getId());
 		List<Shoppingmall> list=new ArrayList<Shoppingmall>();
-		list=service.list(pager,user.getId());
+		list=service.list(pager);
 		model.addAttribute("list", list);
 		return path+"main";
 	}
@@ -114,7 +114,9 @@ public class MymallController {
 
 	@RequestMapping("/allProduct")
 	public String allProduct(Model model, Pager pager ,@SessionAttribute User user) {
-		List<Product> list =productService.allList(pager,user.getId());
+		pager.setUserId(user.getId());
+		
+		List<Product> list =productService.allList(pager);
 		model.addAttribute("list", list);
 		return path+"all_product";
 	}
@@ -131,6 +133,39 @@ public class MymallController {
 		List<Product> list =productService.likeProduct(pager,user.getId());
 		model.addAttribute("list", list);
 		return path+"like_product";
+	}
+	
+	@GetMapping("/search")
+	public String search(Model model, Pager pager,@SessionAttribute User user){
+		pager.setUserId(user.getId());
+		System.out.println("user: "+pager.getUserId());
+		System.out.println("search: "+pager.getSearch());
+		
+
+		Shoppingmall s_item= service.total(pager);
+		model.addAttribute("s_item",s_item);
+		
+		Product p_item =productService.total(pager);
+		model.addAttribute("p_item",p_item);
+		
+		System.out.println("type"+pager.getType());
+		
+		
+		
+		if("shoppingmall".equals(pager.getType())) {
+			List<Shoppingmall> list =service.list(pager);
+			model.addAttribute("s_list", list);
+			System.out.println("shoppingmall"+list.size());
+		}
+		else if("product".equals(pager.getType()) || pager.getType()==null) {
+			List<Product>list =productService.allList(pager);
+			model.addAttribute("p_list", list);
+			System.out.println("product");
+		}
+		
+		
+		
+		return path+"search";
 	}
 	
 	@ResponseBody

@@ -31,9 +31,9 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 	LikesDao likeDao;
 	
 	@Override
-	public List<Shoppingmall> list(Pager pager, String userId) {
+	public List<Shoppingmall> list(Pager pager) {
 		// TODO Auto-generated method stub
-		return dao.list(pager,userId);
+		return dao.list(pager);
 	}
 
 	@Override
@@ -71,6 +71,12 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 	public List<Shoppingmall> admin_list(Pager pager) {
 		
 		return dao.admin_list(pager);
+	}
+
+	@Override
+	public Shoppingmall total(Pager pager) {
+		// TODO Auto-generated method stub
+		return dao.total(pager);
 	}
 
 

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="product">
-	<sql id="shoppingmallId">
-		<where>
-			<if test="shoppingmallId !=null">
-				 shoppingmall_id=#{shoppingmallId}
+	<sql id="shoppingmall">
+		
+			<if test="shoppingmallId > 0">
+				where shoppingmall_id=#{shoppingmallId}
 			</if>
-			
-		</where>
+			<if test="search != null">
+				 join shoppingmall s on(s.id=p.shoppingmall_id)
+				 where s.name LIKE CONCAT(CONCAT('%', #{search}), '%') or p.name LIKE CONCAT(CONCAT('%', #{search}), '%')
+			</if>
+		
 	</sql>
 	<select id="count" resultType="Integer">
 		select count(*) from mymall.product where shoppingmall_id=#{shoppingmallId}
@@ -21,22 +24,28 @@
 	
 	<select id="list" resultType="Product">
 		select p.*,
-		<if test="shoppingmallId !=null">
+		<if test="shoppingmallId >0">
 			s.name as shopName,
 		</if>
-		(select user_id from likes l where p.id=l.product_id and l.user_id=#{userId}) as user_id,
-		(select count(*) from likes l where p.id=l.product_id) count
-		from product p
-		<if test="shoppingmallId !=null">
-			join shoppingmall s on(p.shoppingmall_id=s.id)
-			where shoppingmall_id=#{shoppingmallId}
+		(select user_id from likes l where p.id=l.product_id and l.user_id=#{userId}) as user_id
+		<if test="search ==null">
+		,(select count(*) from likes l where p.id=l.product_id) count
 		</if>
-		 ORDER BY count desc
+		from product p
+		<if test="shoppingmallId >0">
+		join shoppingmall s on(p.shoppingmall_id=s.id)
+			
+		</if>
+		<include refid="shoppingmall"></include>
+		<if test="search ==null">
+			 ORDER BY count desc
+		</if>
+		
 		LIMIT #{offset},#{perPager} 
 	</select>
 	
 	<select id="total" resultType="Integer">
-		select count(*) from product <include refid="shoppingmallId"></include>
+		select count(*) from product p <include refid="shoppingmall"></include>
 	</select>
 	<select id="likeTotal" resultType="Integer">
 		select count(*) from product p join likes l on(p.id=l.product_id) and l.user_id=#{userId}

@@ -68,10 +68,8 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public int allTotal(Pager pager) {
 
-		HashMap<String, Object>map=new HashMap<>();
-		map.put("shoppingmallId", null);
-		map.put("pager", pager);
-		return sql.selectOne("product.total", map);
+		
+		return sql.selectOne("product.total", pager);
 	}
 
 	/*@Override
@@ -94,13 +92,9 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public List<Product> allList(Pager pager, String userId) {
-		HashMap<String, Object>map=new HashMap<>();
-		map.put("shoppingmallId", null);
-		map.put("offset", pager.getOffset());
-		map.put("perPager", pager.getPerPager());
-		map.put("userId", userId);
-		return sql.selectList("product.list", map);
+	public List<Product> allList(Pager pager) {
+	
+		return sql.selectList("product.list", pager);
 	}
 
 	@Override

@@ -372,15 +372,15 @@ hr{
 		</div>
 		
 		</div>
-		<div class="search_box ">
+		<div class="search_box close">
 			<div>
 				<i class="bi-x-lg"></i>
 			</div>
 			<div>
-				<form action="">
+				<form action="search" method="get">
 				<div>
 					<input type="text" name="search" placeholder="Search">
-					<button class="search_btn"><img src="/resources/image/search_sm.png"></img> </button>
+					<button  class="search_btn"><img src="/resources/image/search_sm.png"></img> </button>
 				</div>
 				</form>
 			</div>

@@ -16,9 +16,11 @@ public interface ProductService {
 
 	List<Product> list(int shoppingmallId,Pager pager, String userId);
 
-	List<Product> allList(Pager pager, String userId);
+	List<Product> allList(Pager pager);
 
 	List<Product> likeProduct(Pager pager, String userId);
+
+	Product total(Pager pager);
 
 
 

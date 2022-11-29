@@ -10,6 +10,7 @@ public class Product {
 	private int shoppingmallId;
 	private String userId;
 	private String shopName;
+	private int total;
 	
 	public String getShopName() {
 		return shopName;
@@ -58,6 +59,12 @@ public class Product {
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
 	}
 
 

@@ -12,7 +12,7 @@ public class Shoppingmall {
 	private String userId;
 	private MultipartFile imageFile;
 	private String imageName;
-	
+	private int total;
 
 	public MultipartFile getImageFile() {
 		return imageFile;
@@ -68,6 +68,13 @@ public class Shoppingmall {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	
 
 
 

@@ -20,7 +20,7 @@ public interface ProductDao {
 
 	int allTotal(Pager pager);
 
-	List<Product> allList(Pager pager, String userId);
+	List<Product> allList(Pager pager);
 
 	List<Product> likeProduct(Pager pager, String userId);
 
