@@ -9,6 +9,8 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+<link rel="stylesheet"  href="/resources/css/button.css">
+<link rel="stylesheet"  href="/resources/css/font.css">
 <style type="text/css">
 *{
 	margin: 0;

@@ -7,21 +7,44 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"  href="/resources/css/font.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<link rel="stylesheet"  href="/resources/css/button.css">
+<link rel="stylesheet"  href="/resources/css/font.css">
 <style type="text/css">
 * {
 	box-sizing: border-box;
 }
-	.header{
+.all{
+	width: 100%;
+}
+body{
+
+	width: 100%;
+}
+.header{
 	width:100%;
 	height: 75px;
-	border-bottom: 1px solid gray;
+	border-bottom: 1px solid #e4e4e4;
+	padding: 1rem;
 	
+}
+.header_scroll{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 75px;
+  padding: 1rem;
+  color:black;
+  font-weight: bold;
+ 
+  background:rgba(225,225,225,0.5); 
 }
 #menu>li {
 	display: inline-block;
@@ -29,8 +52,12 @@
 
 #menu {
 	float: right;
-	margin:0;
-	}
+	margin:0px 20px 0px 0px;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+	
+}
 #menu li a button{
 	background: none;
 	width: 100px;
@@ -47,7 +74,9 @@ h1 {
 	width: 200px;
 	float: left;
 	text-align: center;
-	
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
 }
 h1>a{
 	text-decoration-line: none;
@@ -82,7 +111,9 @@ h1>a:hover{
 	margin-bottom: 15px;
 	
 }
-
+.main{
+	width: 100%;
+}
 #page{
 	clear:both;
 }
@@ -119,7 +150,7 @@ h1>a:hover{
 }
 .search_box{
 	width: 800px;
-	margin: auto;
+	margin: 0 auto;
 	height:200px;
 	text-align: center;
 	display: flex;
@@ -212,6 +243,18 @@ h1>a:hover{
 	position: absolute;
 	bottom: 5px;
     right:10px;
+}
+.search{
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+}
+
+.close{
+	display:none;
+}
+.preserve{
+	magin-top:75px;
 }
 </style>
 <script type="text/javascript">
@@ -311,6 +354,17 @@ h1>a:hover{
 			}
 			
 		});
+		$(window).on("scroll",function(){
+			if($(window).scrollTop()>1){
+				$(".header_scroll").removeClass("close");
+				$(".header").addClass("close");
+				$("body").addClass("preserve");
+			}else{
+				$(".header_scroll").addClass("close");
+				$(".header").removeClass("close");
+				$("body").removeClass("preserve");
+			}
+		});
 	});
 </script>
 </head>
@@ -353,10 +407,10 @@ h1>a:hover{
 			</div>
 			
 			<div class="content_box">
-				<div class="product_box">
+				<div class="product_box   ${pager.type eq 'shoppingmall' ? 'close':''  }">
 					<div>
 						<c:if test="${p_list.size()<1}">
-							<p>상품이 없습니다.</p>
+							<p >상품이 없습니다.</p>
 						</c:if>
 						<c:forEach var="item" items="${p_list }">
 							<div class="item">
@@ -435,6 +489,20 @@ h1>a:hover{
 			
 			</div>
 
+		</div>
+		<div class="header_scroll close">
+			<h1><a href="main">MYMALL</a></h1>
+			<ul id="menu">
+				<li><a href="allProduct"><button>전체 상품</button></a></li>
+				<li><a href="likesProduct"><button>좋아요 상품</button></a></li>
+				<c:if test="${sessionScope.user==null}">
+					<li><a href="login"><button>로그인</button></a></li>
+				</c:if>
+				<c:if test="${sessionScope.user !=null }">
+					<li><a href="mypage"><button>마이페이지</button></a></li>
+				</c:if>
+				<li><img src="/resources/image/search_sm.png" class="search"></img></li>
+			</ul>
 		</div>
 	</div>
 </body>

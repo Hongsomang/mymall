@@ -12,29 +12,28 @@
 <!-- JavaScript Bundle with Popper -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet"  href="/resources/css/button.css">
+<link rel="stylesheet"  href="/resources/css/font.css">
 <style type="text/css">
 body{
-	margin-top: 75px;
+	min-width: 992px;
 }
 .header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 75px;
-  padding: 1rem;
-  color: gray;
-  font-weight: bold;
- 
-  background:rgba(225,225,225,0.5); 
+	width:100%;
+	height: 75px;
+	border-bottom: 1px solid #e4e4e4;;
+	padding: 1rem;
 }
 .header> h1{
 	width: 500px;
 	display: inline-block;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
 }
 .header> h1>a {
 	text-decoration-line: none;
-	color: gray;
+	color: black;
 	
 }
 
@@ -48,23 +47,34 @@ body{
 
 #menu {
 	float: right;
-	text-align:right;
-	width:400px;
-	padding-right: 10px;
-	display: inline-block;
-}
+	margin:0px 20px 0px 0px;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+  	
+	}
 #menu li a button{
 	background: none;
 	width: 100px;
 	margin-left:10px; 
-	border:2px solid gray;
-	color:gray;
+	border:0;
+	outline:0;
+	color:black;
 	font-weight: bold;
 }
 #menu li a button:hover{
-	color: white;
-    background: black;
-    border:2px solid black;
+
+  
+    border-bottom:4px solid black;
+}
+.search{
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+}
+
+.close{
+	display:none;
 }
 </style>
 </head>
@@ -82,6 +92,7 @@ body{
 				<c:if test="${sessionScope.user !=null }">
 					<li><a href="mypage"><button>마이페이지</button></a></li>
 				</c:if>
+				<li><img src="/resources/image/search_sm.png" class="search"></img></li>
 			</ul>
 		</div>
 	<div>

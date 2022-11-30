@@ -14,6 +14,9 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<link rel="stylesheet"  href="/resources/css/button.css">
+<link rel="stylesheet"  href="/resources/css/font.css">
+<link rel="stylesheet"  href="/resources/css/font.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
@@ -64,6 +67,9 @@ h1 {
 	width: 200px;
 	float: left;
 	text-align: center;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
 	
 }
 
@@ -73,7 +79,11 @@ h1 {
 
 #menu {
 	float: right;
-	margin:0;
+	margin:0px 20px 0px 0px;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+  	
 	}
 #menu li a button{
 	background: none;
@@ -159,21 +169,21 @@ h1 {
 .search{
 	width: 25px;
 	height: 25px;
+	cursor: pointer;
 }
+
 .close{
 	display:none;
 }
 .preserve{
 	magin-top:75px;
 }
-hr{
-	clear: both;
-}
+
 .header{
 	width:100%;
 	height: 75px;
-	border-bottom: 1px solid gray;
-	
+	border-bottom: 1px solid #e4e4e4;;
+	padding: 1rem;
 }
 .search_box{
 	
@@ -188,8 +198,10 @@ hr{
 .bi-x-lg{
 	 font-size: 40px;
 	 margin-right: 10px;
+	 cursor: pointer;
 	 
 }
+
 .search_box> div:nth-child(1) {
 	text-align: right;
 }
@@ -208,6 +220,7 @@ hr{
 	height: 50px;
 	padding:1px 2px;
 	margin-bottom: 10px;
+	cursor: pointer;
 }
 .search_box> div:nth-child(2){
 	width: 900px;

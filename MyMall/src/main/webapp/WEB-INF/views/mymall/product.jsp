@@ -11,17 +11,18 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" >
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-
+<link rel="stylesheet"  href="/resources/css/button.css">
+<link rel="stylesheet"  href="/resources/css/font.css">
 <style type="text/css">
 * {
 	box-sizing: border-box;
 }
 
 body {
-	
+	font-weight:lighter;
 	min-width: 992px;
 	
-	margin-top: 75px;
+	
 }
 
 h1{
@@ -29,16 +30,33 @@ h1{
 	float:left;
 	text-align:center;
 	
-}
-#menu >li{
-	display: inline-block;
 	
 }
-#menu{
-	text-align:right ;
-	padding-top:8px;	
-	padding-right:10px;
+#menu>li {
+	display: inline-block;
+}
 
+#menu {
+	float: right;
+	margin:0px 20px 0px 0px;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+  	
+	}
+#menu li a button{
+	background: none;
+	width: 100px;
+	margin-left:10px; 
+	border:0;
+	outline:0;
+	color:black;
+	font-weight: bold;
+}
+#menu li a button:hover{
+
+  
+    border-bottom:4px solid black;
 }
 
 
@@ -74,7 +92,7 @@ h1{
 
 h1>a {
 	text-decoration-line: none;
-	color: gray;
+	color: black;
 }
 
 h1>a:hover{
@@ -157,7 +175,7 @@ h1>a:hover{
 	position: absolute;
 	opacity:0.5;
 }
-.header{
+.header_scroll{
   position: fixed;
   top: 0;
   left: 0;
@@ -165,23 +183,32 @@ h1>a:hover{
   
   height: 75px;
   padding: 1rem;
-  color: gray;
+  color:black;
   font-weight: bold;
  
   background:rgba(225,225,225,0.5); 
 }
-#menu li a button{
-	background: none;
-	width: 100px;
-	margin-left:10px; 
-	border:2px solid gray;
-	color:gray;
-	font-weight: bold;
+.header{
+	width:100%;
+	height: 75px;
+	border-bottom: 1px solid #e4e4e4;;
+	padding: 1rem;
 }
-#menu li a button:hover{
-	color: white;
-    background: black;
-    border:2px solid black;
+.header h1,.header_scroll h1{
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+}
+.close{
+	display:none;
+}
+.preserve{
+	magin-top:75px;
+}
+.search{
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
 }
 </style>
 <script type="text/javascript">
@@ -239,12 +266,37 @@ $(document).ready(function() {
 		}
 		
 	});
+	$(window).on("scroll",function(){
+		if($(window).scrollTop()>1){
+			$(".header_scroll").removeClass("close");
+			$(".header").addClass("close");
+			$("body").addClass("preserve");
+		}else{
+			$(".header_scroll").addClass("close");
+			$(".header").removeClass("close");
+			$("body").removeClass("preserve");
+		}
+	});
 });
 </script>
 </head>
 <body>
 	<div>
-		
+		<div class="header">
+			<h1><a href="../main">MYMALL</a></h1>
+			<ul id="menu">
+				<li><a href="../allProduct"><button >전체 상품</button></a></li>
+				<li><a href="../likesProduct"><button >좋아요 상품 </button></a></li>
+				<c:if test="${sessionScope.user==null}">
+					<li><a href="login"><button>로그인</button></a></li>
+				</c:if>
+				<c:if test="${sessionScope.user !=null }">
+					<li><a href="../mypage"><button>마이페이지</button></a></li>
+				</c:if>
+				<li><img src="/resources/image/search_sm.png" class="search"></img></li>
+			</ul>
+			
+		</div>
 		<div class="banner">
 			<img alt="" src="/resources/image/background_product.jpeg">
 			<div class="background"></div>
@@ -256,19 +308,18 @@ $(document).ready(function() {
 				
 			</div>
 		</div>
-		<div class="header">
-			<h1>
-				<a href="../main">MYMALL</a>
-			</h1>
+		<div class="header_scroll close">
+			<h1><a href="../main">MYMALL</a></h1>
 			<ul id="menu">
 				<li><a href="../allProduct"><button >전체 상품</button></a></li>
 				<li><a href="../likesProduct"><button >좋아요 상품 </button></a></li>
 				<c:if test="${sessionScope.user==null}">
-					<li><a href="../login"><button>로그인</button></a></li>
+					<li><a href="login"><button>로그인</button></a></li>
 				</c:if>
 				<c:if test="${sessionScope.user !=null }">
-					<li><a href="../mypage"><button>마이페이지 </button></a></li>
+					<li><a href="../mypage"><button>마이페이지</button></a></li>
 				</c:if>
+				<li><img src="/resources/image/search_sm.png" class="search"></img></li>
 			</ul>
 		</div>
 		<div class="products">

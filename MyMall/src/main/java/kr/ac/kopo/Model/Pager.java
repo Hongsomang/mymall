@@ -14,7 +14,6 @@ public class Pager {
 	private String userId;
 	private String type;
 
-
 	public String getSearch() {
 		return search;
 	}
