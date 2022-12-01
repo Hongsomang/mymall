@@ -15,7 +15,7 @@ import kr.ac.kopo.Dao.LikesDao;
 import kr.ac.kopo.Dao.ProductDao;
 import kr.ac.kopo.Model.Likes;
 import kr.ac.kopo.Model.Pager;
-import kr.ac.kopo.Model.Parsing;
+import kr.ac.kopo.Model.Crawling;
 import kr.ac.kopo.Model.Product;
 import kr.ac.kopo.Model.Shoppingmall;
 
@@ -24,6 +24,8 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	ProductDao dao;
+	
+	@Autowired
 	LikesDao likesDao;
 	@Override
 	public int count(int shoppingmallId) {
@@ -41,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
 		System.out.println("bestCode:"+bestCode);
 		System.out.println("path:"+path);
 
-		List<Parsing> list=new ArrayList<>();
+		List<Crawling> list=new ArrayList<>();
 		try {
 			Document docPage=Jsoup.connect(path+"/product/list.html?cate_no="+bestCode).get();
 
@@ -56,13 +58,15 @@ public class ProductServiceImpl implements ProductService {
 				Elements El;
 				Elements contents;
 				System.out.println(item.getName());
-				if(item.getName().equals("메리어라운드")) {
+				
+				contents =doc.select("ul[class=prdList grid4] ").select("div[class=prdImg] > a");
+				El =doc.select("ul[class=prdList grid4]  >li").select("div");
+				
+				if(contents.size()==0) {
 					 contents =doc.select("ul[class=prdList grid3] ").select("div[class=prdImg] > a");
 					 El =doc.select("ul[class=prdList grid3]  >li").select("div");
-				}else {
-					contents =doc.select("ul[class=prdList grid4] ").select("div[class=prdImg] > a");
-					El =doc.select("ul[class=prdList grid4]  >li").select("div");
 				}
+				
 				
 				Elements Elprice_li_1=El.select("ul >li[rel=판매가]");
 				Elements Elname=El.select("p[class=name] >a ");
@@ -97,7 +101,7 @@ public class ProductServiceImpl implements ProductService {
 
 					
 					//System.out.println("크롤링:"+ name+price+img+path+url);
-					list.add(new Parsing(name,price,img,path+url,item.getId()));
+					list.add(new Crawling(name,price,img,path+url,item.getId()));
 					
 				}
 
@@ -158,11 +162,10 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional
 	public void delete(int shoppingmallId) {
 		// TODO Auto-generated method stub
-		dao.delete(shoppingmallId);
 		likesDao.delete_product(shoppingmallId);
+		dao.delete(shoppingmallId);
+	
 	}
-
-
 
 	@Override
 	public Product total(Pager pager) {

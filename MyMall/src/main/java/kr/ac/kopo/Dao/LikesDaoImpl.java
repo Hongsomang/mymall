@@ -29,7 +29,7 @@ public class LikesDaoImpl implements LikesDao {
 		Likes item = new Likes();
 		item.setShoppingmallId(shoppingmallId);
 		System.out.println("dfdf" + item.getShoppingmallId());
-		sql.delete("likes.productUpdate_delete", item);
+		sql.delete("likes.delete", item);
 	}
 
 	

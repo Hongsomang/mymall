@@ -19,7 +19,7 @@
 }
 
 body {
-	font-weight:100;
+	
 	min-width: 992px;
 	
 	

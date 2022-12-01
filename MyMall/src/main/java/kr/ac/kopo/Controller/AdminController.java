@@ -128,6 +128,7 @@ public class AdminController {
 	
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {
+		
 		shoppingService.delete(id);
 		return "redirect:../list";
 	}

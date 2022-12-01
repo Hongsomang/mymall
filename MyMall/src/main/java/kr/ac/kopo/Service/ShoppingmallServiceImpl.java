@@ -48,8 +48,8 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 		// TODO Auto-generated method stub
 		Bookmark item=new Bookmark();
 		item.setShoppingmallId(id);
-		bookmarkDao.delete(item);
 		
+		bookmarkDao.delete(item);
 		likeDao.delete_shoppingmall(id);
 		productDao.delete(id);
 		dao.delete(id);

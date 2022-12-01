@@ -3,7 +3,7 @@ package kr.ac.kopo.Dao;
 import java.util.List;
 
 import kr.ac.kopo.Model.Pager;
-import kr.ac.kopo.Model.Parsing;
+import kr.ac.kopo.Model.Crawling;
 import kr.ac.kopo.Model.Product;
 
 public interface ProductDao {
@@ -12,7 +12,7 @@ public interface ProductDao {
 
 	void delete(int shoppingmallId);
 
-	void add(List<Parsing> list);
+	void add(List<Crawling> list);
 
 	List<Product> list(int shoppingmallId,Pager pager, String userId);
 

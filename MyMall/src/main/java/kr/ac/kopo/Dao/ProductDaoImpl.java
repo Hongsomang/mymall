@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.Model.Pager;
-import kr.ac.kopo.Model.Parsing;
+import kr.ac.kopo.Model.Crawling;
 import kr.ac.kopo.Model.Product;
 
 @Repository
@@ -31,11 +31,11 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public void add(List<Parsing> list) {
+	public void add(List<Crawling> list) {
 		// TODO Auto-generated method stub
 		System.out.println("dfdfdfdf");
 
-		for (Parsing element : list) {
+		for (Crawling element : list) {
 
 			System.out.println(element.getName());
 			sql.insert("product.add", element);

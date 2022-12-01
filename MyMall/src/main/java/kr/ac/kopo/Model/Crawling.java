@@ -1,6 +1,6 @@
 package kr.ac.kopo.Model;
 
-public class Parsing {
+public class Crawling {
 
 	private String name;
 	private String price;
@@ -8,7 +8,7 @@ public class Parsing {
 	private String url;
 	private int shoppingmallId;
 
-	public Parsing(String name, String price,String img, String url,int shoppingmallId) {
+	public Crawling(String name, String price,String img, String url,int shoppingmallId) {
 		this.name=name;
 		this.price=price;
 		this.img=img;

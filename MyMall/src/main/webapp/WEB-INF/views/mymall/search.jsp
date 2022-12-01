@@ -198,6 +198,9 @@ h1>a:hover{
 .bold{
 	font-weight: 600;
 }
+.thin{
+	font-weight: lighter;
+}
 .close{
 	display:none;
 }
@@ -400,9 +403,9 @@ h1>a:hover{
 			<div class="type_box">
 				<ul>
 					
-					<li><a class="product ${pager.type eq null ? 'bold':''  } ${pager.type eq 'product' ? 'bold':''  }" href="?search=${pager.search}&type=product">상품 (${p_item.total})
+					<li><a class="product ${pager.type eq null ? 'bold':''  } ${pager.type eq 'product' ? 'bold':'thin'  }" href="?search=${pager.search}&type=product">상품 (${p_item.total})
 					</a></li>
-					<li><a class="shoppingmall ${pager.type eq 'shoppingmall' ? 'bold':''  }  " href="?search=${pager.search}&type=shoppingmall">쇼핑몰 (${s_item.total}) </a></li>
+					<li><a class="shoppingmall ${pager.type eq 'shoppingmall' ? 'bold':'thin'  }  " href="?search=${pager.search}&type=shoppingmall">쇼핑몰 (${s_item.total}) </a></li>
 				</ul>
 			</div>
 			
