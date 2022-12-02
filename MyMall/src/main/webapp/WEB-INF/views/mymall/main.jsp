@@ -58,6 +58,7 @@ ul {
 	all: unset;
 	position: absolute;
 	bottom: 5px;
+	
     right:10px;
 }
 
@@ -242,6 +243,8 @@ h1 {
     	font-weight: 600;
     	outline: none;
 }
+
+
 </style>
 <script>
 	$(document).ready(function() {
@@ -348,6 +351,7 @@ h1 {
 					<li><a href="mypage"><button>마이페이지</button></a></li>
 				</c:if>
 				<li><img src="/resources/image/search_sm.png" class="search"></img></li>
+				
 			</ul>
 			
 		</div>

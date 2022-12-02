@@ -1,0 +1,22 @@
+@charset "UTF-8";
+.btn-primary{
+	background: #f37d71;
+	border-color: #FF7171;
+	
+}
+.btn-primary:hover{
+	background: #F15F5F;
+	border-color: #FF7171;
+}
+.btn:active{
+	background: #F15F5F;
+	border-color: #FF7171;
+}
+.btn-primary:active{
+	background: #F15F5F;
+	border-color: #FF7171;
+}
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+	background: #F15F5F;
+	border-color: #FF7171;
+}

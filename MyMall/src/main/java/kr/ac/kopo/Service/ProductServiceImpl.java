@@ -14,10 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.ac.kopo.Dao.LikesDao;
 import kr.ac.kopo.Dao.ProductDao;
 import kr.ac.kopo.Model.Likes;
-import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Crawling;
 import kr.ac.kopo.Model.Product;
 import kr.ac.kopo.Model.Shoppingmall;
+import kr.ac.kopo.Pager.Pager;
 
 @Service
 public class ProductServiceImpl implements ProductService {

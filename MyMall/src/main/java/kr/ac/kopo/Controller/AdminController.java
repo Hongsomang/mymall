@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.ac.kopo.Model.Admin;
-import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
+import kr.ac.kopo.Pager.Pager;
 import kr.ac.kopo.Service.AdminService;
 import kr.ac.kopo.Service.ProductService;
 import kr.ac.kopo.Service.ShoppingmallService;

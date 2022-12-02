@@ -1,15 +1,15 @@
 package kr.ac.kopo.Dao;
 
-import java.util.HashMap;
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
-import kr.ac.kopo.Model.User;
+
+import kr.ac.kopo.Pager.Pager;
 
 @Repository
 public class ShoppingmallDaoImpl implements ShoppingmallDao {
@@ -65,6 +65,12 @@ public class ShoppingmallDaoImpl implements ShoppingmallDao {
 	public Shoppingmall total(Pager pager) {
 		// TODO Auto-generated method stub
 		return sql.selectOne("shoppingmall.total", pager);
+	}
+
+	@Override
+	public int listTotal(Pager pager) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("shoppingmall.list_total", pager);
 	}
 
 

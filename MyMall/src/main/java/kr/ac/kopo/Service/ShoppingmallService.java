@@ -2,9 +2,9 @@ package kr.ac.kopo.Service;
 
 import java.util.List;
 
-import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
 import kr.ac.kopo.Model.User;
+import kr.ac.kopo.Pager.Pager;
 
 public interface ShoppingmallService {
 

@@ -1,4 +1,4 @@
-package kr.ac.kopo.Model;
+package kr.ac.kopo.Pager;
 
 import java.util.ArrayList;
 import java.util.List;

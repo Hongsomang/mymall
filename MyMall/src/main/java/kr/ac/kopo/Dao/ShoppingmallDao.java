@@ -2,9 +2,9 @@ package kr.ac.kopo.Dao;
 
 import java.util.List;
 
-import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
 import kr.ac.kopo.Model.User;
+import kr.ac.kopo.Pager.Pager;
 
 public interface ShoppingmallDao {
 
@@ -21,6 +21,8 @@ public interface ShoppingmallDao {
 	List<Shoppingmall> admin_list(Pager pager);
 
 	Shoppingmall total(Pager pager);
+
+	int listTotal(Pager pager);
 
 
 

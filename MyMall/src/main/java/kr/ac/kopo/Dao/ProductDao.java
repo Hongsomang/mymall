@@ -2,9 +2,9 @@ package kr.ac.kopo.Dao;
 
 import java.util.List;
 
-import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Crawling;
 import kr.ac.kopo.Model.Product;
+import kr.ac.kopo.Pager.Pager;
 
 public interface ProductDao {
 

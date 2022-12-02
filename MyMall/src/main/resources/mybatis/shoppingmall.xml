@@ -38,9 +38,12 @@
 		update shoppingmall set name=#{name}, content=#{content}, url=#{url}, best_code=#{bestCode} <include refid="image"></include> where id=#{id}
 	</update>
 	<select id="admin_list" resultType="Shoppingmall">
-		select *from shoppingmall;
+		select *from shoppingmall LIMIT #{offset},#{perPager} 
 	</select>
 	<select id="total" resultType="Shoppingmall">
 	     select count(*) as total from shoppingmall <include refid="search"></include>
+	</select>
+	<select id="list_total" resultType="Integer">
+	     select count(*) as total from shoppingmall 
 	</select>
 </mapper>

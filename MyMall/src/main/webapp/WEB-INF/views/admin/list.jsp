@@ -126,6 +126,17 @@ div .content{
 				</tbody>
 			</table>
 		</div>
+		<div id="page">
+				<ul class="pagination pagination-sm justify-content-center">
+				<li class="page-item"><a class="page-link" href="?page=1">처음</a></li>
+				<li class="page-item" ><a class="page-link" href="?page=${pager.prev }">이전</a></li>
+				<c:forEach var="page" items="${ pager.list}">
+					<li class="page-item"> <a class="page-link ${page eq pager.page? 'active':''  }"  href="?page=${page }">${page}</a></li> <!--eq :같으면 /pager.page: 현재페이지 -->
+				</c:forEach>
+				<li class="page-item"><a class="page-link" href="?page=${pager.next }">다음</a></li>
+				<li class="page-item" ><a class="page-link" href="?page=${pager.last }">마지막</a></li>
+			</ul> 
+			</div>
 		<div class="footer">
 			<a href="/"><img alt="" src="/resources/image/logo.png"></a>
 		</div>

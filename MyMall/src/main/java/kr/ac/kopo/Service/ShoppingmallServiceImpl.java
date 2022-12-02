@@ -11,9 +11,9 @@ import kr.ac.kopo.Dao.LikesDao;
 import kr.ac.kopo.Dao.ProductDao;
 import kr.ac.kopo.Dao.ShoppingmallDao;
 import kr.ac.kopo.Model.Bookmark;
-import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Shoppingmall;
 import kr.ac.kopo.Model.User;
+import kr.ac.kopo.Pager.Pager;
 
 @Service
 public class ShoppingmallServiceImpl implements ShoppingmallService {
@@ -33,6 +33,7 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 	@Override
 	public List<Shoppingmall> list(Pager pager) {
 		// TODO Auto-generated method stub
+		
 		return dao.list(pager);
 	}
 
@@ -69,7 +70,9 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 
 	@Override
 	public List<Shoppingmall> admin_list(Pager pager) {
-		
+		int total=dao.listTotal(pager);
+		pager.setTotal(total);
+		pager.setPerPager(10);
 		return dao.admin_list(pager);
 	}
 
@@ -78,6 +81,8 @@ public class ShoppingmallServiceImpl implements ShoppingmallService {
 		// TODO Auto-generated method stub
 		return dao.total(pager);
 	}
+
+
 
 
 

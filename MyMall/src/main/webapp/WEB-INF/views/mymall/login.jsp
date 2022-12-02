@@ -113,6 +113,12 @@ body{
 .close{
 	display:none;
 }
+.signup{
+	color: #A6A6A6;
+}
+.signup:hover{
+	color: black;
+}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -181,7 +187,7 @@ body{
 				</form>
 			</div>
 			<div>
-				<a href="signup">회원 가입 </a><br> <a href="find">아이디/비밀번호 찾기</a>
+				<a class="signup" href="signup">회원 가입 </a>
 			</div>
 		</div>
 	</div>

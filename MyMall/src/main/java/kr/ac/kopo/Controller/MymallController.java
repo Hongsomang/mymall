@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.ac.kopo.Model.Likes;
-import kr.ac.kopo.Model.Pager;
 import kr.ac.kopo.Model.Product;
 import kr.ac.kopo.Model.Shoppingmall;
 import kr.ac.kopo.Model.User;
+import kr.ac.kopo.Pager.Pager;
 import kr.ac.kopo.Service.BookmarkService;
 import kr.ac.kopo.Service.LikesService;
 import kr.ac.kopo.Service.ProductService;
