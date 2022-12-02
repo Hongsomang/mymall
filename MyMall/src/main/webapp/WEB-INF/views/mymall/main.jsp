@@ -21,16 +21,18 @@
 <title>Insert title here</title>
 <style>
 html,body,.all {
-    width: 100%;
-    height: 100%;
+  
+    
 }
+
 .all{
 	position: relative;
+	
 }
 .all> div{
-	position: absolute;
-	width: 100%;
-	height: 100%;
+	
+	width: 100vw;
+	
 }
 .bi-star {
 	font-size: 30px;
@@ -180,20 +182,24 @@ h1 {
 }
 
 .header{
-	width:100%;
+	width:100vw;
 	height: 75px;
 	border-bottom: 1px solid #e4e4e4;;
 	padding: 1rem;
 }
 .search_box{
-	
+	height:100vh;
+	border:2px solid black;
 	top:0px;
  	bottom:0px;
  	right:0px;
  	left:0px;
 	background: white;
 	opacity: 0.98;
- z-index: 3000;
+ 	z-index: 3000;
+ 	
+ 	scrollbar-width: none; 
+ 	position:fixed;
 }
 .bi-x-lg{
 	 font-size: 40px;
@@ -285,13 +291,15 @@ h1 {
 		$(".search").on('click',function(){
 			console.log("on");
 			$(".search_box").removeClass("close");
-			//$("body").addClass("fix");
+			//window.scrollTo(0,0);
+			$("body").addClass("fix");
 		});
 		
 		$(".bi-x-lg").on('click',function(){
 			console.log("off");
 			$(".search_box").addClass("close");
-			//$("body").removeClass("fix");
+			
+			$("body").removeClass("fix");
 		});
 		
 		$(window).on("scroll",function(){
@@ -313,7 +321,21 @@ h1 {
 
 <body>
 	<div class="all">
+		<div class="search_box close">
+			<div>
+				<i class="bi-x-lg"></i>
+			</div>
+			<div>
+				<form action="search" method="get">
+				<div>
+					<input type="text" name="search" placeholder="Search">
+					<button  class="search_btn"><img src="/resources/image/search_sm.png"></img> </button>
+				</div>
+				</form>
+			</div>
+		</div>
 		<div>
+			
 			<div class="header">
 			<h1>MYMALL</h1>
 			<ul id="menu">
@@ -385,19 +407,7 @@ h1 {
 		</div>
 		
 		</div>
-		<div class="search_box close">
-			<div>
-				<i class="bi-x-lg"></i>
-			</div>
-			<div>
-				<form action="search" method="get">
-				<div>
-					<input type="text" name="search" placeholder="Search">
-					<button  class="search_btn"><img src="/resources/image/search_sm.png"></img> </button>
-				</div>
-				</form>
-			</div>
-		</div>
+		
 	</div>
 	
 	

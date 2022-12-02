@@ -9,12 +9,15 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <!-- JavaScript Bundle with Popper -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <link rel="stylesheet"  href="/resources/css/button.css">
 <link rel="stylesheet"  href="/resources/css/font.css">
+<link rel="stylesheet"  href="/resources/css/search.css">
+<script src="/resources/js/search.js"></script>
 <style type="text/css">
 body{
 	
@@ -130,7 +133,20 @@ body{
 </script>
 </head>
 <body>
-	<div>
+	<div class="all">
+		<div class="search_box close">
+			<div>
+				<i class="bi-x-lg"></i>
+			</div>
+			<div>
+				<form action="search" method="get">
+				<div>
+					<input type="text" name="search" placeholder="Search">
+					<button  class="search_btn"><img src="/resources/image/search_sm.png"></img> </button>
+				</div>
+				</form>
+			</div>
+		</div>
 		<div class="header">
 			
 			<h1>MYMALL</h1>

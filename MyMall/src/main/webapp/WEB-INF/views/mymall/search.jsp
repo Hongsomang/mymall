@@ -16,6 +16,8 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <link rel="stylesheet"  href="/resources/css/button.css">
 <link rel="stylesheet"  href="/resources/css/font.css">
+<link rel="stylesheet"  href="/resources/css/search.css">
+<script src="/resources/js/search.js"></script>
 <style type="text/css">
 * {
 	box-sizing: border-box;
@@ -148,7 +150,7 @@ h1>a:hover{
 	line-height: 20px;
 	color:#FF4848;
 }
-.search_box{
+.search_div{
 	width: 800px;
 	margin: 0 auto;
 	height:200px;
@@ -157,10 +159,10 @@ h1>a:hover{
 	align-items:  center;
 	
 }
-.search_box form div{
+.search_div form div{
 	border-bottom: 5px solid black;
 }
-.search_box form div input{
+.search_div form div input{
 	width: 700px;
 	height: 50px;
 	border:none;
@@ -373,6 +375,19 @@ h1>a:hover{
 </head>
 <body>
 	<div class="all">
+		<div class="search_box close">
+			<div>
+				<i class="bi-x-lg"></i>
+			</div>
+			<div>
+				<form action="search" method="get">
+				<div>
+					<input type="text" name="search" placeholder="Search">
+					<button  class="search_btn"><img src="/resources/image/search_sm.png"></img> </button>
+				</div>
+				</form>
+			</div>
+		</div>
 		<div class="header">
 			<h1><a href="main">MYMALL</a></h1>
 			<ul id="menu">
@@ -389,7 +404,7 @@ h1>a:hover{
 		</div>
 		<div class="main">
 			
-			<div class="search_box">
+			<div class="search_div">
 				<form  method="get">
 					<div>
 						<input type="text" name="search" placeholder="Search" value="${pager.search }">

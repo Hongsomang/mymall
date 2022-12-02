@@ -11,8 +11,9 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" >
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<link rel="stylesheet"  href="/resources/css/button.css">
 <link rel="stylesheet"  href="/resources/css/font.css">
+<link rel="stylesheet"  href="/resources/css/search.css">
+<script src="/resources/js/search.js"></script>
 <style type="text/css">
 * {
 	box-sizing: border-box;
@@ -281,7 +282,20 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	<div>
+	<div class="all">
+		<div class="search_box close">
+			<div>
+				<i class="bi-x-lg"></i>
+			</div>
+			<div>
+				<form action="search" method="get">
+				<div>
+					<input type="text" name="search" placeholder="Search">
+					<button  class="search_btn"><img src="/resources/image/search_sm.png"></img> </button>
+				</div>
+				</form>
+			</div>
+		</div>
 		<div class="header">
 			<h1><a href="../main">MYMALL</a></h1>
 			<ul id="menu">
