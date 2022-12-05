@@ -22,6 +22,14 @@ public interface ProductService {
 
 	Product total(Pager pager);
 
+	List<Product> admainlist(Pager pager, int shoppingmallId);
+
+	void directAdd(Product item);
+
+	Product item(int shoppingmallId, int id);
+
+	void update(Product item);
+
 
 
 }

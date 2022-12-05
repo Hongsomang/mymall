@@ -115,4 +115,28 @@ public class ProductDaoImpl implements ProductDao {
 		return sql.selectOne("product.likeTotal", map);
 	}
 
+	@Override
+	public List<Product> admin_list(Pager pager) {
+		// TODO Auto-generated method stub
+		return sql.selectList("product.list", pager);
+	}
+
+	@Override
+	public void directAdd(Product item) {
+		// TODO Auto-generated method stub
+		sql.insert("product.add",item);
+	}
+
+	@Override
+	public Product item(Product item) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("product.item",item);
+	}
+
+	@Override
+	public void update(Product item) {
+		// TODO Auto-generated method stub
+		sql.update("product.update", item);
+	}
+
 }

@@ -19,7 +19,7 @@ table {
 }
 
 h1{
-	width: 300px;
+	width: 500px;
 	height:100%;
 	padding-top:17px;
 	margin-left:20px;
@@ -42,26 +42,7 @@ div .content{
 	margin-left: 20px;
 	margin-right: 40px;
 }
-.footer a{
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	
-	
-}
-.footer a img{
-	width: 50px;
-	height: 50px;
-	transition: 1s;
-	margin-bottom: 10px;
-	margin-right: 10px;
-   
-}
-.footer a img:hover{
-	animation: ease-out;
-      transition: 1s;
-      transform: rotate(360deg);
-}
+
 .add{
 	width:80px;
 	height:40px;
@@ -84,12 +65,32 @@ div .content{
 .add:active{
 	  transform: scale(1.5);
 }
+.footer a{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	
+	
+}
+.footer a img{
+	width: 50px;
+	height: 50px;
+	transition: 1s;
+	margin-bottom: 10px;
+	margin-right: 10px;
+   
+}
+.footer a img:hover{
+	animation: ease-out;
+      transition: 1s;
+      transform: rotate(360deg);
+}
 </style>
 </head>
 <body>
 	<div>
 		<div class="header">
-			<h1>관리자 페이지 </h1>
+			<h1>관리자 페이지 -${list.get(1).getShopName()} </h1>
 			<a href="add"><button class="add" type="button">추가 </button></a>
 		</div>
 		<hr>
@@ -97,9 +98,8 @@ div .content{
 			<table class="table">
 				<thead>
 					<tr>
-						<th>쇼핑몰 </th>
-						<th>관리자 </th>
-						<th>업데이트 </th>
+						<th>상품명 </th>
+						<th> 가격 </th>
 						<th>관리 </th>
 						
 					</tr>
@@ -107,18 +107,13 @@ div .content{
 				<tbody>
 					<c:if test="${ list.size()<1}">
 						<tr>
-							<td colspan="3">등록된 쇼핑몰이 없습니다.</td>
+							<td colspan="3">등록된 상품이 없습니다.</td>
 						</tr>
 					</c:if>				
 					<c:forEach var="item" items="${list}">
 						<tr>
 							<td>${item.name}</td>
-							<td>${item.adminId == null ? '': item.adminId}</td>
-							<td>
-							<a href="product_update/${item.id}" class="btn btn-outline-secondary">상품 자동 업데이트 </a>
-							<a href="product/${item.id}/list" class="btn btn-outline-secondary">상품 직접 입력 </a>
-							
-							</td>
+							<td>${item.price}</td>
 							<td>
 								<a href="update/${item.id}" class="btn btn-outline-warning" >변경 </a> 
 								<a href="delete/${item.id}" class="btn btn-outline-danger">삭제 </a>
@@ -141,8 +136,8 @@ div .content{
 				<li class="page-item" ><a class="page-link" href="?page=${pager.last }">마지막</a></li>
 			</ul> 
 			</div>
-		<div class="footer">
-			<a href="/"><img alt="" src="/resources/image/logo.png"></a>
+			<div class="footer">
+			<a href="../../list"><img alt="" src="/resources/image/logo.png"></a>
 		</div>
 	</div>
 	

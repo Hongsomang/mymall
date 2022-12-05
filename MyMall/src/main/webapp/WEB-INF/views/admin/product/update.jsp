@@ -77,10 +77,10 @@
     
    	display: none;
 }
-.infoBox> div:nth-child(6) {
+.infoBox> div:nth-child(5) {
 	text-align: center;
 }
-.infoBox> div:nth-child(6) button{
+.infoBox> div:nth-child(5) button{
 	width:200px;
 	height: 40px;
 	color:white;
@@ -98,44 +98,37 @@
 .header 
 </style>
 <script type="text/javascript">
+
 $(document).ready(function(){
-	$("#file").change(function(){
-	  	var fileName = $("#file").val();
-	  	var arr=fileName.split("\\");
-	  	console.log("dddd",arr[arr.length-1]);
-	  	$(".upload-name").val(arr[arr.length-1]);
+	$(".add").on("click",function(){
+		
+		const form = document.add_form;
+		console.log("dfdfd",form.name.value);
+		if(form.name.value==""){
+			console.log("dfdfd111");
+			alert("상품 이름를 입력하세요.");
+			form.name.focus();
+			return;
+		}
+		if(form.img.value==""){
+			alert("이미지 주소를 입력하세요.");
+			form.img.focus();
+			return;
+		}
+		
+		if(form.url.value==""){
+			alert("상품페이지 주소를 입력하세요.");
+			form.url.focus();
+			return;
+		}
+		if(form.price.value==""){
+			alert("가격을 입력하세요.");
+			form.url.focus();
+			return;
+		}
+		form.submit();
 	});
 });
-function add(){
-	const form = document.add_form;
-	if(form.name.value==null){
-		alert("쇼핑몰 이름를 입력하세요.");
-		form.name.focus();
-		return;
-	}
-	if(form.content.value==null){
-		alert("한 줄 소개를 입력하세요.");
-		form.name.focus();
-		return;
-	}
-	if(form.content.value.length>=20){
-		alert("한 줄 소개를 20자 이내로 해주세요. ");
-		form.name.focus();
-		return;
-	}
-	if(form.url.value==null){
-		alert("홈페이지 주소를 입력하세요.");
-		form.url.focus();
-		return;
-	}
-	if(form.bestCode.value==null){
-		alert("bestCode 입력하세요.");
-		form.url.focus();
-		return;
-	}
-	
-	
-}
 </script>
 </head>
 <body>
@@ -147,38 +140,31 @@ function add(){
 		<hr>
 		<div class="content">
 			<div>
-				<h1>쇼핑몰 추가 </h1>
+				<h1>상품 변경 </h1>
 			</div>
 			<div >
-				<form  name="add_form" method="post" enctype="multipart/form-data">
+				<form  name="add_form" method="post" >
 					<div class="infoBox">
 						<div>
-							<label>쇼핑몰이름 </label>
-							<input type="text" name="name" placeholder="쇼핑몰 이름을 입력해주세요.">
+							<label>상품이름 </label>
+							<input type="text" name="name" value="${item.name }" placeholder="상품 이름을 입력해주세요." >
 						</div>
 						<div>
-							<label>한 줄 소개 </label>
-							<input type="text" name="content" placeholder="20자 이내로 써주세요."  >
+							<label>이미지</label>
+							<input type="text" name="img" value=${item.img } placeholder="이미지 주소를 넣어 주세요."  >
 						</div>
 						<div>
-							<labeL>홈페이지 주소 </label>
-							<input type="text" name="url" placeholder="쇼핑몰 홈페이지 주소를 입력해주세요.">
+							<labeL>가격 </label>
+							<input type="text" name="price" value="${item.price }" placeholder="가격을 입력해주세요.">
 						</div>
 						<div>
-							<label>best code </label>
-							<input type="number" name="bestCode" placeholder="베스트 상품 홈페이지 주소 중 cate_no 다음에 나오는 숫자를 입력하세요 ">
+							<label>상품 페이지 </label>
+							<input type="text" name="url" value="${item.url}" placeholder="상품페이지 주소를 입력해주세요 ">
 						</div>
-						<div >
-							<label>로고 이미지 </label>
-							<div class="fileBox">
-								<input class="upload-name"  placeholder="이미지 파일을 선택해주세요." readonly >
-								<label for="file">이미지 업로드</label>
-								<input type="file" name="imageFile"  id="file">
-							</div>
-						</div>
+						
 						<div>
-							<button type="button" onclick="add()" >추가 </button>
-							<a href="/admin/list"><button type="button">취소 </button></a>							
+							<button  type="button" class="add">변경 </button>
+							<a href="../list"><button type="button">취소 </button></a>							
 						</div>
 					</div>
 				</form>

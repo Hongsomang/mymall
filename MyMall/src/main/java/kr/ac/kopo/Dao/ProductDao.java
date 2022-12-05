@@ -26,4 +26,14 @@ public interface ProductDao {
 
 	int likeTotal(Pager pager);
 
+	List<Product> admin_list(Pager pager);
+
+	void directAdd(Product item);
+
+	Product item(Product item);
+
+	void update(Product item);
+
+	
+
 }

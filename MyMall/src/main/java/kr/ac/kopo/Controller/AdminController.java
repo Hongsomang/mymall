@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.ac.kopo.Model.Admin;
+import kr.ac.kopo.Model.Product;
 import kr.ac.kopo.Model.Shoppingmall;
 import kr.ac.kopo.Pager.Pager;
 import kr.ac.kopo.Service.AdminService;
@@ -143,4 +144,6 @@ public class AdminController {
 		productService.add(item);
 		return "redirect:../list";
 	}
+	
+
 }

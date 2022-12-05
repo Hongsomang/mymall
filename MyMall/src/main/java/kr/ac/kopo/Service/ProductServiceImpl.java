@@ -179,4 +179,49 @@ public class ProductServiceImpl implements ProductService {
 
 
 
+	@Override
+	public List<Product> admainlist(Pager pager, int shoppingmallId) {
+		// TODO Auto-generated method stub
+		
+		
+		pager.setShoppingmallId(shoppingmallId);
+		int total=dao.allTotal(pager);
+		pager.setTotal(total);
+		System.out.println(pager.getPerPager());
+		return dao.admin_list(pager);
+	}
+
+
+
+	@Override
+	public void directAdd(Product item) {
+		// TODO Auto-generated method stub
+		dao.directAdd(item);
+	}
+
+
+
+	@Override
+	public Product item(int shoppingmallId, int id) {
+		// TODO Auto-generated method stub
+		Product item=new Product();
+		item.setShoppingmallId(shoppingmallId);
+		item.setId(id);
+		return dao.item(item);
+	}
+
+
+
+	@Override
+	public void update(Product item) {
+		// TODO Auto-generated method stub
+		dao.update(item);
+	}
+
+
+
+	
+
+
+
 }

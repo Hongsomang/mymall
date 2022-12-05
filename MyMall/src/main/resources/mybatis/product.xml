@@ -53,4 +53,15 @@
 	<select id="likeProduct" resultType="Product">
 		select * from product p join likes l on(p.id=l.product_id) and l.user_id=#{userId}
 	</select>
+	<select id="admin_list" resultType="Product">
+		select * from product where shoppingmall_id=#{shoppingmallId} LIMIT #{offset},#{perPager} 
+		
+	</select>
+	<select id="item" resultType="Product">
+		select *from product where id=#{id} and shoppingmall_id=#{shoppingmallId}
+	</select>
+	
+	<select id="update">
+		update product set name=#{name}, img=#{img}, price=#{price}, url=#{url} where shoppingmall_id=#{shoppingmallId} and id=#{id};
+	</select>
 </mapper>
