@@ -34,6 +34,8 @@ public interface ProductDao {
 
 	void update(Product item);
 
+	void itemDelete(int id);
+
 	
 
 }

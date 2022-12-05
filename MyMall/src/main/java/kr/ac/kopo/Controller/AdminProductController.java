@@ -59,4 +59,10 @@ public class AdminProductController {
 		service.update(item);
 		return "redirect:../list";
 	}
+	
+	@RequestMapping("/delete/{id}")
+	public String delete(@PathVariable int id,@PathVariable int shoppingmallId) {
+		service.itemDelete(id,shoppingmallId);
+		return "redirect:../list";
+	}
 }

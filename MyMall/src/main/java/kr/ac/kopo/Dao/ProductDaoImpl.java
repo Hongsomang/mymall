@@ -139,4 +139,10 @@ public class ProductDaoImpl implements ProductDao {
 		sql.update("product.update", item);
 	}
 
+	@Override
+	public void itemDelete(int id) {
+		// TODO Auto-generated method stub
+		sql.delete("product.itemDelete",id);
+	}
+
 }

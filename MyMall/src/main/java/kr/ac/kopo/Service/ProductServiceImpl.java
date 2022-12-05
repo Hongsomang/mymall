@@ -220,6 +220,16 @@ public class ProductServiceImpl implements ProductService {
 
 
 
+	@Override
+	@Transactional
+	public void itemDelete(int id,int shoppingmallId) {
+		// TODO Auto-generated method stub
+		likesDao.delete_product(shoppingmallId);
+		dao.itemDelete(id);
+	}
+
+
+
 	
 
 

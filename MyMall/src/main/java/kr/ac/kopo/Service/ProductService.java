@@ -30,6 +30,8 @@ public interface ProductService {
 
 	void update(Product item);
 
+	void itemDelete(int id, int shoppingmallId);
+
 
 
 }

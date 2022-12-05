@@ -61,7 +61,10 @@
 		select *from product where id=#{id} and shoppingmall_id=#{shoppingmallId}
 	</select>
 	
-	<select id="update">
+	<update id="update">
 		update product set name=#{name}, img=#{img}, price=#{price}, url=#{url} where shoppingmall_id=#{shoppingmallId} and id=#{id};
-	</select>
+	</update>
+	<delete id="itemDelete">
+		delete from product where id=#{id}
+	</delete>
 </mapper>
