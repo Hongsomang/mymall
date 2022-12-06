@@ -26,7 +26,8 @@ public class AdminProductController {
 	@RequestMapping("/list")
 	public String list(Model model ,Pager pager, @PathVariable int shoppingmallId) {
 		pager.setPerPager(10);
-		List<Product> list =service.admainlist(pager,shoppingmallId);
+		pager.setShoppingmallId(shoppingmallId);
+		List<Product> list =service.list(pager);
 		model.addAttribute("list",list);
 
 		return path+"list";

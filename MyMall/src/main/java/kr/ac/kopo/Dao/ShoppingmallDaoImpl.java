@@ -23,11 +23,7 @@ public class ShoppingmallDaoImpl implements ShoppingmallDao {
 		
 		return sql.selectList("shoppingmall.list",pager);
 	}
-	/*@Override
-	public List<Shoppingmall> list(Pager pager) {
-		// TODO Auto-generated method stub
-		return sql.selectList("shoppingmall.list",pager);
-	}*/
+
 
 	@Override
 	public void add(Shoppingmall item) {
@@ -50,8 +46,7 @@ public class ShoppingmallDaoImpl implements ShoppingmallDao {
 	@Override
 	public void update(Shoppingmall item) {
 		// TODO Auto-generated method stub
-		System.out.println("dao :"+item.getName());
-		System.out.println("dao: "+item.getImageFile());
+		
 		sql.update("shoppingmall.update", item);
 	}
 

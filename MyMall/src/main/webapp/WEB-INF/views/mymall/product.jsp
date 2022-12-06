@@ -288,7 +288,7 @@ $(document).ready(function() {
 				<i class="bi-x-lg"></i>
 			</div>
 			<div>
-				<form action="search" method="get">
+				<form action="../search" method="get">
 				<div>
 					<input type="text" name="search" placeholder="Search">
 					<button  class="search_btn"><img src="/resources/image/search_sm.png"></img> </button>

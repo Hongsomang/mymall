@@ -14,19 +14,19 @@ public interface ProductDao {
 
 	void add(List<Crawling> list);
 
-	List<Product> list(int shoppingmallId,Pager pager, String userId);
+	
 
-	int total(Pager pager,int shoppingmallId);
+	int total(Pager pager);
 
-	int allTotal(Pager pager);
+	
 
-	List<Product> allList(Pager pager);
+	
 
-	List<Product> likeProduct(Pager pager, String userId);
+	List<Product> likeProduct(Pager pager);
 
 	int likeTotal(Pager pager);
 
-	List<Product> admin_list(Pager pager);
+	
 
 	void directAdd(Product item);
 
@@ -35,6 +35,10 @@ public interface ProductDao {
 	void update(Product item);
 
 	void itemDelete(int id);
+
+	List<Product> list(Pager pager);
+
+	
 
 	
 

@@ -28,7 +28,6 @@ public class LikesDaoImpl implements LikesDao {
 	public void delete_shoppingmall(int shoppingmallId) {
 		Likes item = new Likes();
 		item.setShoppingmallId(shoppingmallId);
-		System.out.println("dfdf" + item.getShoppingmallId());
 		sql.delete("likes.delete", item);
 	}
 
@@ -37,7 +36,6 @@ public class LikesDaoImpl implements LikesDao {
 	@Override
 	public void delete_product(int shoppingmallId) {
 		// TODO Auto-generated method stub
-		System.out.println("likes"+shoppingmallId);
 		sql.delete("likes.product_delete", shoppingmallId);
 	}
 

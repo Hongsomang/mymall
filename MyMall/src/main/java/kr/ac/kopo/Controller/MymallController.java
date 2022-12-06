@@ -105,8 +105,9 @@ public class MymallController {
 	
 	@RequestMapping("/product/{id}")
 	public String productList(@PathVariable int id,Model model, Pager pager, @SessionAttribute User user) {
-		int shoppingmallId=id;
-		List<Product> list=productService.list(shoppingmallId,pager,user.getId());
+		pager.setShoppingmallId(id);
+		pager.setUserId(user.getId());
+		List<Product> list=productService.list(pager);
 		System.out.println("controller"+list.get(1).getShopName());
 		model.addAttribute("list", list);
 		return path+"product";
@@ -116,7 +117,7 @@ public class MymallController {
 	public String allProduct(Model model, Pager pager ,@SessionAttribute User user) {
 		pager.setUserId(user.getId());
 		
-		List<Product> list =productService.allList(pager);
+		List<Product> list =productService.list(pager);
 		model.addAttribute("list", list);
 		return path+"all_product";
 	}
@@ -130,7 +131,8 @@ public class MymallController {
 	
 	@RequestMapping("/likesProduct")
 	public String likesProduct(Model model, Pager pager ,@SessionAttribute User user) {
-		List<Product> list =productService.likeProduct(pager,user.getId());
+		pager.setUserId(user.getId());
+		List<Product> list =productService.likeProduct(pager);
 		model.addAttribute("list", list);
 		return path+"like_product";
 	}
@@ -158,7 +160,7 @@ public class MymallController {
 			System.out.println("shoppingmall"+list.size());
 		}
 		else if("product".equals(pager.getType()) || pager.getType()==null) {
-			List<Product>list =productService.allList(pager);
+			List<Product>list =productService.list(pager);
 			model.addAttribute("p_list", list);
 			System.out.println("product");
 		}

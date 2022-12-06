@@ -14,15 +14,15 @@ public interface ProductService {
 
 	void add(Shoppingmall item);
 
-	List<Product> list(int shoppingmallId,Pager pager, String userId);
+	List<Product> list(Pager pager);
 
-	List<Product> allList(Pager pager);
+	
 
-	List<Product> likeProduct(Pager pager, String userId);
+	List<Product> likeProduct(Pager pager);
 
 	Product total(Pager pager);
 
-	List<Product> admainlist(Pager pager, int shoppingmallId);
+	
 
 	void directAdd(Product item);
 

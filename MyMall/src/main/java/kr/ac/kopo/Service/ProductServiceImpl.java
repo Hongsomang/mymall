@@ -134,26 +134,20 @@ public class ProductServiceImpl implements ProductService {
 	}*/
 
 	@Override
-	public List<Product> list(int shoppingmallId, Pager pager, String userId) {
-		int total=dao.total(pager,shoppingmallId);
+	public List<Product> list(Pager pager) {
+		int total=dao.total(pager);
 		pager.setTotal(total);
-		System.out.println("service:"+total);
-		return dao.list(shoppingmallId,pager,userId);
+		
+		return dao.list(pager);
 	}
 
-	@Override
-	public List<Product> allList(Pager pager) {
-		int total=dao.allTotal(pager);
-		System.out.println("product_total"+total);
-		pager.setTotal(total);
-		return dao.allList(pager);
-	}
+	
 
 	@Override
-	public List<Product> likeProduct(Pager pager, String userId) {
+	public List<Product> likeProduct(Pager pager) {
 		int total=dao.likeTotal(pager);
 		pager.setTotal(total);
-		return dao.likeProduct(pager,userId);
+		return dao.likeProduct(pager);
 	}
 
 
@@ -170,7 +164,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product total(Pager pager) {
 		// TODO Auto-generated method stub
-		int total=dao.allTotal(pager);
+		int total=dao.total(pager);
 		
 		Product item=new Product();
 		item.setTotal(total);
@@ -179,18 +173,7 @@ public class ProductServiceImpl implements ProductService {
 
 
 
-	@Override
-	public List<Product> admainlist(Pager pager, int shoppingmallId) {
-		// TODO Auto-generated method stub
-		
-		
-		pager.setShoppingmallId(shoppingmallId);
-		int total=dao.allTotal(pager);
-		pager.setTotal(total);
-		System.out.println(pager.getPerPager());
-		return dao.admin_list(pager);
-	}
-
+	
 
 
 	@Override

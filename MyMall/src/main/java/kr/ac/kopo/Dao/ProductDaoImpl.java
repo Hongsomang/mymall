@@ -54,73 +54,36 @@ public class ProductDaoImpl implements ProductDao {
 	}*/
 
 	@Override
-	public int total(Pager pager, int shoppingmallId) {
+	public int total(Pager pager) {
 		// TODO Auto-generated method stub
-		HashMap<String, Object>map=new HashMap<>();
-		map.put("shoppingmallId", shoppingmallId);
-		map.put("pager", pager);
-		System.out.println(pager);
-		System.out.println("dao  "+shoppingmallId);
-
-		return sql.selectOne("product.total",map);
-	}
-
-	@Override
-	public int allTotal(Pager pager) {
-
 		
-		return sql.selectOne("product.total", pager);
+
+		return sql.selectOne("product.total",pager);
 	}
 
-	/*@Override
-	public List<Product> allList(Pager pager) {
-		HashMap<String, Object>map=new HashMap<>();
-		map.put("shoppingmallId", null);
-		map.put("offset", pager.getOffset());
-		map.put("perPager", pager.getPerPager());
-		return sql.selectList("product.list", map);
-	}*/
-
-	@Override
-	public List<Product> list(int shoppingmallId, Pager pager, String userId) {
-		HashMap<String, Object>map=new HashMap<>();
-		map.put("shoppingmallId", shoppingmallId);
-		map.put("offset", pager.getOffset());
-		map.put("perPager", pager.getPerPager());
-		map.put("userId",userId);
-		return sql.selectList("product.list", map);
-	}
-
-	@Override
-	public List<Product> allList(Pager pager) {
 	
+
+	@Override
+	public List<Product> list( Pager pager) {
+		
 		return sql.selectList("product.list", pager);
 	}
 
+
+
 	@Override
-	public List<Product> likeProduct(Pager pager, String userId) {
-		HashMap<String, Object>map=new HashMap<>();
-		map.put("shoppingmallId", null);
-		map.put("offset", pager.getOffset());
-		map.put("perPager", pager.getPerPager());
-		map.put("userId", userId);
-		return sql.selectList("product.likeProduct", map);
+	public List<Product> likeProduct(Pager pager) {
+	
+		return sql.selectList("product.likeProduct", pager);
 	}
 
 	@Override
 	public int likeTotal(Pager pager) {
-		HashMap<String, Object>map=new HashMap<>();
-		map.put("shoppingmallId", null);
-		map.put("pager", pager);
-		return sql.selectOne("product.likeTotal", map);
+		
+		return sql.selectOne("product.likeTotal", pager);
 	}
 
-	@Override
-	public List<Product> admin_list(Pager pager) {
-		// TODO Auto-generated method stub
-		return sql.selectList("product.list", pager);
-	}
-
+	
 	@Override
 	public void directAdd(Product item) {
 		// TODO Auto-generated method stub
