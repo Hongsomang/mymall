@@ -35,7 +35,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 CREATE TABLE IF NOT EXISTS `mymall`.`shoppingmall` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(120) NOT NULL,
-  `content` VARCHAR(1024) NOT NULL,
+  `content` VARCHAR(1024) NULL DEFAULT NULL,
   `url` VARCHAR(1024) NOT NULL,
   `best_code` INT NOT NULL,
   `image_name` VARCHAR(256) NULL DEFAULT NULL,
