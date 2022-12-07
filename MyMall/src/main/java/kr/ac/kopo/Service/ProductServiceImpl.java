@@ -54,22 +54,29 @@ public class ProductServiceImpl implements ProductService {
 				Document doc = Jsoup.connect(path + "/product/list.html?cate_no=" + bestCode + "&page=" + j).get();
 				Elements El;
 				Elements contents;
+				Elements image;
 				System.out.println(item.getName());
 
-				contents = doc.select("ul[class=prdList grid4] ").select("div[class=prdImg] > a");
-				El = doc.select("ul[class=prdList grid4]  >li").select("div");
+				contents = doc.select("ul[class=prdList grid4] ");
+					
 
 				if (contents.size() == 0) {
-					contents = doc.select("ul[class=prdList grid3] ").select("div[class=prdImg] > a");
+					contents = doc.select("ul[class=prdList grid3] ");
 					El = doc.select("ul[class=prdList grid3]  >li").select("div");
 					System.out.println("size 0");
 				}
-
+				image=contents.select("div[class=prdImg] > a");
+				if(image.size()==0) {
+					image=contents.select("div[class=img] > a");
+				}
+				El = doc.select("ul[class=prdList grid4]  >li").select("div");
+				
+				
 				Elements Elprice_li_1 = El.select("ul >li[rel=판매가] span:nth-child(2)");
 				Elements Elname = El.select(".name >a ");
 				
 				//int index = 0;
-				String name;
+				String name = null;
 				String url;
 				String img;
 				String price = "";
@@ -77,10 +84,17 @@ public class ProductServiceImpl implements ProductService {
 				System.out.println("cotent.size()"+contents.size());
 				System.out.println("Elprice_li_1 "+Elprice_li_1 .size());
 				System.out.println("Elname"+ Elname.size());
-				for (int i = 0; i < contents.size(); i++) {
+				for (int i = 0; i < image.size(); i++) {
 
 					if(Elname.select("span:nth-child(2)").size()==0) {
-						name = contents.select("img").get(i).attr("alt");
+						
+						if(Elname.select("span").size()==0) {
+							
+							name = image.select("img").get(i).attr("alt");
+						}
+						else {
+							name = Elname.select("span").get(i).text();
+						}
 					}
 					else {
 						name = Elname.select("span:nth-child(2)").get(i).text();
@@ -88,8 +102,8 @@ public class ProductServiceImpl implements ProductService {
 					
 				
 					System.out.println("name:" + name);
-					url = contents.get(i).attr("href").toString();
-					img = contents.select("img").get(i).attr("src");
+					url = image.get(i).attr("href").toString();
+					img = image.select("img").get(i).attr("src");
 
 				
 					
