@@ -132,8 +132,8 @@ function add(){
 		alert("bestCode 입력하세요.");
 		form.url.focus();
 		return;
-	}
-	
+	}	
+	form.submit();
 	
 }
 </script>
