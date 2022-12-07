@@ -101,6 +101,37 @@ $(document).ready(function(){
 	  	$(".upload-name").val(arr[arr.length-1]);
 	});
 });
+
+function add(){
+	const form = document.update_form;
+	if(form.name.value==null){
+		alert("쇼핑몰 이름를 입력하세요.");
+		form.name.focus();
+		return;
+	}
+	if(form.content.value==null){
+		alert("한 줄 소개를 입력하세요.");
+		form.name.focus();
+		return;
+	}
+	if(form.content.value.length>=30){
+		alert("한 줄 소개를 30자 이내로 해주세요. ");
+		form.name.focus();
+		return;
+	}
+	if(form.url.value==null){
+		alert("홈페이지 주소를 입력하세요.");
+		form.url.focus();
+		return;
+	}
+	if(form.bestCode.value==null){
+		alert("bestCode 입력하세요.");
+		form.url.focus();
+		return;
+	}	
+	form.submit();
+	
+}
 </script>
 </head>
 <body>
@@ -115,7 +146,7 @@ $(document).ready(function(){
 				<h1>쇼핑몰 정보 수정</h1>
 			</div>
 			<div >
-				<form method="post" enctype="multipart/form-data">
+				<form name="update_form" method="post" enctype="multipart/form-data">
 					<div class="infoBox">
 						<div>
 							<label>쇼핑몰이름 </label>
@@ -142,7 +173,7 @@ $(document).ready(function(){
 							</div>
 						</div>
 						<div>
-							<button >변경 </button>
+							<button type="button" onclick="add()"  >변경 </button>
 							<a href="/admin/list"><button type="button">취소 </button></a>							
 						</div>
 					</div>

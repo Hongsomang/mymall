@@ -106,9 +106,9 @@ h1 {
 
 
 .card-img-top {
-	width: 250px;
-	height: 100px;
-	object-fit: contain;
+	width: 150px;
+	height: 70px;
+	object-fit: scale-down;
 }
 .card{
 	width: 400px;

@@ -69,6 +69,10 @@ public class ProductServiceImpl implements ProductService {
 				if(image.size()==0) {
 					image=contents.select("div[class=img] > a");
 				}
+				
+				if(image.size()==0) {
+					image=contents.select("div[class=thumbnail] > a");
+				}
 				El = doc.select("ul[class=prdList grid4]  >li").select("div");
 				
 				

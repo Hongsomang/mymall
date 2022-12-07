@@ -118,8 +118,8 @@ function add(){
 		form.name.focus();
 		return;
 	}
-	if(form.content.value.length>=20){
-		alert("한 줄 소개를 20자 이내로 해주세요. ");
+	if(form.content.value.length>=30){
+		alert("한 줄 소개를 30자 이내로 해주세요. ");
 		form.name.focus();
 		return;
 	}
