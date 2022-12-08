@@ -15,7 +15,7 @@
 *{
 	margin:0px;
 	padding: 0px;
-	font-family: 'Noto Sans', 'Noto Sans KR',sans-serif;
+	
 	
 }
  .header h1{
@@ -56,6 +56,7 @@ hr{
 }
 .content .inner form div label{
 	height: 50px;
+	width :100px;
 	float: left;
 	display: flex;
 	align-items: center;
@@ -103,7 +104,7 @@ hr{
 				</div>
 				<div>
 					<label>비밀번호: </label>
-					<input type="password" name="pwd">
+					<input type="password" name="pwd" placeholder="비밀 번호를 입력해 주세요.">
 				</div>
 				<div>
 					<a href="list"><button >로그인 </button></a>

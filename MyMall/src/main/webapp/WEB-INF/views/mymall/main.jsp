@@ -127,6 +127,7 @@ h1 {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top:15px;
+	margin-bottom:50px;
 	padding: 0;
 	width: 1300px;
 	height: auto;
